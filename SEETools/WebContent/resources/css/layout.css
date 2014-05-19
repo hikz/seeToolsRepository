@@ -588,7 +588,10 @@ form.loginheader {
 
 .accordion {
 	margin: 50px;
-	width:200px;
+	width:244px;
+	border-style: solid;
+	border-width: 1px; 
+	border-color: #999999;
 }
 
 
@@ -598,17 +601,22 @@ form.loginheader {
 }
 
 .accordion dt a {
-	display: block;
+	display: inline ;
 	color: black;
 	font-weight: bold;
 	left: 0px;
 }
+
+
 
 dt {
 	background-color: #e6e6e6 ;
 	padding: 20px;
 	width: 200px;
 	color: black;
+	border-style: solid;
+	border-width: 1px; 
+	border-color: #999999;
 }
 
 dt:hover
@@ -635,6 +643,7 @@ background-color: #999999;
 #seeToolsAccordionItem{
 	background-color: #FFFFFF;
 	margin:0px;
+	width: 200px;
 }
 
 #toolBody {
