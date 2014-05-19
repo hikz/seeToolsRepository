@@ -1,0 +1,3 @@
+Commands to execute scripts from MySQL client
+
+mysql>  source C:\Ramz_Trainingz\JXLS\Resources\DB\dataScripts14Apr.sql
