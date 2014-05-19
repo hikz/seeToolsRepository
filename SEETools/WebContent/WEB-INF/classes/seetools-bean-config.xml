@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<beans:bean id="loginBean" name="loginBean"
+		class="com.seetools.presentation.LoginBean" scope="request">
+		<beans:property name="authenticationManager" ref="authenticationManager"></beans:property>
+		<beans:property name="userDetailsService" ref="seeToolsUserDetailsService"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="customAuthenticationSuccessHandler" class="com.seetools.presentation.common.CustomAuthenticationSuccessHandler"></beans:bean>
+	
+	<beans:bean id="navigator" name="navigator"
+		class="com.seetools.presentation.NavigationControllerBean" scope="request"/>
+		
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/seetools" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="admin" />
+	</beans:bean>
+
+	
+	<beans:bean id="seeToolsUserDetailsService" class="com.seetools.daolayer.LoginDAOImpl">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="seeToolsRegisterDAO" class="com.seetools.daolayer.RegisterDAOImpl">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+	</beans:bean>
+		
+	<beans:bean id="seeToolsRegisterServiceImpl" class="com.seetools.businesslayer.SeeToolsRegisterServiceImpl">
+	</beans:bean>
+
+	
+	
+</beans:beans>

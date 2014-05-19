@@ -1,0 +1,14 @@
+@CHARSET "ISO-8859-1";
+
+.optionList {
+	height: 22px;
+}
+
+.vertical-menu-cell {
+	padding: 0px 0px 0px 0px;
+	width: 200px;
+}
+
+.toolsDropDownMenu {
+	position: absolute
+}

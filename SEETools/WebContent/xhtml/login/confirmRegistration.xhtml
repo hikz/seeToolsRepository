@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Register User</title>
+</head>
+<body>
+<ui:composition template="/xhtml/common/seeLayout.xhtml">
+		<ui:define name="mainContent">
+			<f:view>
+			<div id="wrapper1">
+					<div id="form_wrapper" class="form_wrapper">
+				<h:form id="seeRegisterFormId" prependId="false">
+				<h:panelGrid>
+					<div id="RegisterFieldsPnlId">
+						<div id="FirstNameId">
+							<h:outputText id="seeFirstNameLblId" value="First Name:"></h:outputText>
+							<h:outputText id="seeFirstNameId" value="#{userBean.firstName}"></h:outputText>
+						</div>
+						<br></br>
+						<div id="LastNameId">
+							<h:outputText id="seeLastNameLblId" value="Last Name:"></h:outputText>
+							<h:outputText id="seeLastNameId" value="#{userBean.lastName}" ></h:outputText>
+						</div>
+						<br></br>
+						<div id="MobileNumberId">
+							<h:outputText id="seeMobileNumberLblId" value="Mobile Number:"></h:outputText>
+							<h:outputText id="seeMobileNumberId" value="#{userBean.mobileNumber}" ></h:outputText>
+						</div>
+						<br></br>
+						<div id="EmailAddressId">
+							<h:outputText id="seeEmailAddressLblId" value="Email Address:"></h:outputText>
+							<h:outputText id="seeEmailAddressId" value="#{userBean.email.emailAddress}"></h:outputText>
+						</div>
+						<br></br>
+						<div id="loginFieldPasswordContId">
+							<h:outputText id="seePasswordLblId" value="Password:"></h:outputText>
+							<h:outputText id="seePasswordId" value="*******" ></h:outputText>
+						</div>
+					</div>
+					<br></br>
+					</h:panelGrid>
+				<div class="bottom">
+					 	<!-- <h:commandButton action="#{navigator.navigate}" value="Edit">
+							<f:param name="fromTool" value="register" />
+						</h:commandButton> -->
+						<h:commandButton value="Edit" action="register"></h:commandButton>
+						<h:commandButton value="Confirm" action="#{registerBean.register}"></h:commandButton>
+					</div>
+					
+				</h:form>
+				</div>
+				</div>
+				<h:messages></h:messages>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

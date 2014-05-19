@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<h:head>
+</h:head>
+<body>
+
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		template="/xhtml/common/seeLayout.xhtml">
+
+		<ui:define name="mainContent">
+			<script type="text/javascript">
+				$(document).ready(function() {
+
+					var allPanels = $('.accordion > dd').hide();
+					
+					$('#defaultAccordionItem').show();
+					/* $('#defaultAccordionHeader').css('background-color','#999999'); */
+					$('.accordion > dt > a').click(function() {
+						allPanels.slideUp();
+						$(this).parent().next().slideDown();
+						return false;
+					});
+
+				});
+
+				/*  $(document).ready(function () {
+					 $( "#seeToolsAccordion" ).accordion();
+				    }); */
+			</script>
+
+
+			<div id="page">
+						<div id="toolsMenuCol">
+							<h:form>
+								<div>
+									<dl class="accordion">
+										<dt id="defaultAccordionHeader">
+											<a href="#">Proton Ions</a>
+										</dt>
+										<dd id="defaultAccordionItem">
+											<div class="seeToolsAccordionItem">
+
+												<p>
+													<h:commandLink action="#{navigator.navigate}"
+														value="HIP Converter 1">
+														<f:param name="fromTool" value="hipConverter" />
+													</h:commandLink>
+												</p>
+												<p>
+													<h:commandLink action="#{navigator.navigate}"
+														value="HIP Converter 2">
+														<f:param name="fromTool" value="hipConverter" />
+													</h:commandLink>
+												</p>
+
+
+											</div>
+										</dd>
+										<dt>
+											<a href="#">Neutron Tools</a>
+										</dt>
+										<dd>
+											<div class="seeToolsAccordionItem">
+
+												<p>
+													<h:commandLink action="#{navigator.navigate}" value="BGR">
+														<f:param name="fromTool" value="neutronConverter" />
+													</h:commandLink>
+												</p>
+
+											</div>
+										</dd>
+
+										<dt>
+											<a href="#">Heavy Ion Tools</a>
+										</dt>
+										<dd>
+											<div class="seeToolsAccordionItem">
+												<p>
+													<h:commandLink action="#{navigator.navigate}"
+														value="HICUP Converter">
+														<f:param name="fromTool" value="neutronConverter" />
+													</h:commandLink>
+												</p>
+												<p>
+													<h:commandLink action="#{navigator.navigate}"
+														value="Dual Node/Double Bit Upset Rate">
+														<f:param name="fromTool" value="neutronConverter" />
+													</h:commandLink>
+												</p>
+
+											</div>
+										</dd>
+										<dt>
+											<a href="#">General Tools</a>
+										</dt>
+										<dd>
+											<div class="seeToolsAccordionItem">
+
+												<p>
+													<h:commandLink action="#{navigator.navigate}"
+														value="Ion Density Profile">
+														<f:param name="fromTool" value="neutronConverter" />
+													</h:commandLink>
+												</p>
+												<p>
+													<h:commandLink action="#{navigator.navigate}"
+														value="Radiation Database">
+														<f:param name="fromTool" value="neutronConverter" />
+													</h:commandLink>
+												</p>
+
+											</div>
+										</dd>
+									</dl>
+
+
+								</div>
+							</h:form>
+					</div>
+					<div id="toolContentCol"><ui:insert name="toolcontent">
+								<ui:include src="/xhtml/tools/hipConverterTool.xhtml"/>
+						</ui:insert></div>
+			</div>
+		</ui:define>
+
+	</ui:composition>
+</body>
+</html>

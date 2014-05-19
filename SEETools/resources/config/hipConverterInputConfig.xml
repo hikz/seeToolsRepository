@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<workbook>
+    <worksheet name="Sheet1">                       
+		<loop startRow="0" endRow="0" items="hipconverterFinalInput.hipconverterInputList"
+		var="hipconverterInput" varType="com.seetools.businesslayer.hipconv.process.HipconverterInput">
+            <section startRow="0" endRow="0">                                                                     
+				<mapping row="0" col="0">hipconverterInput.xsec</mapping> 
+				<mapping row="0" col="1">hipconverterInput.let</mapping> 									
+				<!--<mapping row="0" col="2">hipconverterInput.energy</mapping> 	-->
+            </section> 
+            <loopbreakcondition> 
+                <rowcheck offset="0">
+                    <cellcheck offset="0">END</cellcheck>
+                </rowcheck>
+            </loopbreakcondition>
+        </loop>
+    </worksheet>    
+</workbook> 

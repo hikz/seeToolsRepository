@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Register User</title>
+</head>
+<body>
+
+	<ui:composition template="/xhtml/common/seeLayout.xhtml">
+		<ui:define name="mainContent">
+			<f:view>
+				<div id="wrapper1">
+					<div id="form_wrapper" class="form_wrapper">
+						<h:form id="seeRegisterFormId">
+							<div class="loginheader active">
+								<h3>Register</h3>
+							</div>	
+								<label>First Name</label>
+								<h:inputText  id="seeFirstNameInId" required="true"
+									value="#{userBean.firstName}" requiredMessage="First Name required">
+									<f:validateLength maximum="20"></f:validateLength>
+								</h:inputText>
+								<h:message for="seeFirstNameInId" styleClass="error"></h:message>
+								<br></br> <label>Last Name</label>
+								<h:inputText id="seeLastNameInId" required="true"
+									value="#{userBean.lastName}" requiredMessage="Last Name required">
+									<f:validateLength maximum="20"></f:validateLength>
+								</h:inputText>
+								<h:message for="seeLastNameInId" styleClass="error"></h:message>
+								<br></br> <label>Mobile Number</label>
+								<h:inputText id="seeMobileNumberInId" required="true"
+									value="#{userBean.mobileNumber}"
+									requiredMessage="Last Name required">
+									<f:validateLength maximum="10"></f:validateLength>
+								</h:inputText>
+								<h:message for="seeMobileNumberInId" styleClass="error"></h:message>
+								<br></br> <label>Email Address</label>
+								<h:inputText id="seeEmailAddressInId" 
+									value="#{userBean.email.emailAddress}" required="true"
+									requiredMessage="Email Address required" styleClass="error">
+									<f:validator validatorId="RegistrationEmailValidator" />
+								</h:inputText>
+								<h:message for="seeEmailAddressInId" styleClass="error"></h:message>
+								<br></br> <label>Password</label>
+								<h:inputSecret id="seePasswordInId" required="true"
+									value="#{userBean.password}"
+									requiredMessage="Please enter password"></h:inputSecret>
+								<h:message for="seePasswordInId" styleClass="error"></h:message>
+							<br></br>
+							<div class="bottom">
+								<h:commandButton value="Clear" type="reset"></h:commandButton>
+								<h:commandButton value="Register" action="confirmRegistration"></h:commandButton>
+								
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+
+
+</body>
+</html>

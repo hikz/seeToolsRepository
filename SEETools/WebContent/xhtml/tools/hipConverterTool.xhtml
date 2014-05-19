@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+	<title>Hip Converter</title>
+</h:head>
+<h:body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		template="/xhtml/tools/seeContentLayout.xhtml">
+
+		<ui:define name="toolcontent">
+
+			<p id="toolContentHeader">HIP Converter</p>
+			<table>
+				<tr>
+					<td valign="top" align="center" height="50"><h:form
+							enctype="multipart/form-data" id="hipConverterForm">
+							<h:inputFile id="hipConverterFileId"
+								value="#{fileUploadBean.inputFile}" required="true"
+								requiredMessage="File not selected !!">
+								<f:validator validatorId="FileUploadValidator" />
+							</h:inputFile>
+							<br />
+							<h:commandButton value="Upload"
+								action="#{fileUploadBean.upload()}" />
+						</h:form></td>
+				</tr>
+				<tr>
+					<h:form if="downloadHipSampleFileId">
+						<h:commandLink id="getDownload" value="Download sample input file"
+							action="#{fileDownloadBean.downLoad}">
+						</h:commandLink>
+					</h:form>
+				</tr>
+				<tr>
+					<td height="20"><h:message for="hipConverterFileId"
+							style="color: red" /></td>
+				</tr>
+				<tr>
+					<td align="center"><div>
+							<br></br>
+							<h:panelGrid id="hipPanel" columns="2" border="1"
+								rendered="#{fileUploadBean.display}">
+								<h:dataTable id="hipOutput" var="hipOutput"
+									value="#{fileUploadBean.hipconverterFinalOutput.hipconverterOutputList}"
+									redered="#{fileUploadBean.display}" border="1">
+
+									<h:column>
+										<f:facet name="header">Energy</f:facet>
+										<h:outputText value="#{hipOutput.energy}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Proton Cross Section</f:facet>
+										<h:outputText value="#{hipOutput.protonCrossSection}" />
+									</h:column>
+								</h:dataTable>
+
+								<rich:panel>
+									<a4j:mediaOutput type="image/jpeg" classid="toolsChart"
+										style="width:450px;height:450px;" element="img"
+										cacheable="false" session="true"
+										createContent="#{fileUploadBean.drawChart}"
+										mimeType="image/jpeg">
+
+									</a4j:mediaOutput>
+								</rich:panel>
+							</h:panelGrid>
+						</div></td>
+				</tr>
+				
+				<!-- <tr><td width="225" align="center"><a href="#">Download Output File</a></td></tr> -->
+			</table>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
