@@ -10,6 +10,7 @@
 	font-size:14px;
 	font-weight:bold;
 	font-family:Open Sans, sans-serif;
+	
 	}
 
 html body
@@ -47,18 +48,21 @@ html body
 	font-size:12px;
 	font-weight:bold;
 	font-family:Open Sans, sans-serif;
+	
 	}
 
-	
+#signup li{
+	vertical-align: center;
+}
 #signup li a:link, #signup li a:visited, #signup li a:hover{
 	display:block;
 	margin:5px;
 	padding:10px 10px;
 	color:#ffffff;
-	background-color:#0F67A1;
-	
+	background-color:#0F67A1;	
 	}	
-	
+
+
 
 #topnav ul ul li a:link, #topnav ul ul li a:visited{
 	border:none;

@@ -6,6 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,6 +22,7 @@ import com.seetools.presentation.common.SessionManager;
 @RequestScoped
 public class RegisterBean implements Serializable {
 
+	final Logger logger = LoggerFactory.getLogger(RegisterBean.class);
 	/**
 	 * 
 	 */
@@ -34,30 +37,39 @@ public class RegisterBean implements Serializable {
 	 private UserBean userBean;
 	 
 	 
-	public String confirmRegistration(){
-		System.out.println("sending to confirm registration");
+	/*public String confirmRegistration(){
+
+		System.out.println("Logger Info enabled: " + logger.isInfoEnabled());
+		logger.info("Confirming registration");
 		this.setUser((UserBean)RequestManager.getRequestAttribute("user"));
+		logger.debug("User Details : {}", this.getUser().toString());
 		RequestManager.addRequestAttribute("user",this.userBean);
 		return "confirmRegistration";
-	}
+	}*/
 	
 	
 	public String register(){
 		
+		logger.info("Start registration process");
+		System.out.println("Log Info level : " + logger.isInfoEnabled());
+		System.out.println("Log Debug level : " + logger.isDebugEnabled());
+		System.out.println("Log Warn level : " + logger.isWarnEnabled());
+		
 		SeeToolsRegisterServiceImpl seeToolsRegisterServiceImpl = new SeeToolsRegisterServiceImpl();
 		this.setUser((UserBean)SessionManager.getSessionAttribute("userBean"));
+		logger.debug("User Details : {}", this.getUser().toString());
 		SessionManager.invalidateSession();
 		
 		
 		try {
-			  System.out.println("Before load method");
+			  
 			  seeToolsRegisterServiceImpl.processRegistration(this.getUser());
 		      return "registerSuccess";
 		    
 		    } catch (Exception e) {
 		    	e.printStackTrace();
 		    }
-		 
+		logger.info("End registration process");
 		    return "redirect:/xhtml/login/error";
 	}
 	public AuthenticationManager getAuthMgr() {

@@ -160,7 +160,8 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	float: left;
 	width: 200px;
 	overflow: hidden;
-	left: 10px;
+	left: 300px;
+	
 }
 
 #header #logo h1,#header #logo p {
@@ -172,7 +173,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 }
 
 #header #logo h1 {
-	font-size: 40px;
+	font-size: 20px;
 }
 
 #header h1 a {
@@ -681,4 +682,8 @@ background-color: #999999;
 #loginUserHeader
 {
 	width:100px;
+}
+
+.verticalLine {
+    border-left: thick solid #ff0000;
 }

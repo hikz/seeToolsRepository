@@ -16,8 +16,7 @@
 			<div id="header">
 				<div id="logo">
 					<h1>
-						<a href="#"><h:graphicImage library="images"
-								name="seeToolsBanner.jpg" /></a>
+						Radiation Tools and Services
 					</h1>
 				</div>
 
@@ -37,6 +36,9 @@
 							<c:when test="#{loginBean.username != null and loginBean.username !='anonymousUser'}">
 							<li>	
 								<h:outputText value="Logged in as: #{loginBean.username}," />
+							</li>
+							<li>
+								<h:outputLink value="#{request.contextPath}/tools_logout">Account Info</h:outputLink>
 							</li>
 							<li>
 								<h:outputLink value="#{request.contextPath}/tools_logout">Logout</h:outputLink>

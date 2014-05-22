@@ -105,6 +105,19 @@ public class UserBean implements Serializable {
 	public void setEmail(EmailBean email) {
 		this.email = email;
 	}
+	@Override
+	public String toString() {
+		return "UserBean [userId=" + userId 
+				+ ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", mobileNumber=" + mobileNumber + ", membershipId="
+				+ membershipId + ", createdByUserId=" + createdByUserId
+				+ ", createdDate=" + createdDate + ", modifiedByUserId="
+				+ modifiedByUserId + ", modifiedDate=" + modifiedDate
+				+ ", enabled=" + enabled + ", email=" + email + "]";
+	}
+	
+	
+	
 	
 	
 }
