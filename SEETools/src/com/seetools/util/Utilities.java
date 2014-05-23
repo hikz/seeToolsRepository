@@ -1,7 +1,14 @@
 package com.seetools.util;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.seetools.daolayer.RegisterDAOImpl;
+import com.seetools.daolayer.TokenVerificationDAOImpl;
+import com.seetools.dto.AccountActivationTokenBean;
 
 public class Utilities {
 
@@ -23,5 +30,26 @@ public class Utilities {
 			return true;
 		}
 		return false;
+	}
+
+	
+	public static boolean validateTokenWithEmail(String emailAddress, String token) {
+		
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("seetools-bean-config.xml");
+		
+		RegisterDAOImpl registerDAOImpl = (RegisterDAOImpl)applicationContext.getBean("seeToolsRegisterDAO");
+		TokenVerificationDAOImpl tokenVerificationDAOImpl = (TokenVerificationDAOImpl)applicationContext.getBean("tokenVerificationDAO");
+		
+		applicationContext.close();
+		
+		boolean validToken = false;
+		
+		List<AccountActivationTokenBean> activationTokenBeans = tokenVerificationDAOImpl.getAccountActivationTokenDetail(emailAddress, token); 
+		if(activationTokenBeans != null && activationTokenBeans.size() == 1){
+			validToken = true;
+		}
+		
+		return validToken; 
+		
 	}
 }

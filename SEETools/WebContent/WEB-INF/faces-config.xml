@@ -113,6 +113,12 @@
     		<redirect></redirect>
     	</navigation-case>
     	
+    	<navigation-case>
+    		<from-outcome>changePassword</from-outcome>
+    		<to-view-id>/xhtml/login/changePassword.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	
     	</navigation-rule>
     
 </faces-config>

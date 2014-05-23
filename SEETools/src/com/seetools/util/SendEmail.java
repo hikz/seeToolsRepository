@@ -48,7 +48,7 @@ public class SendEmail {
   //se.sendEmail();
  }
  
- public void sendEmail(String emailAddress, String token){
+ public void sendEmail(String emailAddress, String token, String mode){
   //verify a user before registering
  
   // System properties
@@ -92,7 +92,7 @@ public class SendEmail {
    
    //for the moment we comment out below line
    //message.setText(htmlMessageContent, "text/html");
-   //set "text/plain" if you don't need html in your message           
+   //set "text/plain" if you don't need html in your message            
  
    // Create the message part for SENDING IMAGE
    // This HTML mail have to 2 part, the BODY and the embedded image
@@ -100,10 +100,8 @@ public class SendEmail {
  
    // first part  (the html)
    BodyPart messageBodyPart = new MimeBodyPart();
-   String url = "http://localhost:8080/SEETools/xhtml/login/registrationActivation.xhtml?email=" + emailAddress +"&token=" + token;
-   String htmlText = "Hello Visitor. Welcome to SEE Tools website. Please click here to activate your registration";
-   htmlText = htmlText + "<html><body><a href="+url+">Click here to complete your registration</a></body></html>";
-   messageBodyPart.setContent(htmlText, "text/html");
+   
+   messageBodyPart.setContent(this.createHtmlText(emailAddress, token, mode), "text/html");
  
    // add it
    multipart.addBodyPart(messageBodyPart);
@@ -130,5 +128,24 @@ public class SendEmail {
   }
  }
  
+ 
+ private String createHtmlText(String emailAddress, String token, String mode){
+	 
+	 String htmlText = "";
+	 
+	 if(mode.equals("REGISTER")){
+		 String url = "http://localhost:8080/SEETools/xhtml/login/registrationActivation.xhtml?email=" + emailAddress +"&token=" + token;
+		   htmlText = "Hello Visitor. Welcome to SEE Tools website. Please click here to activate your registration";
+		   htmlText = htmlText + "<html><body><a href="+url+">Click here to complete your registration</a></body></html>";
+	 }else if(mode.equals("FORGOT_PASSWORD")){
+		 String url = "http://localhost:8080/SEETools/xhtml/login/changePassword.xhtml?email=" + emailAddress +"&token=" + token;
+		  htmlText = "Hi, Its tough to remember so many passwords. No worry. You can recover your password by clicking on below link.";
+		   htmlText = htmlText + "<html><body><a href="+url+">Click here to recover your password</a></body></html>";
+	 }
+	 
+	 
+	 
+	 return htmlText;
+ }
  
 }

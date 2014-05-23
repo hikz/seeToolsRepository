@@ -1,5 +1,6 @@
 package com.seetools.daolayer;
 
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -64,6 +65,23 @@ public class LoginDAOImpl implements UserDetailsService {
 		return user;
 	}
 
+	public boolean updatePassword(String emailAddress, String password) {
+		
+		boolean active = false;
+		final String UPDATE_PASSWORD = "update user set password = ? where " + 
+				"emailid = (select emailid from email where emailaddress = ?)";
+		
+		this.jdbcTemplate =  new JdbcTemplate(dataSource);
+		
+		int rows = this.jdbcTemplate.update(UPDATE_PASSWORD, new Object[]{password, emailAddress},new int[]{Types.VARCHAR, Types.VARCHAR});
+		
+		if(rows == 1){
+			active = true;
+		}
+		return active;
+		
+	}
+	
 	public DataSource getDataSource() {
 		return dataSource;
 	}

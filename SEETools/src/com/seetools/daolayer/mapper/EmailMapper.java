@@ -14,6 +14,7 @@ public class EmailMapper implements RowMapper<EmailBean> {
 		
 		EmailBean emailDto = new EmailBean();
 		emailDto.setEmailAddress(rs.getString("EmailAddress"));
+		emailDto.setEmailID(rs.getString("EmailID"));
 		return emailDto;
 	}
 

@@ -24,11 +24,15 @@ public class RegistrationActivation {
 
 	public boolean check(String emailAddress,String token){
 		
+		boolean validToken = false;
 		//String token = (String)FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("token");
-		new SeeToolsRegisterServiceImpl().registrationActivation(emailAddress, token);
+		if(new SeeToolsRegisterServiceImpl().registrationActivation(emailAddress, token)){
+			validToken = true;
+		}
+		
 		System.out.println("Token : " + token);
 		
-		return true;
+		return validToken;
 	}
 
 	public String getKey() {

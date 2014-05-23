@@ -30,13 +30,30 @@
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 	</beans:bean>
 	
+	<beans:bean id="loginDAO" class="com.seetools.daolayer.LoginDAOImpl">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+	</beans:bean>
+	
 	<beans:bean id="seeToolsRegisterDAO" class="com.seetools.daolayer.RegisterDAOImpl">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 	</beans:bean>
 		
+	<beans:bean id="tokenVerificationDAO" class="com.seetools.daolayer.TokenVerificationDAOImpl">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="emailDAO" class="com.seetools.daolayer.EmailDAOImpl">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+	</beans:bean>
+	
 	<beans:bean id="seeToolsRegisterServiceImpl" class="com.seetools.businesslayer.SeeToolsRegisterServiceImpl">
 	</beans:bean>
 
+	<beans:bean id="forgotPasswordService" class="com.seetools.businesslayer.ForgotPasswordServiceImpl">
+		<beans:property name="tokenVerificationDAO" ref="tokenVerificationDAO"></beans:property>
+		<beans:property name="emailDAO" ref="emailDAO"></beans:property>
+		<beans:property name="loginDAOImpl" ref="loginDAO"></beans:property>
+	</beans:bean>
 	
 	
 </beans:beans>
