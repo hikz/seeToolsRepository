@@ -85,8 +85,8 @@ div.wrapper {
 	margin: 0;
 	text-align: center;
 	
-	/* border:solid;
-	border-color: yellow; */
+/* 	border:solid;
+	border-color: yellow;  */
 }
 
 div.wrapper h1 {
@@ -154,9 +154,9 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 
 /* ----------------------------------------------Header-------------------------------------*/
 #header {
-	padding: 1px 0 0 0px;
+	padding: 0px 0 0 0px;
 	width: 80%;
-	height: 25px;
+	height: 30px;
 }
 
 #header #logo {
@@ -164,7 +164,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	float: left;
 	
 	overflow: hidden;
-	left: 400px;
+	left: 380px;
 	/* border: solid;
 	border-color: maroon;	 */
 }
@@ -182,7 +182,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 }
 
 #header #logo h1 {
-	font-size: 20px;
+	font-size: 18px;
 }
 
 #header h1 a {
@@ -609,7 +609,7 @@ form.loginheader {
 .wrapper1 {
 	width: 960px;
 	margin: 20px auto;
-	min-height: 550px;
+	min-height: 750px;
 }
 
 .form_wrapper .bottom {
@@ -736,8 +736,8 @@ background-color: #999999;
 
 #toolContentCol
 {
-	top:50px;
-	width:100%;
+	top:80px;
+	width:67%;
 	position:relative;
 	
 }

@@ -15,9 +15,10 @@
 		<div class="wrapper col1">
 			<div id="header">
 				<div id="logo">
-					<h1>
-						<img src="resources/images/logo1.jpg" alt="Logo" style="float:left;"/>Radiation Tools and Services
-					</h1>
+				<h:graphicImage library="images" name="logo1.jpg" style="float:left;"></h:graphicImage>
+					<h2>
+						Radiation Tools and Services
+					</h2>
 				</div>
 
 				<div id="topnav">
@@ -45,6 +46,9 @@
 							</c:when>
 
 							<c:otherwise>
+							<li>	
+								<h:outputText value="Some text here" />
+							</li>
 							<li><h:commandLink action="#{navigator.navigate}"
 									value="LogIn">
 									<f:param name="fromTool" value="/xhtml/login/login.xhtml" />

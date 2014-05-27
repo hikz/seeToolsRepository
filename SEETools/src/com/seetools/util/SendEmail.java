@@ -81,7 +81,13 @@ public class SendEmail {
    // Set our ToAddress.
    message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailAddress));
    // Set our subject for the mail.
-   message.setSubject("SEE TOOLS Email Verification Test");
+   
+   if(mode.equals("REGISTER")){
+	   message.setSubject("SEE TOOLS Email Verification Test");
+   } else if(mode.equals("FORGOT_PASSWORD")){
+	   message.setSubject("SEE TOOLS Password Recovery Email");
+   }
+   
  
  
    // Now set the actual message
