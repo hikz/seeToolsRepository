@@ -4,7 +4,7 @@
 	height: 550px;
 	margin: 0 auto;
 	overflow: hidden;
-	/* border: 1px solid red; */
+	 border: 1px solid red; 
 }
 
 #slides {

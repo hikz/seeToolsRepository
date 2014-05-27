@@ -83,7 +83,10 @@ div.wrapper {
 	display: block;
 	width: 100%;
 	margin: 0;
-	text-align: left;
+	text-align: center;
+	
+	/* border:solid;
+	border-color: yellow; */
 }
 
 div.wrapper h1 {
@@ -152,16 +155,22 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 /* ----------------------------------------------Header-------------------------------------*/
 #header {
 	padding: 1px 0 0 0px;
-	z-index: 1000;
+	width: 80%;
+	height: 25px;
 }
 
 #header #logo {
-	display: block;
+	display: table-cell;
 	float: left;
-	width: 200px;
-	overflow: hidden;
-	left: 300px;
 	
+	overflow: hidden;
+	left: 400px;
+	/* border: solid;
+	border-color: maroon;	 */
+}
+
+#header #logo img {
+	vertical-align: middle;
 }
 
 #header #logo h1,#header #logo p {
@@ -210,29 +219,46 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	margin: 0 0 15px 0;
 	padding: 0 0 8px 0;
 	border-bottom: 1px solid #E7E6E6;
+	border-bottom-width: 50%;
 }
 
+.home_tools_heading {
+	font-size: x-large;
+	margin-left: 140px;
+}
+
+.home_tools_hr {
+	width: 80%;
+}
 /* ----------------------------------------------Homepage Block-------------------------------------*/
 .homepage {
 	display: block;
 	width: 100%;
 	margin: 15px 0 0 0;
 	padding: 0;
+	/* border: solid;
+	border-color: black; */
 }
 
 .homepage ul {
-	margin: 20px 0 0 100px;
+	margin: 20px 100px 0 130px;
 	padding: 0;
 	list-style: none;
+	
 }
 
 .homepage li {
 	display: block;
 	float: left;
 	width: 250px;
-	margin: 30px 30px 0 0;
+	margin: 30px 20px 0 20px;
 	padding: 0;
+	/* border: solid;
+	border-color: yellow; */
+	left:50px;
 }
+
+
 
 .homepage li.last {
 	margin-right: 0;
@@ -241,9 +267,10 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 .homepage li h3 {
 	display: block;
 	width: 100%;
-	height: 65px;
+	height: 45px;
 	margin: 0;
-	padding: 15px 0 5px 0;
+	padding: 5px 0 0 0;
+	vertical-align: middle;
 	font-weight: bold;
 	line-height: normal;
 	border-bottom: 1px dotted #999999;
@@ -498,7 +525,7 @@ form.loginheader {
 	border: 1px solid #ddd;
 	margin: 0 auto;
 	width: 800px;
-	height: 400px;
+	height: 500px;
 	font-size: 14px;
 	-moz-box-shadow: 1px 1px 7px #ccc;
 	-webkit-box-shadow: 1px 1px 7px #ccc;

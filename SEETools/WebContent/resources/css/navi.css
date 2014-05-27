@@ -1,15 +1,18 @@
 
 #topnav{
-	display:block;
+	display:table-cell;
 	float:center;
 	margin:10px 0 0 0;
 	position:relative;
-	left:300px;
+	left: 100px;
 	padding:0;
 	list-style:none;
 	font-size:14px;
 	font-weight:bold;
 	font-family:Open Sans, sans-serif;
+	
+	/* border: solid;
+	border-color: maroon; */
 	
 	}
 
@@ -38,10 +41,10 @@ html body
 
 #signup
 	{
-	display:block;
+	display:table-cell;
 	float:center;
 	position:relative;
-	left:500px;
+	left:400px;
 	width:100%
 	padding:0;
 	list-style:none;
@@ -49,6 +52,8 @@ html body
 	font-weight:bold;
 	font-family:Open Sans, sans-serif;
 	
+	/* border: solid;
+	border-color: maroon; */
 	}
 
 #signup li{

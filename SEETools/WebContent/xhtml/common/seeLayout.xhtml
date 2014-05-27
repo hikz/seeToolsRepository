@@ -20,8 +20,8 @@
 		<h:outputScript library="js" name="jquery.jcarousel.setup.js" target="head"/>
 </h:head>
 <h:body>
-	<div id="main_layout" style="width:100%" >
-		<div id="header" >
+	<div id="main_layout" align="center" style="width:100%;" >
+		<div id="header" align="center" style="width:90%;">
 			<ui:insert name="header">
 				<ui:include src="/xhtml/common/header.xhtml" />
 			</ui:insert>
@@ -32,11 +32,11 @@
 			</ui:insert>
 		</div> -->
 
-		<div id="mainContent" align="center" style="width:100%;height:800px;vertical-align: middle;">
+		<div id="mainContent" align="center" style="width:90%;height:700px;top:100px;vertical-align: middle;">
 			<ui:insert name="mainContent"></ui:insert>
 		</div>
 		
-		<div id="footer" align="center" style="width:100%">
+		<div id="footer" align="center" style="width:90%;">
 			<!-- <ui:insert name="footer"> -->
 				<ui:include src="/xhtml/common/footer.xhtml" />
 			<!-- </ui:insert> -->
