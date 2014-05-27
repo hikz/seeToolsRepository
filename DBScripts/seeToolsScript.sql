@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `seetools`.`user` (
   `FirstName` VARCHAR(45) NOT NULL,
   `LastName` VARCHAR(45) NOT NULL,
   `MobileNumber` VARCHAR(15) NULL,
-  `Password` VARCHAR(20) NULL,
+  `Password` VARCHAR(100) NULL,
   `MembershipID` INT NULL,
   `Enabled` CHAR NULL,
   `CreatedByUserID` VARCHAR(45) NOT NULL,
