@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
-import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -14,13 +13,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.seetools.daolayer.mapper.AccountActivationTokenMapper;
-import com.seetools.daolayer.mapper.EmailMapper;
-import com.seetools.dto.AccountActivationTokenBean;
-import com.seetools.dto.EmailBean;
 import com.seetools.dto.UserBean;
-import com.seetools.presentation.common.SEEUtilities;
 
 public class RegisterDAOImpl {
 
@@ -56,6 +51,9 @@ public class RegisterDAOImpl {
 			
 			final Long generatedEmailId = new Long(emailKeyHolder.getKey().longValue());
 			
+			//Password Hashing
+			
+			userDto.setPassword(getHashedPassword(userDto.getPassword()));
 			/*Object[] userParams = new Object[]{generatedEmailId, userDto.getFirstName(), userDto.getLastName(),userDto.getMobileNumber(),
 					userDto.getPassword(),null,userDto.getCreatedByUserId(),userDto.getCreatedDate(),userDto.getModifiedByUserId(),userDto.getModifiedDate()};*/
 			this.jdbcTemplate.update(new PreparedStatementCreator() {
@@ -114,6 +112,13 @@ public class RegisterDAOImpl {
 	}
 	
 
+	private String getHashedPassword(String password){
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(password);
+		return hashedPassword;
+		
+	}
 	public DataSource getDataSource() {
 		return dataSource;
 	}

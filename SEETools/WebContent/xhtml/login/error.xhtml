@@ -15,14 +15,30 @@
 <body>
 <ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="mainContent">
-		<h:form>
-		<table width="900" height="620" border="1">
-			<tr><td valign="middle">
- 			Wrong user name. <h:commandLink action="#{navigator.navigate}" value="Return to Login page">
+	
+ 		
+		<f:view transient="true">
+				<div id="wrapper1">
+					<div id="form_wrapper" class="form_wrapper">
+						<h:form id="seeLoginFormId" prependId="false">
+							<div class="loginheader active">
+								<h3>Wrong Password</h3>
+							</div>	
+								
+								Invalid credentials. Please click below to retry. ALL THE BEST
+							<div class="bottom">
+								
+								<h:commandLink action="#{navigator.navigate}" value="Return to Login page">
 										 <f:param name="fromTool" value="login" /> 
 										</h:commandLink>
-										</td></tr></table>
-										</h:form>
+										
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</f:view>
+			
+			
  		</ui:define>
  </ui:composition>
 </body>

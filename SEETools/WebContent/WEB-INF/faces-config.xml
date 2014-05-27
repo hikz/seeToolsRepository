@@ -85,6 +85,21 @@
     		<redirect></redirect>
     	</navigation-case>
     	<navigation-case>
+    		<from-outcome>aboutUs</from-outcome>
+    		<to-view-id>/xhtml/common/aboutUs.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>faq</from-outcome>
+    		<to-view-id>/xhtml/common/faq.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>accountInfo</from-outcome>
+    		<to-view-id>/xhtml/secured/account/accountInfo.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
     		<from-outcome>login</from-outcome>
     		<to-view-id>/xhtml/login/login.xhtml</to-view-id>
     		<redirect></redirect>

@@ -493,6 +493,21 @@ form.loginheader {
 	top: 50px;
 }
 
+.form_wrapperT {
+	background: #fff;
+	border: 1px solid #ddd;
+	margin: 0 auto;
+	width: 800px;
+	height: 400px;
+	font-size: 14px;
+	-moz-box-shadow: 1px 1px 7px #ccc;
+	-webkit-box-shadow: 1px 1px 7px #ccc;
+	box-shadow: 1px 1px 7px #ccc;
+	position: relative;
+	top: 50px;
+}
+
+
 .form_wrapper h3 {
 	padding: 20px 20px 20px 20px;
 	background-color: #444;
@@ -595,6 +610,13 @@ form.loginheader {
 	border-color: #999999;
 }
 
+.accordion_faq {
+	margin: 50px;
+	width:444px;
+	border-style: solid;
+	border-width: 1px; 
+	border-color: #999999;
+}
 
 .accordion dt:hover
 {
@@ -608,6 +630,26 @@ form.loginheader {
 	left: 0px;
 }
 
+.accordion_faq dt:hover
+{
+	background-color: #999999;
+	width: 400px;
+}
+
+.accordion_faq dt a {
+	display: inline ;
+	color: black;
+	font-weight: bold;
+	left: 0px;
+}
+
+.accordion_bg1 {
+	background-color: #e6e6e6 ;
+}
+
+.accordion_bg2 {
+	background-color: red;
+}
 
 
 dt {

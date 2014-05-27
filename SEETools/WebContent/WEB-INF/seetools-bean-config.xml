@@ -12,7 +12,7 @@
 		<beans:property name="userDetailsService" ref="seeToolsUserDetailsService"></beans:property>
 	</beans:bean>
 
-	<beans:bean id="customAuthenticationSuccessHandler" class="com.seetools.presentation.common.CustomAuthenticationSuccessHandler"></beans:bean>
+	<!-- <beans:bean id="customAuthenticationSuccessHandler" class="com.seetools.presentation.common.CustomAuthenticationSuccessHandler"></beans:bean> -->
 	
 	<beans:bean id="navigator" name="navigator"
 		class="com.seetools.presentation.NavigationControllerBean" scope="request"/>

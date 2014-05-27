@@ -22,11 +22,9 @@
 
 				<div id="topnav">
 					<ul>
-						<li class="active"><h:link value="Home" outcome="seeHome" /></li>
-						<li><h:link value="Services" outcome="seeHome" /></li>
-						<li><h:link value="Company" outcome="seeHome" /></li>
-						<li><h:link value="About Us" outcome="seeHome" /></li>
-						<li><h:link value="FAQ" outcome="seeHome" /></li>
+						<li> <h:link value="Home" outcome="seeHome" /></li>
+						<li><h:link value="About Us" outcome="aboutUs" /></li>
+						<li><h:link value="FAQ" outcome="faq" /></li>
 					</ul>
 				</div>
 				<div id="signup">
@@ -38,7 +36,7 @@
 								<h:outputText value="Logged in as: #{loginBean.username}," />
 							</li>
 							<li>
-								<h:outputLink value="#{request.contextPath}/tools_logout">Account Info</h:outputLink>
+								<h:link value="Account Info" outcome="accountInfo" />
 							</li>
 							<li>
 								<h:outputLink value="#{request.contextPath}/tools_logout">Logout</h:outputLink>

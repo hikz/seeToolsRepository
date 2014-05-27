@@ -11,16 +11,14 @@
  	 <!-- <sec:http pattern="/resources/**" use-expressions="true" security="none"/> -->
  	  <!-- Web security services are configured using http element -->
      <sec:http auto-config="true" use-expressions="true" authentication-manager-ref="authMgr">
-     	<!-- The order of the intercepting url below matters.  -->
-     <!--    <sec:intercept-url pattern="/*" access="permitAll"/>
-        <sec:intercept-url pattern="/**" access="permitAll"/> -->
-  
+     	<sec:intercept-url pattern="/xhtml/tools/**" access="hasRole('ROLE_USER')" />
         <sec:intercept-url pattern="/xhtml/login/login.xhtml" access="isAnonymous()"/>
-        <sec:intercept-url pattern="/xhtml/tools/**" access="hasRole('ROLE_USER')" />
-        <sec:intercept-url pattern="/xhtml/common/**" access="isAnonymous()"/>
+        
+        <sec:intercept-url pattern="/xhtml/secured/account/**" access="hasRole('ROLE_USER')" />
+        <sec:intercept-url pattern="/xhtml/common/**" access="permitAll"/>
         <!-- form-login will override default settings which means the default login page provided
              by spring -->                
-        <sec:form-login login-page="/xhtml/login/login.xhtml" always-use-default-target="true" default-target-url="/xhtml/tools/hipConverterTool.xhtml"
+        <sec:form-login login-page="/xhtml/login/login.xhtml" 
          login-processing-url="/xhtml/login/tools_login" username-parameter="tools_username"
         			password-parameter="tools_password"  authentication-failure-url="/xhtml/login/error.xhtml"/>
 
@@ -45,6 +43,9 @@
             </sec:user-service>
         </sec:authentication-provider> -->
         
-        <sec:authentication-provider user-service-ref="seeToolsUserDetailsService"/>
+        <!-- Custom logging and password hashing -->
+        <sec:authentication-provider user-service-ref="seeToolsUserDetailsService">
+        	<sec:password-encoder hash="bcrypt"/>
+        </sec:authentication-provider>
     </sec:authentication-manager> 
 </beans:beans>

@@ -104,7 +104,7 @@
 										<!-- <a href="#">Continue Reading &raquo;</a> -->
 									</p>
 							</div></li>
-							<li><img src="resources/images/services/11_alpha_particles_effects.jpg" alt=""/>
+							<li><img src="resources/images/services/11_alha_particles_effects.jpg" alt=""/>
 								<div class="floater">
 									<h2>Alpha particle Effects on semiconductor devices</h2>
 									<p>Soft error testing and rate prediction</p>
@@ -120,49 +120,62 @@
 						src="resources/images/next.png" alt="" /></a>
 				</div>
 			</div>
-
+			
+			<h2>Tools</h2> 
+			<hr></hr>
 			<div class="wrapper col3">
 				<div id="container">
 					<div class="homepage">
+						<h:form>
 						<ul>
 							<li>
-								<h3>Proton Ion Density Tools</h3>
-								<p>Brief description on Proton Ion Density tools to be
-									placed here</p>
-								<p class="readmore">
-									<a href="#">Continue Reading &raquo;</a>
+								<h3>Proton Ion Density</h3>
+								<p>
+								<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Heavy Ion to Proton Converter</h:link>
+								</p>
+								<p>
+								<h:link outcome="/xhtml/tools/neutronConverter.xhtml">Bendel 1-Parameter</h:link>
+								</p>
+								<p>
+								<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Bendel 1-Parameter</h:link>
 								</p>
 							</li>
 							<li>
-								<h3>Neutron Tools</h3>
-								<p>Brief description on Neutron tools will be placed here</p>
-								<p class="readmore">
-									<a href="#">Continue Reading &raquo;</a>
+								<h3>Neutron</h3>
+								<p>
+								<h:commandLink action="#{navigator.navigate}"
+									value="neutron Upset Rate (BGR)">
+									<f:param name="fromTool" value="/xhtml/tools/hipConverterTool.xhtml" />
+								</h:commandLink>
 								</p>
 							</li>
 							<li>
-								<h3>Heavy Ion Tools</h3>
-								<p>Brief Description on Heavy Ion Tools will be placed here</p>
-								<p class="readmore">
-									<a href="#">Continue Reading &raquo;</a>
+								<h3>Heavy Ion</h3>
+								<p>
+								<h:commandLink action="#{navigator.navigate}"
+									value="4-Parameter Weibull Parameters for Protons">
+									<f:param name="fromTool" value="/xhtml/tools/hipConverterTool.xhtml" />
+								</h:commandLink>
+								</p>
+								<p>
+								<h:commandLink action="#{navigator.navigate}"
+									value="Dual Node and Double Bit Upset (or Word Upset)">
+									<f:param name="fromTool" value="/xhtml/tools/hipConverterTool.xhtml" />
+								</h:commandLink>
 								</p>
 							</li>
-							<li>
-								<h3>Radiation Database</h3>
-								<p>Brief description on radiation database tools will be
-									placed here</p>
-								<p class="readmore">
-									<a href="#">Continue Reading &raquo;</a>
-								</p>
-							</li>
+							
 							<li class="last">
 								<h3>ION Tracks</h3>
-								<p>Brief description on ION Tracks will be placed here</p>
-								<p class="readmore">
-									<a href="#">Continue Reading &raquo;</a>
+								<p>
+								<h:commandLink action="#{navigator.navigate}"
+									value="Ion Density Profile">
+									<f:param name="fromTool" value="/xhtml/tools/hipConverterTool.xhtml" />
+								</h:commandLink>
 								</p>
 							</li>
 						</ul>
+						</h:form>
 						<br class="clear" />
 					</div>
 				</div>
