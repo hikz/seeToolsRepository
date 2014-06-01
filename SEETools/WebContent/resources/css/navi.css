@@ -47,13 +47,13 @@ html body
 	margin-top: 3.5%;
 	position:relative;
 	height:60%;
-	width:30%;
-	padding: 0px 0px 0px 40px; 
+	width:20%;
+	padding: 0px 0px 0px 0px; 
 	float:right;
 	font-size:12px;
 	font-weight:bold;
 	font-family:Open Sans, sans-serif;
-	
+	float: right;
 	/* border: solid;
 	border-color: white;  */
 	}
@@ -67,6 +67,7 @@ html body
 	padding:10px 10px;
 	color:#003333;
 	background-color:#17C09A;	
+	
 	}	
 
 

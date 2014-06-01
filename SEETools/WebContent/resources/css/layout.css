@@ -134,7 +134,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 }
 
 .col3 {
-	color: #777777;
+	color:#003333;
 	background-color: #ffffff;
 }
 
@@ -238,7 +238,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 #container h1,#container h2,#container h3,#container h4,#container h5,#container h6
 	{
 	margin: 0 0 15px 0;
-	padding: 0 0 8px 0;
+	padding: 10 0 0px 0;
 	border-bottom: 1px solid #E7E6E6;
 	border-bottom-width: 50%;
 }
@@ -290,18 +290,20 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	width: 100%;
 	height: 45px;
 	margin: 0;
-	padding: 5px 0 0 0;
+	padding: 0 0 0 0;
 	vertical-align: middle;
-	font-weight: bold;
+	font-weight: bold; 
 	line-height: normal;
 	border-bottom: 1px dotted #999999;
 }
 
 .homepage li h3 img {
+	height:80%;
+	width:15%;
 	float: left;
-	margin: -15px 8px 0 0;
-	padding: 5px;
-	border: 1px solid #999999;
+	margin: 0px 0px 0 0;
+	/* padding: 5px 15px 5px 15px; */
+	/* border: 1px solid #999999; */
 }
 
 .homepage p {
