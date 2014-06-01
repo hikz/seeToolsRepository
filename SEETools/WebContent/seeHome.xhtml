@@ -136,17 +136,17 @@
 								<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Heavy Ion to Proton Converter</h:link>
 								</p>
 								<p>
-								<h:link outcome="/xhtml/tools/neutronConverter.xhtml">Bendel 1-Parameter</h:link>
+								<h:link outcome="/xhtml/tools/neutronConverter.xhtml">Weibull for Protons(4-Parameter)</h:link>
 								</p>
-								<p>
+								<!-- <p>
 								<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Bendel 1-Parameter</h:link>
-								</p>
+								</p> -->
 							</li>
 							<li>
 								<h3><!-- <h:graphicImage library="images/tools_categories" name="Neutron.png"/> -->Neutron</h3>
 								<p>
 								<h:commandLink action="#{navigator.navigate}"
-									value="Neutron Upset Rate (BGR)">
+									value="Neutron soft error rate prediction">
 									<f:param name="fromTool" value="/xhtml/tools/hipConverterTool.xhtml" />
 								</h:commandLink>
 								</p>
@@ -155,7 +155,7 @@
 								<h3>Heavy Ion</h3>
 								<p>
 								<h:commandLink action="#{navigator.navigate}"
-									value="4-Parameter Weibull Parameters for Protons">
+									value="Hicup Data Fitting">
 									<f:param name="fromTool" value="/xhtml/tools/hipConverterTool.xhtml" />
 								</h:commandLink>
 								</p>
@@ -176,6 +176,17 @@
 								</h:commandLink>
 								</p>
 							</li>
+							
+							<!-- <li class="last">
+								<h3>Radiation Effects Database</h3>
+								<p>
+								<h:commandLink action="#{navigator.navigate}"
+									value="SEE, TID, DD, PD Data">
+									<f:param name="fromTool" value="/xhtml/tools/hipConverterTool.xhtml" />
+								</h:commandLink>
+								</p>
+							</li> -->
+							
 						</ul>
 						</h:form>
 						<br class="clear" />
