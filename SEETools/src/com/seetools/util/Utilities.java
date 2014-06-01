@@ -32,6 +32,21 @@ public class Utilities {
 		return false;
 	}
 
+	public static boolean validatePassword(String password) {
+		
+		//Pattern to check digit, one lower case, one upper case, special symbols @#$% and minimum 6 characters and maximum 20 characters 
+		final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+		 
+		Pattern pattern;
+		Matcher matcher;
+		
+		pattern = Pattern.compile(PASSWORD_PATTERN);
+		matcher = pattern.matcher(password);
+		if(!matcher.matches()){
+			return true;
+		}
+		return false;
+	}
 	
 	public static boolean validateTokenWithEmail(String emailAddress, String token) {
 		

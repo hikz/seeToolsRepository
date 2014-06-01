@@ -16,7 +16,7 @@
 	<ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="mainContent">
 			<f:view>
-				<div id="wrapper1">
+				<div class="wrapper1 col2">
 					<div id="form_wrapper" class="form_wrapper">
 						<h:form id="seeRegisterFormId">
 							<div class="loginheader active">
@@ -35,29 +35,32 @@
 								</h:inputText>
 								<h:message for="seeLastNameInId" styleClass="error"></h:message>
 								<br></br> <label>Mobile Number</label>
-								<h:inputText id="seeMobileNumberInId" required="true"
+								<h:inputText id="seeMobileNumberInId" 
 									value="#{userBean.mobileNumber}"
-									requiredMessage="Last Name required">
-									<f:validateLength maximum="10"></f:validateLength>
+									  validatorMessage="The length should be 10 characters"
+									converterMessage="Phone number should only digits">
+									<f:convertNumber integerOnly="true" type="number"></f:convertNumber>
+									<f:validateLength maximum="10" minimum="10"></f:validateLength>
 								</h:inputText>
 								<h:message for="seeMobileNumberInId" styleClass="error"></h:message>
 								<br></br> <label>Email Address</label>
 								<h:inputText id="seeEmailAddressInId" 
 									value="#{userBean.email.emailAddress}" required="true"
-									requiredMessage="Email Address required" styleClass="error">
+									requiredMessage="Email Address required">
 									<f:validator validatorId="RegistrationEmailValidator" />
 								</h:inputText>
 								<h:message for="seeEmailAddressInId" styleClass="error"></h:message>
 								<br></br> <label>Password</label>
 								<h:inputSecret id="seePasswordInId" required="true"
 									value="#{userBean.password}"
-									requiredMessage="Please enter password"></h:inputSecret>
+									requiredMessage="Please enter password">
+									<f:validator validatorId="PasswordValidator" />
+									</h:inputSecret>
 								<h:message for="seePasswordInId" styleClass="error"></h:message>
 							<br></br>
 							<div class="bottom">
 								<h:commandButton value="Clear" type="reset"></h:commandButton>
 								<h:commandButton value="Register" action="confirmRegistration"></h:commandButton>
-								
 							</div>
 						</h:form>
 					</div>

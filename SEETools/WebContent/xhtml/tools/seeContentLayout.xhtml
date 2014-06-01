@@ -36,11 +36,11 @@
 				    }); */
 			</script>
 
-
-			<div id="page" style="height:700px;border:solid;border-color: yellow;">
-						<div id="toolsMenuCol" style="border:solid;border-color: blue;">
+<div class="wrapper1 col2">
+			<div id="page" style="height:700px;width:1200px;display: inline" align="left">
+						<div id="toolsMenuCol" >
 							<h:form>
-								<div>
+								
 									<dl class="accordion">
 										<dt id="defaultAccordionHeader">
 											<a href="#">Proton Ionsss</a>
@@ -123,14 +123,15 @@
 									</dl>
 
 
-								</div>
-								<div class="verticalLine"></div>
+								
 							</h:form>
 					</div>
 					
-					<div id="toolContentCol" style="border:solid;border-color: red;"><ui:insert name="toolcontent">
+					<div id="toolContentCol"><ui:insert name="toolcontent">
 								<ui:include src="/xhtml/tools/hipConverterTool.xhtml"/>
 						</ui:insert></div>
+					
+			</div>
 			</div>
 		</ui:define>
 

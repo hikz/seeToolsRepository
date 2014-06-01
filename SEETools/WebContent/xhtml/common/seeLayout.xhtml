@@ -21,7 +21,7 @@
 </h:head>
 <h:body>
 	<div id="main_layout" align="center" style="width:100%;" >
-		<div id="header" align="center" style="width:90%;">
+		<div id="main_header" align="center" style="width:90%;border-right: 1px solid black;border-left: 1px solid black; ">
 			<ui:insert name="header">
 				<ui:include src="/xhtml/common/header.xhtml" />
 			</ui:insert>
@@ -32,11 +32,11 @@
 			</ui:insert>
 		</div> -->
 
-		<div id="mainContent" align="center" style="width:90%;height:700px;top:100px;vertical-align: middle;border:solid;border-color: yellow;">
+		<div id="mainContent" align="center" style="width:90%;height:675px;vertical-align: middle;border-right: 1px solid black;border-left: 1px solid black; ">
 			<ui:insert name="mainContent"></ui:insert>
 		</div>
 		
-		<div id="footer" align="center" style="width:90%;">
+		<div id="footer" align="center" style="border-right: 1px solid black;border-left: 1px solid black; ">
 			<!-- <ui:insert name="footer"> -->
 				<ui:include src="/xhtml/common/footer.xhtml" />
 			<!-- </ui:insert> -->

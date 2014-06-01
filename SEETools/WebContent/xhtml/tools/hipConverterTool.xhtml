@@ -34,13 +34,7 @@
 								action="#{fileUploadBean.upload()}" />
 						</h:form></td>
 				</tr>
-				<tr>
-					<h:form if="downloadHipSampleFileId">
-						<h:commandLink id="getDownload" value="Download sample input file"
-							action="#{fileDownloadBean.downLoad}">
-						</h:commandLink>
-					</h:form>
-				</tr>
+				
 				<tr>
 					<td height="20"><h:message for="hipConverterFileId"
 							style="color: red" /></td>

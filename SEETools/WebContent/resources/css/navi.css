@@ -1,18 +1,20 @@
 
 #topnav{
-	display:table-cell;
-	float:center;
-	margin:0 0 0 0;
+	display:inline;
+	width:30%;
+	
 	position:relative;
-	left: 150px;
-	padding:0;
-	list-style:none;
+	
+	padding: 0px 0px 0px 70px; 
+	height:60%;
 	font-size:14px;
 	font-weight:bold;
 	font-family:Open Sans, sans-serif;
-	
-	/* border: solid;
-	border-color: maroon; */
+	float: left;
+	margin-top: 3%;;
+    left: 5%;
+  /*  	border: solid;
+	border-color: white;  */
 	
 	}
 
@@ -34,26 +36,26 @@ html body
 	display:block;
 	margin:0;
 	padding:15px 20px;
-	color:#ffffff;
-	background-color:#4e4e4e;
+	color:#003333;
+	background-color:#17C09A;
 	
 	}
 
 #signup
 	{
-	display:table-cell;
-	float:center;
+	display:inline;
+	margin-top: 3.5%;
 	position:relative;
-	left:400px;
-	width:100%
-	padding:0;
-	list-style:none;
+	height:60%;
+	width:30%;
+	padding: 0px 0px 0px 40px; 
+	float:right;
 	font-size:12px;
 	font-weight:bold;
 	font-family:Open Sans, sans-serif;
 	
 	/* border: solid;
-	border-color: maroon; */
+	border-color: white;  */
 	}
 
 #signup li{
@@ -63,8 +65,8 @@ html body
 	display:block;
 	margin:5px;
 	padding:10px 10px;
-	color:#ffffff;
-	background-color:#0F67A1;	
+	color:#003333;
+	background-color:#17C09A;	
 	}	
 
 

@@ -3,7 +3,7 @@ body {
 	padding: 0;
 	font-size: 13px;
 	font-family: Verdana, sans-serif;
-	color: #333333;
+	color: #FFFFFF;
 	background-color: #FFFFFF;
 }
 
@@ -81,10 +81,10 @@ br.clear {
 /* ----------------------------------------------Wrapper-------------------------------------*/
 div.wrapper {
 	display: block;
-	width: 100%;
-	margin: 0;
+	width: 100%;	
+	margin: 0 0 0 0;
 	text-align: center;
-	
+	padding: 0;
 /* 	border:solid;
 	border-color: yellow;  */
 }
@@ -111,17 +111,31 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 
 .col1 {
 	color: #FFFFFF;
-	background-color: #4e4e4e;
+	/* background-color: #2475c1; */
+	/* background-color: #17C09A; */
+	/* background-color: #151B54; */
+	/* background-color: #990012; */
+	/* background-color: #0C090A; */
+	/* background-color: #25383C; */
+		background-color: #003333; 
+	
 }
 
-.col2,.col2 a {
-	color: #FFFFFF;
+.col2 {
+	color: black;
+	background-color: #ffffff; 
+
+}
+
+.col2 a {
+	color: black;
 	background-color: #FFFFFF;
+	/* background-color: #74E0C7; */
 }
 
 .col3 {
 	color: #777777;
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 }
 
 .col3 a {
@@ -156,21 +170,27 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 #header {
 	padding: 0px 0 0 0px;
 	width: 80%;
-	height: 30px;
+	height: 65px;
+
+	/* border-bottom: solid;
+	border-color:black; */
+	
 }
 
 #header #logo {
-	display: table-cell;
+	display: inline;
 	float: left;
-	
-	overflow: hidden;
+	width:26%;
+	height:100%;
 	left: 380px;
 	/* border: solid;
-	border-color: maroon;	 */
+	border-color: yellow; */
 }
 
 #header #logo img {
 	vertical-align: middle;
+	height: 80px;
+	
 }
 
 #header #logo h1,#header #logo p {
@@ -212,6 +232,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 /* ----------------------------------------------Content-------------------------------------*/
 #container {
 	padding: 20px 0;
+	background-color: white;
 }
 
 #container h1,#container h2,#container h3,#container h4,#container h5,#container h6
@@ -428,6 +449,9 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 /* ----------------------------------------------Footer-------------------------------------*/
 #footer {
 	padding: 20px 0;
+	width:90%;
+	background-color: white;
+	color: black;
 }
 
 #footer ul {
@@ -607,9 +631,9 @@ form.loginheader {
 }
 
 .wrapper1 {
-	width: 960px;
-	margin: 20px auto;
-	min-height: 750px;
+	width: 100%;
+	margin: 0 auto;
+	height: 100%;
 }
 
 .form_wrapper .bottom {
@@ -630,11 +654,11 @@ form.loginheader {
 }
 
 .accordion {
-	margin: 50px;
+	
 	width:244px;
 	border-style: solid;
 	border-width: 1px; 
-	border-color: #999999;
+	border-color:#003333;
 }
 
 .accordion_faq {
@@ -647,12 +671,20 @@ form.loginheader {
 
 .accordion dt:hover
 {
-	background-color: #999999;
+	color:white;
+	background-color: #003333;
+}
+
+.accordion dt a:hover
+{
+	color:white;
+	background-color: #003333;
 }
 
 .accordion dt a {
+	background-color: #17C09A ;
 	display: inline ;
-	color: black;
+	color:  #003333;
 	font-weight: bold;
 	left: 0px;
 }
@@ -680,13 +712,14 @@ form.loginheader {
 
 
 dt {
-	background-color: #e6e6e6 ;
+	background-color: #17C09A ;
 	padding: 20px;
 	width: 200px;
-	color: black;
+	color: #003333;
 	border-style: solid;
 	border-width: 1px; 
-	border-color: #999999;
+	border-color:#003333;
+	
 }
 
 dt:hover
@@ -700,6 +733,7 @@ dd {
 }
 
 dt a {
+	background-color: #17C09A ;
 	display: block;
 	color: black;
 	font-weight: bold;
@@ -711,7 +745,7 @@ background-color: #999999;
 	}
 
 #seeToolsAccordionItem{
-	background-color: #FFFFFF;
+	
 	margin:0px;
 	width: 200px;
 }
@@ -728,24 +762,32 @@ background-color: #999999;
 
 #toolsMenuCol {
 	position: relative;
-	top: 80px;
-	left: 150px;
-	width:33%;
-	float:left;
+	top: 30px;
+	left: 100px;
+	width:25%;
+	float: left;
+	/* border:solid; 
+ 	border-width: 1px;  */
 }
 
 #toolContentCol
 {
-	top:80px;
-	width:67%;
+	 top:30px; 
+	width:60%;
 	position:relative;
-	
+	/* left:300px; */
+	/* padding-left:100px; */
+	/* bottom: 350px; */
+ 	height: 90%;
+ 	border-left: 1px solid #003333; 
 }
+
 
 #toolContentHeader
 {
 	font-weight:bold;
 	font-size:20px;
+	text-align: center;
 }
 
 #loginUserHeader
