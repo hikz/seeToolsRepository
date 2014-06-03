@@ -158,6 +158,21 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	background-color: #FFFFFF;
 }
 
+.col10 {
+	color: white;
+	background-color: white;
+}
+
+.col10 a{
+	color: white;
+	background-color: blue;
+}
+
+.toolsDescription {
+	color: #003333;
+	background-color: #17C09A;
+}
+
 /* ----------------------------------------------Generalise-------------------------------------*/
 #header,#topbar,#homepage,#breadcrumb,#container,#footer,#copyright {
 	position: relative;
@@ -265,6 +280,9 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	margin: 20px 100px 0 130px;
 	padding: 0;
 	list-style: none;
+	-moz-box-shadow: 1px 1px 7px #ccc;
+	-webkit-box-shadow: 1px 1px 7px #ccc;
+	box-shadow: 1px 1px 7px #ccc; 
 	
 }
 
@@ -272,10 +290,17 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	display: block;
 	float: left;
 	width: 250px;
+	height:200px;
 	margin: 30px 20px 0 20px;
-	padding: 0;
+	padding: 10px 0 0 0;
+	-moz-box-shadow: 1px 1px 7px #003333;
+	-webkit-box-shadow: 1px 1px 7px #003333;
+	box-shadow: 1px 1px 7px #003333;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
 	/* border: solid;
-	border-color: yellow; */
+	border-color: yellow;  */
 	left:50px;
 }
 
@@ -295,6 +320,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	font-weight: bold; 
 	line-height: normal;
 	border-bottom: 1px dotted #999999;
+	border-bottom-width: 80%;
 }
 
 .homepage li h3 img {
@@ -774,22 +800,35 @@ background-color: #999999;
 
 #toolContentCol
 {
-	 top:30px; 
-	width:60%;
+	top:30px; 
+	width:70%;
 	position:relative;
-	/* left:300px; */
+	left:400px;
+
 	/* padding-left:100px; */
 	/* bottom: 350px; */
  	height: 90%;
  	border-left: 1px solid #003333; 
 }
 
+#toolContentTable
+{
+width: 100%;
+height: 80%;	
+border: 1px solid black;
+top:10px;
+}
 
+#toolDetails
+{
+	height:80%;
+}
 #toolContentHeader
 {
 	font-weight:bold;
 	font-size:20px;
 	text-align: center;
+	padding: 0px 250px 0 250px;
 }
 
 #loginUserHeader

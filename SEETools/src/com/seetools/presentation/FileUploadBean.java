@@ -28,7 +28,15 @@ public class FileUploadBean implements Serializable {
 	private Part inputFile;	
 	private HipconverterFinalOutput hipconverterFinalOutput;
 	private boolean display = false;
-	
+	private boolean showForm = false;
+
+	public boolean isShowForm() {
+		return showForm;
+	}
+
+	public void setShowForm(boolean showForm) {
+		this.showForm = showForm;
+	}
 
 	public HipconverterFinalOutput getHipconverterFinalOutput() {
 		return hipconverterFinalOutput;
@@ -56,6 +64,27 @@ public class FileUploadBean implements Serializable {
 	}
 
 	
+	/*public String upload() {
+
+		String status = new String();
+		try {
+			SeeToolsServiceImpl seeToolsServiceImpl = new SeeToolsServiceImpl();
+			this.setHipconverterFinalOutput(seeToolsServiceImpl
+					.processFileUpload(inputFile));
+			
+			if (this.getHipconverterFinalOutput().getHipconverterOutputList()
+					.size() > 0) {
+				SessionManager.addSessionAttribute("hipconverterFinalOutput", this.getHipconverterFinalOutput());
+				System.out.println("display is setting true");
+				this.setDisplay(true);
+			}
+			return "hipConverterTool";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}*/
+
 	public String upload() {
 
 		String status = new String();
@@ -76,7 +105,11 @@ public class FileUploadBean implements Serializable {
 		}
 		return status;
 	}
-
+	
+	public String showForm(){
+		return null;
+	}
+	
 	public void drawChart(OutputStream out, Object data) throws IOException {
 
 		HipconverterFinalOutput hipconverterFinalOutput = (HipconverterFinalOutput)SessionManager.getSessionAttribute("hipconverterFinalOutput");

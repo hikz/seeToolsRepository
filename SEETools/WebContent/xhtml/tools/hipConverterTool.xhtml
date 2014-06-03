@@ -18,62 +18,107 @@
 		template="/xhtml/tools/seeContentLayout.xhtml">
 
 		<ui:define name="toolcontent">
+			<div id="toolHeading">
+				<p id="toolContentHeader">HIP Converter</p>
+			</div>
+			<div id="toolDetails">
 
-			<p id="toolContentHeader">HIP Converter</p>
-			<table>
-				<tr>
-					<td valign="top" align="center" height="50"><h:form
-							enctype="multipart/form-data" id="hipConverterForm">
-							<h:inputFile id="hipConverterFileId"
-								value="#{fileUploadBean.inputFile}" required="true"
-								requiredMessage="File not selected !!">
-								<f:validator validatorId="FileUploadValidator" />
-							</h:inputFile>
-							<br />
-							<h:commandButton value="Upload"
-								action="#{fileUploadBean.upload()}" />
-						</h:form></td>
-				</tr>
-				
-				<tr>
-					<td height="20"><h:message for="hipConverterFileId"
-							style="color: red" /></td>
-				</tr>
-				<tr>
-					<td align="center"><div>
-							<br></br>
-							<h:panelGrid id="hipPanel" columns="2" border="1"
-								rendered="#{fileUploadBean.display}">
-								<h:dataTable id="hipOutput" var="hipOutput"
-									value="#{fileUploadBean.hipconverterFinalOutput.hipconverterOutputList}"
-									redered="#{fileUploadBean.display}" border="1">
+				<div id="toolInfoPopUp">
+					<h:form>
+						<h:outputLink>What is Hip Converter?
+						<rich:componentControl target="popup" operation="show"
+								event="click" />
+						</h:outputLink>
+					</h:form>
+				</div>
+				<div id="fileUploadInput">
+					<h:form enctype="multipart/form-data" id="hipConverterForm">
+						<h:inputFile id="hipConverterFileId"
+							value="#{fileUploadBean.inputFile}" required="true"
+							requiredMessage="File not selected !!">
+							<f:validator validatorId="FileUploadValidator" />
+						</h:inputFile>
+						<h:message for="hipConverterFileId" styleClass="error;" /><br></br>
+						<h:commandButton value="Upload"
+							action="#{fileUploadBean.upload()}" />
+					</h:form>
+				</div>
+				<div id="inputDataForm">
+					<br></br>
+					<h:panelGrid id="hipPanelForm" columns="2" border="1"
+						rendered="#{fileUploadBean.showForm}">
+						<h:dataTable id="hipOutputForm" var="hipOutput"
+							value="#{fileUploadBean.hipconverterFinalOutput.hipconverterOutputList}"
+							redered="#{fileUploadBean.display}" border="1">
 
-									<h:column>
-										<f:facet name="header">Energy</f:facet>
-										<h:outputText value="#{hipOutput.energy}" />
-									</h:column>
+							<h:column>
+								<f:facet name="header">Energy</f:facet>
+								<h:outputText value="#{hipOutput.energy}" />
+							</h:column>
 
-									<h:column>
-										<f:facet name="header">Proton Cross Section</f:facet>
-										<h:outputText value="#{hipOutput.protonCrossSection}" />
-									</h:column>
-								</h:dataTable>
+							<h:column>
+								<f:facet name="header">Proton Cross Section</f:facet>
+								<h:outputText value="#{hipOutput.protonCrossSection}" />
+							</h:column>
+						</h:dataTable>
+					</h:panelGrid>
+				</div>
 
-								<rich:panel>
-									<a4j:mediaOutput type="image/jpeg" classid="toolsChart"
-										style="width:450px;height:450px;" element="img"
-										cacheable="false" session="true"
-										createContent="#{fileUploadBean.drawChart}"
-										mimeType="image/jpeg">
+				<div id="data">
 
-									</a4j:mediaOutput>
-								</rich:panel>
-							</h:panelGrid>
-						</div></td>
-				</tr>
-				
+					<h:panelGrid id="hipPanel" columns="2" border="1"
+						rendered="#{fileUploadBean.display}">
+						<h:dataTable id="hipOutput" var="hipOutput"
+							value="#{fileUploadBean.hipconverterFinalOutput.hipconverterOutputList}"
+							redered="#{fileUploadBean.display}" border="1">
+
+							<h:column>
+								<f:facet name="header">Energy</f:facet>
+								<h:outputText value="#{hipOutput.energy}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">Proton Cross Section</f:facet>
+								<h:outputText value="#{hipOutput.protonCrossSection}" />
+							</h:column>
+						</h:dataTable>
+
+						<rich:panel>
+							<a4j:mediaOutput type="image/jpeg" classid="toolsChart"
+								style="width:450px;height:450px;" element="img"
+								cacheable="false" session="true"
+								createContent="#{fileUploadBean.drawChart}"
+								mimeType="image/jpeg">
+
+							</a4j:mediaOutput>
+						</rich:panel>
+					</h:panelGrid>
+				</div>
+
+
 				<!-- <tr><td width="225" align="center"><a href="#">Download Output File</a></td></tr> -->
-			</table>
+
+			</div>
+			<rich:popupPanel id="popup" modal="true" autosized="true"
+				resizeable="false" headerClass="col10" controlsClass="col3"
+				styleClass="toolsDescription" width="400">
+				<f:facet name="header">
+					<b><h:outputText value="Hip Converter Description" /></b>
+				</f:facet>
+				<f:facet name="controls">
+					<h:outputLink value="#"
+						onclick="#{rich:component('popup')}.hide(); return false;">Close X</h:outputLink>
+				</f:facet>
+				<p style="">This tool enables one to plot the electron density
+					profile for any ion element passing through a target material.
+					Provide any element from periodic table and its energy and submit,
+					you get the plot . At the present time, compound materials are not
+					included. The calculations are done based on Katz Model</p>
+				<p style="">Refs.: R . Katz, "Track Structure Theory in
+					Radiobiology and in Radiation Detection, " Nucl. Track Detection 2
+					, 1~2 8 (1978) . R. Katz and E. J. Kobetich , It particle Tracks i
+					n Emulsion," Phys. Rev. 186.344-351 (1969) .</p>
+			</rich:popupPanel>
 		</ui:define>
 	</ui:composition>
 </h:body>
