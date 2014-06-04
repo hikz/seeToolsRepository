@@ -124,14 +124,14 @@
 			
 			<div class="wrapper col3">
 				<div id="container">
-					<div class="homepage">
+					<div class="homepage col3">
 						<h:form>
 						<div class="home_tools_heading" align="left">Tools</div> 
-						<hr class="home_tools_hr"></hr>
+						<hr class="home_tools_hr" ></hr>
 						<ul>
 							<li>
 								<!-- <p style="width:20%"><h:graphicImage library="images/tools_categories" name="Proton.jpg" width="25px" height="25px" style="float:left;"/> -->
-								<h3><!-- <h:graphicImage library="images/tools_categories" name="Proton.jpg"/> -->Proton Ion Density</h3>
+								<h3><!-- <h:graphicImage library="images/tools_categories" name="Proton.jpg"/> -->Proton</h3>
 								<p>
 								<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Heavy Ion to Proton Converter</h:link>
 								</p>
@@ -195,27 +195,23 @@
 			</div>
 			<div class="wrapper col3">
 				<div id="container">
-					<div class="homepage">
+					<div id="otherServices" class="homepage col3">
 						<h:form>
-						<div class="home_tools_heading" align="left">Other Services</div> 
-						<hr class="home_tools_hr"></hr>
-						<ul>
-							<li>
-								<!-- <p style="width:20%"><h:graphicImage library="images/tools_categories" name="Proton.jpg" width="25px" height="25px" style="float:left;"/> -->
-								<h3><!-- <h:graphicImage library="images/tools_categories" name="Proton.jpg"/> -->Radiation Database</h3>
-								<p>
-								<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">SEE,TID,DD and PD Data</h:link>
-								</p>
-								
-								<!-- <p>
-								<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Bendel 1-Parameter</h:link>
-								</p> -->
-							</li>
+							<div class="home_tools_heading" align="left">Other Services</div>
+							<hr class="home_tools_hr"></hr>
+							<ul>
+								<li>
+									<h3>Radiation Database</h3>
+									<p>
+										<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">SEE,TID,DD and PD Data</h:link>
+									</p>
+
+								</li>
 							</ul>
-							</h:form>
-							</div>
-							</div>
-							</div>
+						</h:form>
+					</div>
+				</div>
+			</div>
 		</ui:define>
 	</ui:composition>
 </h:body>

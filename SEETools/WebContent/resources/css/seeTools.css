@@ -1,14 +1,147 @@
-@CHARSET "ISO-8859-1";
-
-.optionList {
-	height: 22px;
+/*-------------Main Container of Tools Page-----------------*/
+.toolsContainer {
+	
+	height: 90%; 
+	width: 90%;
+	-moz-box-shadow: 1px 1px 7px #003333;
+	-webkit-box-shadow: 1px 1px 7px #003333;
+	box-shadow: 1px 1px 7px #003333;
+	
 }
 
-.vertical-menu-cell {
-	padding: 0px 0px 0px 0px;
-	width: 200px;
+/*-------------Main Division of Tools Page inside above container-----------------*/
+#toolsMenuCol {
+	position: relative;
+	top: 30px;
+	left: 50px;
+	width:25%;
+	float: left;
+	padding: 5px;
+	/* border:solid; 
+ 	border-width: 1px;  */
 }
 
-.toolsDropDownMenu {
-	position: absolute
+#toolContentCol
+{
+	top:30px; 
+	width:70%;
+	position:relative;
+	left:15%;
+
+	/* padding-left:100px; */
+	/* bottom: 350px; */
+ 	height: 90%;
+ 	border-left: 1px solid #003333; 
 }
+
+
+/*-------------Left Menu Accordion Details - Heading, Header, Content -----------------*/
+
+.accordion_toolsMenuHeading {
+	/* color: #003333; */
+	font-weight:bold;
+	font-size: large;
+	margin-bottom: 20px;
+	/* margin-left: 100px;	 */
+	width: 85%;
+}
+
+.accordion_toolsMenuHeader {
+	font-weight:bold;
+	/* color: #003333;
+	background-color: #17C09A; */
+	text-align: center;
+	width:85%;
+}
+
+.accordion_toolsMenuContent {
+	/* font-weight:bold; */
+	
+	text-align: center;
+	width:85%;
+}
+
+.accordion_toolsMenuContent a{
+	/* font-weight:bold; */
+	
+	
+}
+
+/*-------------Right Content - Tool Details - Header, Details (Tool Info, Sample File Download, File Upload Text Box, OutputData & Graph) -----------------*/
+#toolContentHeader
+{
+	font-weight:bold;
+	font-size:20px;
+	text-align: center;
+	padding: 5px 250px 5px 250px;
+}
+
+#toolDetails
+{
+	height:80%;
+}
+
+#toolInfo
+{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+}
+
+#popUpInfo
+{
+	position:absolute;
+     width:200px;
+     height:30px;
+     z-index:15;
+     top:10%;
+     left:30%;
+     margin:-15px 0 0 -150px;  
+     float:left
+}
+
+
+
+#downloadSampleFile
+{
+	position:absolute;
+     width:200px;
+     height:30px;
+     z-index:15;
+     top:10%;
+     right:30%;
+     margin:-15px -150px 0 0;
+     
+}
+
+
+
+
+#fileUploadInput
+{
+	 position:absolute;
+     width:300px;
+     height:50px;
+     z-index:15;
+     top:15%;
+     left:50%;
+     padding-top:10px;
+     margin:-25px 0 0 -150px;
+     -moz-box-shadow: 1px 1px 7px #003333;
+	-webkit-box-shadow: 1px 1px 7px #003333;
+	box-shadow: 1px 1px 7px #003333;
+	
+}
+
+#tooOutputData{
+	
+	 position:absolute;
+     width:800px;
+     height:600px;
+     z-index:15;
+     top:60%;
+     left:23%;
+     margin:-300px 0 0 -150px;
+     /* border:1px solid black; */
+}
+

@@ -23,15 +23,20 @@
 			</div>
 			<div id="toolDetails">
 
-				<div id="toolInfoPopUp">
-					<h:form>
+				<div id="toolInfo" class="col3">
+				<h:form>
+					<div id="popUpInfo" class="col3">
 						<h:outputLink>What is Hip Converter?
 						<rich:componentControl target="popup" operation="show"
 								event="click" />
 						</h:outputLink>
-					</h:form>
+					</div>
+					<div id="downloadSampleFile" class="col3">
+					<h:commandLink action="#{fileDownloadBean.download}" value="Download Sample File"/>
+					</div>
+				</h:form>
 				</div>
-				<div id="fileUploadInput">
+				<div id="fileUploadInput" class="col3">
 					<h:form enctype="multipart/form-data" id="hipConverterForm">
 						<h:inputFile id="hipConverterFileId"
 							value="#{fileUploadBean.inputFile}" required="true"
@@ -43,30 +48,32 @@
 							action="#{fileUploadBean.upload()}" />
 					</h:form>
 				</div>
-				<div id="inputDataForm">
+				<div id="inputDataForm" class="col3">
 					<br></br>
+					<h:form>
 					<h:panelGrid id="hipPanelForm" columns="2" border="1"
 						rendered="#{fileUploadBean.showForm}">
 						<h:dataTable id="hipOutputForm" var="hipOutput"
 							value="#{fileUploadBean.hipconverterFinalOutput.hipconverterOutputList}"
-							redered="#{fileUploadBean.display}" border="1">
+							redered="#{fileUploadBean.showForm}" border="1">
 
 							<h:column>
 								<f:facet name="header">Energy</f:facet>
-								<h:outputText value="#{hipOutput.energy}" />
+								<h:inputText value="#{hipOutput.energy}" />
 							</h:column>
 
 							<h:column>
 								<f:facet name="header">Proton Cross Section</f:facet>
-								<h:outputText value="#{hipOutput.protonCrossSection}" />
+								<h:inputText value="#{hipOutput.protonCrossSection}" />
 							</h:column>
 						</h:dataTable>
 					</h:panelGrid>
+					</h:form>
 				</div>
 
-				<div id="data">
+				<div id="tooOutputData" class="col3">
 
-					<h:panelGrid id="hipPanel" columns="2" border="1"
+					<h:panelGrid id="hipPanel" columns="2"
 						rendered="#{fileUploadBean.display}">
 						<h:dataTable id="hipOutput" var="hipOutput"
 							value="#{fileUploadBean.hipconverterFinalOutput.hipconverterOutputList}"
@@ -99,9 +106,9 @@
 				<!-- <tr><td width="225" align="center"><a href="#">Download Output File</a></td></tr> -->
 
 			</div>
-			<rich:popupPanel id="popup" modal="true" autosized="true"
-				resizeable="false" headerClass="col10" controlsClass="col3"
-				styleClass="toolsDescription" width="400">
+			<rich:popupPanel id="popup" modal="true" autosized="true" shadowDepth="0px" shadowOpacity="0px" 
+				resizeable="false" headerClass="col10" controlsClass="col3" width="400">
+				
 				<f:facet name="header">
 					<b><h:outputText value="Hip Converter Description" /></b>
 				</f:facet>
@@ -109,12 +116,12 @@
 					<h:outputLink value="#"
 						onclick="#{rich:component('popup')}.hide(); return false;">Close X</h:outputLink>
 				</f:facet>
-				<p style="">This tool enables one to plot the electron density
+				<p style="color: black">This tool enables one to plot the electron density
 					profile for any ion element passing through a target material.
 					Provide any element from periodic table and its energy and submit,
 					you get the plot . At the present time, compound materials are not
 					included. The calculations are done based on Katz Model</p>
-				<p style="">Refs.: R . Katz, "Track Structure Theory in
+				<p style="">Reference: R . Katz, "Track Structure Theory in
 					Radiobiology and in Radiation Detection, " Nucl. Track Detection 2
 					, 1~2 8 (1978) . R. Katz and E. J. Kobetich , It particle Tracks i
 					n Emulsion," Phys. Rev. 186.344-351 (1969) .</p>

@@ -16,7 +16,7 @@
 		template="/xhtml/common/seeLayout.xhtml">
 
 		<ui:define name="mainContent">
-			<script type="text/javascript">
+			<!-- <script type="text/javascript">
 				$(document).ready(function() {
 
 					var allPanels = $('.accordion > dd').hide();
@@ -35,102 +35,87 @@
 					 $( "#seeToolsAccordion" ).accordion();
 				    }); */
 			</script>
-
-<div class="wrapper1 col2">
-			<div id="page" style="height:700px;width:1200px;" align="left">
-						<div id="toolsMenuCol" >
-							<h:form>
-									<dl class="accordion">
-										<dt id="defaultAccordionHeader">
-											<a href="#">Proton Ion Density</a>
-										</dt>
-										<dd id="defaultAccordionItem">
-											<div class="seeToolsAccordionItem">
-
-												<p>
-													<h:commandLink action="#{navigator.navigate}"
-														value="Heavy Ion to Proton Converter">
-														<f:param name="fromTool" value="hipConverter" />
-													</h:commandLink>
-												</p>
-												<p>
-													<h:commandLink action="#{navigator.navigate}"
-														value="Weibull for Protons(4-Parameter)">
-														<f:param name="fromTool" value="hipConverter" />
-													</h:commandLink>
-												</p>
+ -->
+			<h:outputStylesheet>
+			        .rf-ac {
+			        width: 100%;
+			        }
+			 
+			        .rf-ac-itm {
+			        height: 100%;
+			        }
+   			 </h:outputStylesheet>
 
 
-											</div>
-										</dd>
-										<dt>
-											<a href="#">Neutron</a>
-										</dt>
-										<dd>
-											<div class="seeToolsAccordionItem">
-
-												<p>
-													<h:commandLink action="#{navigator.navigate}" value="Neutron soft error rate prediction">
-														<f:param name="fromTool" value="neutronConverter" />
-													</h:commandLink>
-												</p>
-
-											</div>
-										</dd>
-
-										<dt>
-											<a href="#">Heavy Ion</a>
-										</dt>
-										<dd>
-											<div class="seeToolsAccordionItem">
-												<p>
-													<h:commandLink action="#{navigator.navigate}"
-														value="Hicup Data Fitting">
-														<f:param name="fromTool" value="neutronConverter" />
-													</h:commandLink>
-												</p>
-												<p>
-													<h:commandLink action="#{navigator.navigate}"
-														value="Dual Node and Double Bit Upset (or Word Upset)">
-														<f:param name="fromTool" value="neutronConverter" />
-													</h:commandLink>
-												</p>
-
-											</div>
-										</dd>
-										<dt>
-											<a href="#">ION Tracks</a>
-										</dt>
-										<dd>
-											<div class="seeToolsAccordionItem">
-
-												<p>
-													<h:commandLink action="#{navigator.navigate}"
-														value="Ion Density Profile">
-														<f:param name="fromTool" value="neutronConverter" />
-													</h:commandLink>
-												</p>
-												<p>
-													<h:commandLink action="#{navigator.navigate}"
-														value="Radiation Database">
-														<f:param name="fromTool" value="neutronConverter" />
-													</h:commandLink>
-												</p>
-
-											</div>
-										</dd>
-									</dl>
-
-
-								
-							</h:form>
+			<div class="wrapper1 col2">
+				<div id="page" class="toolsContainer">
+					<div id="toolsMenuCol">
+						<div id="toolsMenuHeading" class="accordion_toolsMenuHeading col2">Tools Menu</div>
+						<h:form>
+							<rich:accordion switchType="client" 
+								itemHeaderClass="accordion_toolsMenuHeader col1" itemContentClass="accordion_toolsMenuContent col3"
+								itemActiveRightIcon="/resources/images/up.jpg" title="Tools Menu"
+								itemInactiveRightIcon="/resources/images/down1.jpg">
+								<rich:accordionItem header="Proton Ion Density">
+									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
+										<h:commandLink action="#{navigator.navigate}"
+											value="Heavy Ion to Proton Converter">
+											<f:param name="fromTool" value="hipConverter" />
+										</h:commandLink>
+									</p>
+									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
+										<h:commandLink action="#{navigator.navigate}"
+											value="Weibull for Protons (4-Param)">
+											<f:param name="fromTool" value="hipConverter" />
+										</h:commandLink>
+									</p>
+								</rich:accordionItem>
+								<rich:accordionItem header="Neutron">
+									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
+										<h:commandLink action="#{navigator.navigate}"
+											value="Neutron soft error rate prediction">
+											<f:param name="fromTool" value="neutronConverter" />
+										</h:commandLink>
+									</p>
+								</rich:accordionItem>
+								<rich:accordionItem header="Heavy Ion">
+									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
+										<h:commandLink action="#{navigator.navigate}"
+											value="Hicup Data Fitting">
+											<f:param name="fromTool" value="neutronConverter" />
+										</h:commandLink>
+									</p>
+									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
+										<h:commandLink action="#{navigator.navigate}"
+											value="Dual Node and Double Bit Upset (or Word Upset)">
+											<f:param name="fromTool" value="neutronConverter" />
+										</h:commandLink>
+									</p>
+								</rich:accordionItem>
+								<rich:accordionItem header="ION Tracks">
+									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
+										<h:commandLink action="#{navigator.navigate}"
+											value="Ion Density Profile">
+											<f:param name="fromTool" value="neutronConverter" />
+										</h:commandLink>
+									</p>
+									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
+										<h:commandLink action="#{navigator.navigate}"
+											value="Radiation Database">
+											<f:param name="fromTool" value="neutronConverter" />
+										</h:commandLink>
+									</p>
+								</rich:accordionItem>
+							</rich:accordion>
+						</h:form>
 					</div>
-					
-					<div id="toolContentCol"><ui:insert name="toolcontent">
-								<ui:include src="/xhtml/tools/hipConverterTool.xhtml"/>
-						</ui:insert></div>
-					
-			</div>
+					<div id="toolContentCol">
+						<ui:insert name="toolcontent">
+							<ui:include src="/xhtml/tools/hipConverterTool.xhtml"/>
+						</ui:insert>
+					</div>
+
+				</div>
 			</div>
 		</ui:define>
 

@@ -36,8 +36,9 @@ html body
 	display:block;
 	margin:0;
 	padding:15px 20px;
-	color:#003333;
-	background-color:#17C09A;
+	color:white;
+	background-color:black;
+	
 	
 	}
 
@@ -82,7 +83,7 @@ html body
 
 #topnav li a:hover, #topnav ul li.active a{
 	color:#000000;
-	background-color:#FFFFFF;
+	background-color:#17C09A;
 	text-decoration:underline;
 	}
 	
