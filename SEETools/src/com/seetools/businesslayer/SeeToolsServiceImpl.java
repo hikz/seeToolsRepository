@@ -47,14 +47,24 @@ public class SeeToolsServiceImpl {
 
 	private static final String configFileName = "hipConverterInputConfig.xml";
 
-	public HipconverterFinalOutput processFileUpload(Part inputFile)
+	/*public HipconverterFinalOutput processFileUpload(Part inputFile)
 			throws Exception {
 		
-		printClassPath();
+		
 		return processData(inputFile.getInputStream());
-	}
+	}*/
 
-	private static HipconverterFinalInput readInput(InputStream inputStream,
+	/**
+	 * This method returns Input list from the file uploaded.
+	 * @param inputFile
+	 * @return
+	 * @throws Exception
+	 */
+	public HipconverterFinalInput getInputFormFromFile(Part inputFile) throws Exception {
+		return readInput(inputFile.getInputStream(), 8);
+	}
+	
+	public static HipconverterFinalInput readInput(InputStream inputStream,
 			int numberOfBits) throws Exception {
 
 		// String inputFileName =
@@ -94,10 +104,10 @@ public class SeeToolsServiceImpl {
 		return hipconverterFinalInput;
 	}
 
-	private HipconverterFinalOutput processData(InputStream inputStream) throws Exception {
+	/*private HipconverterFinalOutput processData(InputStream inputStream) throws Exception {
 
-		/*String templateFileName = "C:/Ramz_Trainingz/JXLS/HIPCONVERTOR_PROJECT/FILES/output_templates/hipconverterTemplate.xls";
-		String destFileName = "C:/Ramz_Trainingz/JXLS/HIPCONVERTOR_PROJECT/FILES/output/hipconverterOutput.xls";*/
+		String templateFileName = "C:/Ramz_Trainingz/JXLS/HIPCONVERTOR_PROJECT/FILES/output_templates/hipconverterTemplate.xls";
+		String destFileName = "C:/Ramz_Trainingz/JXLS/HIPCONVERTOR_PROJECT/FILES/output/hipconverterOutput.xls";
 		HipconverterFinalInput hipconverterFinalInput = readInput(inputStream,
 				8);
 		int numberOfBits = 8;
@@ -111,9 +121,45 @@ public class SeeToolsServiceImpl {
 		HipconverterFinalOutput output = processWorkbook(workbook);
 		System.out.println("Your are done");
 		return output;
-	}
+	}*/
 
-	private HipconverterFinalOutput processWorkbook(Workbook wb) throws Exception {
+	public HipconverterFinalOutput getHipConverterOutput(HipconverterFinalInput hipconverterFinalInput,int newRows) throws Exception{
+		
+		printClassPath();
+		int numberOfBits = 8;
+		hipconverterFinalInput.setNumberOfBits(numberOfBits);
+
+		//new rows added in screen need to have output default values incremented to show on chart
+		
+		
+		Map<String, HipconverterFinalInput> beans = new HashMap<String, HipconverterFinalInput>();
+		beans.put("hipconverterFinalInput", updateInputForNewRows(hipconverterFinalInput, newRows));
+		XLSTransformer transformer = new XLSTransformer();
+		HIXTemplateResource resource = HIXTemplateResourceManager.getInstance().getHIXTemplate();
+		Workbook workbook = transformer.transformXLS(resource.getStream(), beans);
+		HipconverterFinalOutput output = processWorkbook(workbook,hipconverterFinalInput.getHipconverterInputList().size());
+		System.out.println("Your are done");
+		return output;
+	}
+	
+	
+	private HipconverterFinalInput updateInputForNewRows(HipconverterFinalInput hipconverterFinalInput,int newRows){
+		
+		//This will execute only if new rows are added and not for initial input.
+		if(newRows > 0){
+			int inputSize = hipconverterFinalInput.getHipconverterInputList().size();
+			//Last Energy value of old list before adding new row.
+			for(int i = (inputSize - newRows); i< inputSize; i++){
+					double initialEnergy = hipconverterFinalInput.getHipconverterInputList().get(i-1).getEnergy();
+					initialEnergy = initialEnergy + 10;
+					hipconverterFinalInput.getHipconverterInputList().get(i).setEnergy(initialEnergy);
+			}
+		}
+		
+		return hipconverterFinalInput;
+		
+	}
+	private HipconverterFinalOutput processWorkbook(Workbook wb,int inputSize) throws Exception {
 
 		/*String outputFileName = "C:/Ramz_Trainingz/JXLS/HIPCONVERTOR_PROJECT/FILES/output/hipconverterOutput.xls";
 
@@ -126,7 +172,9 @@ public class SeeToolsServiceImpl {
 		HipconverterFinalOutput hipconverterFinalOutput = new HipconverterFinalOutput();
 		List<HipconverterOutput> hipconverterOutputs = new ArrayList<HipconverterOutput>();
 		System.out.println("here u go-fit criteria-");
-		for (int i = 8; i < 23; i++) {
+		int startingPoint = 8;
+		int finalOutputSize = startingPoint+inputSize;
+		for (int i = startingPoint; i < finalOutputSize; i++) {
 			HipconverterOutput hipconverterOutput = new HipconverterOutput();
 
 			// Reading energy values
@@ -184,7 +232,7 @@ public class SeeToolsServiceImpl {
 			dataset.addSeries(series1);
 
 			// DataSet initialization end
-			chart = ChartFactory.createXYLineChart("HIP CONVERTER",
+			chart = ChartFactory.createXYLineChart("HIP CONVERTER GRAPH",
 					" ", " ", dataset, PlotOrientation.VERTICAL, true, true,
 					false);
 

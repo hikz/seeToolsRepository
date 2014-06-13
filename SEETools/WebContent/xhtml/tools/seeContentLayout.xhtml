@@ -56,7 +56,7 @@
 								itemHeaderClass="accordion_toolsMenuHeader col1" itemContentClass="accordion_toolsMenuContent col3"
 								itemActiveRightIcon="/resources/images/up.jpg" title="Tools Menu"
 								itemInactiveRightIcon="/resources/images/down1.jpg">
-								<rich:accordionItem header="Proton Ion Density">
+								<rich:accordionItem header="Proton">
 									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
 										<h:commandLink action="#{navigator.navigate}"
 											value="Heavy Ion to Proton Converter">
@@ -81,13 +81,13 @@
 								<rich:accordionItem header="Heavy Ion">
 									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
 										<h:commandLink action="#{navigator.navigate}"
-											value="Hicup Data Fitting">
+											value="HICUP">
 											<f:param name="fromTool" value="neutronConverter" />
 										</h:commandLink>
 									</p>
 									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
 										<h:commandLink action="#{navigator.navigate}"
-											value="Dual Node and Double Bit Upset (or Word Upset)">
+											value="Double Bit Upset (DBU)">
 											<f:param name="fromTool" value="neutronConverter" />
 										</h:commandLink>
 									</p>
@@ -98,13 +98,7 @@
 											value="Ion Density Profile">
 											<f:param name="fromTool" value="neutronConverter" />
 										</h:commandLink>
-									</p>
-									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
-										<h:commandLink action="#{navigator.navigate}"
-											value="Radiation Database">
-											<f:param name="fromTool" value="neutronConverter" />
-										</h:commandLink>
-									</p>
+									</p>									
 								</rich:accordionItem>
 							</rich:accordion>
 						</h:form>

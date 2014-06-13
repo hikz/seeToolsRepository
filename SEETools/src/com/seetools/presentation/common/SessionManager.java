@@ -30,4 +30,8 @@ public class SessionManager {
 	public static void invalidateSession(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
+	
+	public static void removeSessionAttribute(String key){
+		getSessionMap().remove(key);
+	}
 }

@@ -31,6 +31,11 @@ public class HipconverterInput implements Serializable {
 	public void setEnergy(double energy) {
 		this.energy = energy;
 	}
+	public HipconverterInput() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 	
 		

@@ -8,6 +8,8 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
+import com.seetools.util.Utilities;
+
 @FacesValidator("ConfirmPasswordValidator")
 public class ConfirmPasswordValidator implements Validator {
 
@@ -33,8 +35,8 @@ public class ConfirmPasswordValidator implements Validator {
             throw new ValidatorException(new FacesMessage("Passwords are not equal."));
         }
         
-        
-		
+        if(Utilities.validatePassword(value.toString())){
+        	throw new ValidatorException(new FacesMessage("Error: Password Requirements - One lowercase, One uppercase, Special Characters allowed are @#$%, Minimum Length is 6, Maximum Length is 20"));
+		}
 	}
-
 }

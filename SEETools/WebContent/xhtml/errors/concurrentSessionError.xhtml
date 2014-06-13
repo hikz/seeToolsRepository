@@ -5,7 +5,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j">
 <head>
@@ -15,7 +14,20 @@
 <body>
 <ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="content">
- 			Another session had been opened. A maximum of one session is only allowed.
+ 			<f:view>
+				<div id="wrapper1 col2">
+					<div id="form_wrapper" class="form_wrapper_display">
+						<h:form id="seeConcurrentSessionId">
+							<div class="loginheader active">
+								<h3>Concurrent session Issue</h3>
+							</div>
+							<div id="registrationSuccessMsgId" style="color: green;">
+							Another session had been opened. A maximum of one session is only allowed.
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</f:view> 			
  		</ui:define>
  </ui:composition>
 </body>

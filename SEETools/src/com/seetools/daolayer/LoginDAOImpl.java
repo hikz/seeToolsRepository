@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import com.seetools.dto.UserBean;
+import com.seetools.util.PasswordEncoder;
 
 @Repository
 public class LoginDAOImpl implements UserDetailsService {
@@ -73,7 +74,7 @@ public class LoginDAOImpl implements UserDetailsService {
 		
 		this.jdbcTemplate =  new JdbcTemplate(dataSource);
 		
-		int rows = this.jdbcTemplate.update(UPDATE_PASSWORD, new Object[]{password, emailAddress},new int[]{Types.VARCHAR, Types.VARCHAR});
+		int rows = this.jdbcTemplate.update(UPDATE_PASSWORD, new Object[]{PasswordEncoder.getHashedPassword(password), emailAddress},new int[]{Types.VARCHAR, Types.VARCHAR});
 		
 		if(rows == 1){
 			active = true;

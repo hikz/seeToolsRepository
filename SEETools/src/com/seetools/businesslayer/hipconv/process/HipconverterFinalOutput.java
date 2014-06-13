@@ -24,5 +24,11 @@ public class HipconverterFinalOutput implements Serializable {
 	public void setHipconverterOutputList(
 			List<HipconverterOutput> hipconverterOutputList) {
 		this.hipconverterOutputList = hipconverterOutputList;
+	}
+
+	public HipconverterFinalOutput() {
+		super();
 	}	
+	
+	
 }

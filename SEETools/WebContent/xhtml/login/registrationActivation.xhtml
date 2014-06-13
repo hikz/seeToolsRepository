@@ -17,7 +17,7 @@
 
 			<f:view>
 				<div class="wrapper1 col2">
-					<div id="form_wrapper" class="form_wrapperT">
+					<div id="form_wrapper" class="form_wrapper_display">
 						<h:form id="seeRegisterFormId">
 							
 							<br></br>
@@ -27,7 +27,10 @@
 								rendered="#{registrationActivation.valid}">
 								Your account is successfully activated!
 								
-									<h:link outcome="seeHome">Go to home page</h:link>
+								<h:commandLink action="#{navigator.navigate}"
+									value="LogIn">
+									<f:param name="fromTool" value="/xhtml/login/login.xhtml" />
+								</h:commandLink>
 								
 							</h:panelGroup>
 							<h:panelGroup layout="block"

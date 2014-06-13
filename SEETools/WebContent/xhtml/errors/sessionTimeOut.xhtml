@@ -15,7 +15,22 @@
 <body>
 <ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="content">
- 			Session timed out. <h:link outcome="/xhtml/login/login.xhtml">Click here</h:link> to login again 
+		<f:view>
+				<div class="wrapper1 col2">
+					<div id="form_wrapper" class="form_wrapper_display">
+						<h:form id="seeRegisterFormId">
+							
+							<br></br>
+							<br></br>
+							<br></br>
+							<h:panelGroup layout="block">
+								Session timed out. <h:link outcome="/xhtml/login/login.xhtml">Click here</h:link> to login again 
+							</h:panelGroup>
+							
+						</h:form>
+					</div>
+				</div>
+			</f:view>
  		</ui:define>
  </ui:composition>
 </body>

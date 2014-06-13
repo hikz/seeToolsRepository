@@ -32,7 +32,11 @@
 								</h:inputText>
 								<h:message for="tools_username" styleClass="error"></h:message>
 								
-								<label>Password</label>
+								<label>Password &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
+								<h:outputLink style="display:inline;float:right;color:blue;">Password Instructions
+										<rich:componentControl target="popup" operation="show"
+											event="click" />
+										</h:outputLink></label>
 								<h:inputSecret id="tools_password" required="true"
 									value="#{loginBean.password}"
 									requiredMessage="Password is mandatory">
@@ -43,13 +47,36 @@
 								<h:commandButton value="Login" action="#{loginBean.login}"></h:commandButton>
 								<h:commandButton value="Clear" type="reset"></h:commandButton>
 							
-								 <h:commandLink action="#{navigator.navigate}" value="No Account? Click me to register" immediate="true">
+								 <h:commandLink action="#{navigator.navigate}" value="No Account? Click me to register" immediate="true" style="color:blue;">
 								<f:param name="fromTool" value="register" />
 								</h:commandLink>
-								<h:commandLink action="#{navigator.navigate}" value="Forgot Password?" immediate="true" >
+								<h:commandLink action="#{navigator.navigate}" value="Forgot Password?" immediate="true" style="color:blue;">
 								<f:param name="fromTool" value="forgotPassword" />
 								</h:commandLink>
 							</div>
+							
+							<rich:popupPanel id="popup" autosized="true" 
+								shadowDepth="0px" shadowOpacity="0px" resizeable="false"
+								controlsClass="colPopUpControls" width="400"
+								styleClass="colPopUpBody">
+
+								<f:facet name="header">
+									<b><h:outputText value="Password Instructions" /></b>
+								</f:facet>
+								<f:facet name="controls">
+									<h:outputLink value="#"
+										onclick="#{rich:component('popup')}.hide(); return false;">Close X</h:outputLink>
+								</f:facet>
+								<p>Password should contain the following instructions</p>
+								<ul>
+									<li>Minimum Length is 6</li>
+								    <li>Maximum Length is 20</li>
+								    <li>One lower case</li>
+								    <li>One upper case</li>
+								    <li>Special Characters allowed are @#$%</li>
+								 </ul>
+							</rich:popupPanel>
+							
 						</h:form>
 					</div>
 				</div>

@@ -122,8 +122,8 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 
 .col2 {
 	color: black;
-	background-color: #E7E6E6; 
-
+	/* background-color: #E7E6E6; */ 
+	background-color: #EEEEEE; 
 }
 
 .col2 a {
@@ -134,12 +134,14 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 
 .col3 {
 	color:#003333;
-	background-color: #E7E6E6;
+	/* background-color: #E7E6E6; */
+	background-color: #EEEEEE; 
 }
 
 .col3 a {
 	color: #003333;
-	background-color: #E7E6E6;
+	/* background-color: #E7E6E6; */
+	background-color: #EEEEEE; 
 }
 
 .col4 {
@@ -167,7 +169,38 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	background-color: blue;
 }
 
-	
+.col_blue_text {
+	color:blue;
+}
+
+.password_inst {
+	display:inline;float:right;color:blue;
+}
+
+.password_inst a {
+	display:inline;
+} 
+
+.colPopUpHeader {
+	color:white;
+	background-color: black;
+}
+
+.colPopUpControls {
+	color:#003333;
+	background-color: #17C09A;
+	font-weight: bold;
+}
+
+.colPopUpControls a{
+	color:white;
+	background-color: #17C09A;
+	font-weight: bold;
+}
+.colPopUpBody {
+	color:#003333;
+	background-color: #17C09A;
+}
 
 /* ----------------------------------------------Generalise-------------------------------------*/
 #header,#topbar,#homepage,#breadcrumb,#container,#footer,#copyright {
@@ -244,19 +277,20 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 #container {
 	padding: 20px 0;
 	height:320px;
-	/* background-color: #E7E6E6; */
 }
 
 #container1 {
 	padding: 20px 0;
-	background-color: #E7E6E6;
+	/* background-color: #E7E6E6; */
+	background-color: #EEEEEE; 
 }
 
 #container h1,#container h2,#container h3,#container h4,#container h5,#container h6
 	{
 	margin: 0 0 15px 0;
 	padding: 10 0 0px 0;
-	border-bottom: 1px solid #E7E6E6;
+	/* border-bottom: 1px solid #E7E6E6; */
+	border-bottom: 1px solid #EEEEEE;
 	border-bottom-width: 50%;
 }
 
@@ -278,6 +312,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	/* border: solid;
 	border-color: black; */
 	background-color: #E7E6E6;
+	background-color: #EEEEEE;
 }
 
 .homepage1 {
@@ -394,7 +429,7 @@ form.loginheader {
 	top: 50px;
 }
 
-.form_wrapperT {
+.form_wrapper_display {
 	background: #fff;
 	border: 1px solid #ddd;
 	margin: 0 auto;
@@ -418,13 +453,13 @@ form.loginheader {
 }
 
 .form_wrapper input[type="text"],.form_wrapper input[type="password"] {
-	border: solid 1px #E5E5E5;
-	background: #FFFFFF;
-	margin: 5px 30px 0px 30px;
+	border: solid 1px #999999;
+	background: #E7E6E6;
+	margin: 5px 30px 10px 30px;
 	padding: 4px;
 	display: block;
 	font-size: 12px;
-	width: 76%;
+	width: 75%;
 	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF),
 		color-stop(4%, #EEEEEE), to(#FFFFFF));
 	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
@@ -436,14 +471,15 @@ form.loginheader {
 .form_wrapper label {
 	display: block;
 	position: relative;
-	text-align: left;
-	left: 40px;
+	text-align: left;	
+	width:85%;	
 	padding: 10px 0px 0px 0px;
-	margin: 10px 0px 0px 0px;
+	margin: 10px 0px 0px 0px;	
+	font-weight: bold;
 }
 
 .form_wrapper input[type="submit"], .form_wrapper input[type="reset"]{
-	background: #e3e3e3;
+	background: #E7E6E6;
 	border: 1px solid #ccc;
 	color: #333;
 	font-family: "Trebuchet MS", "Myriad Pro", sans-serif;
@@ -453,7 +489,7 @@ form.loginheader {
 	text-align: center;
 	width: 150px;
 	cursor: pointer;
-	float: right;
+	
 	margin: 15px 20px 10px 10px;
 	text-shadow: 0px 1px 0px #fff;
 	-moz-border-radius: 4px;
@@ -482,8 +518,8 @@ form.loginheader {
 
 .wrapper1 {
 	width: 100%;
+	height:100%;
 	margin: 0 auto;
-	height: 100%;
 	padding-top: 20px;
 }
 
@@ -614,7 +650,7 @@ background-color: #999999;
 #footer {
 	padding: 20px 0;
 	width:90%;
-	background-color: #E7E6E6;
+	background-color: #EEEEEE;
 	color: black;
 }
 

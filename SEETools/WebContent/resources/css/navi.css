@@ -1,23 +1,38 @@
-
 #topnav{
 	display:inline;
-	width:30%;
-	
-	position:relative;
-	
+	width:300px;		
 	padding: 0px 0px 0px 70px; 
-	height:60%;
+	height:50px;;
 	font-size:14px;
 	font-weight:bold;
 	font-family:Open Sans, sans-serif;
 	float: left;
-	margin-top: 3%;;
-    left: 5%;
-  /*  	border: solid;
-	border-color: white;  */
-	
+	margin-top: 3% ;
+	margin-left:auto;
+	margin-right:auto;
+    left:20px;
+ /* border:1px solid black; */
 	}
+	
+	
+#signUpForm
+{
+	float:right;
+}
 
+#signup
+	{
+	display:inline;
+	margin-top: 3.5%;	
+	height:60%;
+	min-width:30%;
+	padding: 0px 0px 0px 0px; 
+	float:right;
+	font-size:12px;
+	font-weight:bold;
+	font-family:Open Sans, sans-serif;	
+	/* border:1px solid black; */ 
+	}
 html body
 {
 	overflow-x:hidden;
@@ -42,22 +57,6 @@ html body
 	
 	}
 
-#signup
-	{
-	display:inline;
-	margin-top: 3.5%;
-	position:relative;
-	height:60%;
-	width:30%;
-	padding: 0px 0px 0px 0px; 
-	float:right;
-	font-size:12px;
-	font-weight:bold;
-	font-family:Open Sans, sans-serif;
-	float: right;
-	/* border: solid;
-	border-color: white;  */
-	}
 
 #signup li{
 	vertical-align: center;
@@ -66,8 +65,9 @@ html body
 	display:block;
 	margin:5px;
 	padding:10px 10px;
-	color:#003333;
-	background-color:#17C09A;	
+	color:white;
+	/* background-color:#17C09A; */	
+	background-color:#009900;
 	
 	}	
 
@@ -82,8 +82,9 @@ html body
 	}
 
 #topnav li a:hover, #topnav ul li.active a{
-	color:#000000;
-	background-color:#17C09A;
+	color:white;
+	/* background-color:#17C09A; */
+	background-color:#009900;
 	text-decoration:underline;
 	}
 	

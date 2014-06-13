@@ -1,8 +1,11 @@
 package com.seetools.presentation;
 
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.component.html.HtmlInputHidden;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,9 +13,14 @@ import com.seetools.businesslayer.ForgotPasswordServiceImpl;
 
 @ManagedBean(name="modifyPassword")
 @RequestScoped
-public class ModifyPassword {
+public class ModifyPassword implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
 	private String password;
+	private HtmlInputHidden email = new HtmlInputHidden();
 	ForgotPasswordServiceImpl forgotPasswordServiceImpl;
 	
 	public String getPassword() {
@@ -26,11 +34,21 @@ public class ModifyPassword {
 	public String modifyPasswordService(){
 		
 		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("seetools-bean-config.xml");
-		
+		email.getValue();
 		forgotPasswordServiceImpl = (ForgotPasswordServiceImpl)applicationContext.getBean("forgotPasswordService");
 		
-		forgotPasswordServiceImpl.changePassword("ramprasad.pedapatnam@gmail.com", this.getPassword());
+		forgotPasswordServiceImpl.changePassword((String)email.getValue(), this.getPassword());
+		
 		return "changePasswordSuccess";
+	}
+
+
+	public void setEmail(HtmlInputHidden email) {
+		this.email = email;
+	}
+
+	public HtmlInputHidden getEmail() {
+		return email;
 	}
 
 

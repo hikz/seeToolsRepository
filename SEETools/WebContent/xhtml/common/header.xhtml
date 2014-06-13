@@ -26,12 +26,12 @@
 					</ul>
 				</div>
 				<div id="signup">
-					<h:form>
+					<h:form id="signUpForm">
 						<ul>
 							<c:choose>
 							<c:when test="#{loginBean.username != null and loginBean.username !='anonymousUser'}">
-							<li>	
-								<h:outputText value="Logged in as: #{loginBean.username}," />
+							<li>
+								<h:outputText value="Welcome :  #{loginBean.username}" />
 							</li>
 							<li>
 								<h:link value="Account Info" outcome="accountInfo" />
@@ -44,7 +44,7 @@
 
 							<c:otherwise>
 							<li>	
-								<h:outputText value="Logged in as: Guest" />
+								<h:outputText value="Welcome : Guest" />
 							</li>
 							<li><h:commandLink action="#{navigator.navigate}"
 									value="LogIn">

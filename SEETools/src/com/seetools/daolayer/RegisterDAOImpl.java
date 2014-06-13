@@ -16,6 +16,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.seetools.dto.UserBean;
+import com.seetools.util.PasswordEncoder;
 
 public class RegisterDAOImpl {
 
@@ -53,7 +54,7 @@ public class RegisterDAOImpl {
 			
 			//Password Hashing
 			
-			userDto.setPassword(getHashedPassword(userDto.getPassword()));
+			userDto.setPassword(PasswordEncoder.getHashedPassword(userDto.getPassword()));
 			/*Object[] userParams = new Object[]{generatedEmailId, userDto.getFirstName(), userDto.getLastName(),userDto.getMobileNumber(),
 					userDto.getPassword(),null,userDto.getCreatedByUserId(),userDto.getCreatedDate(),userDto.getModifiedByUserId(),userDto.getModifiedDate()};*/
 			this.jdbcTemplate.update(new PreparedStatementCreator() {
@@ -112,13 +113,7 @@ public class RegisterDAOImpl {
 	}
 	
 
-	private String getHashedPassword(String password){
-		
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String hashedPassword = passwordEncoder.encode(password);
-		return hashedPassword;
-		
-	}
+	
 	public DataSource getDataSource() {
 		return dataSource;
 	}

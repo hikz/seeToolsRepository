@@ -3,22 +3,22 @@ package com.seetools.presentation;
 import java.io.IOException;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.seetools.businesslayer.ForgotPasswordServiceImpl;
 import com.seetools.util.BeanFactory;
 
 @ManagedBean(name="changePasswordController")
-@RequestScoped
+@SessionScoped
 public class ChangePasswordController {
 	
 
 	private String key;
+	
 	private String email;
 	
 	private String password;
@@ -40,6 +40,8 @@ public class ChangePasswordController {
 			if(forgotPasswordServiceImpl.checkToken(this.email, this.key)){
 				validToken = true;
 				logger.info("Token is valid. Redirecting to Change Password Form");
+
+				System.out.println(FacesContext.getCurrentInstance().getExternalContext().getRequestMap().toString());
 				FacesContext.getCurrentInstance().getExternalContext().redirect("changePasswordForm.xhtml");
 			}
 		}
