@@ -58,10 +58,7 @@
 								itemInactiveRightIcon="/resources/images/down1.jpg">
 								<rich:accordionItem header="Proton">
 									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
-										<h:commandLink action="#{navigator.navigate}"
-											value="Heavy Ion to Proton Converter">
-											<f:param name="fromTool" value="hipConverter" />
-										</h:commandLink>
+										<h:commandLink action="#{fileUploadBean.initializeTool}" value="Heavy Ion to Proton Converter"/>											
 									</p>
 									<p style="text-align: left; margin-left: 25px; margin-right: 15px;">
 										<h:commandLink action="#{navigator.navigate}"

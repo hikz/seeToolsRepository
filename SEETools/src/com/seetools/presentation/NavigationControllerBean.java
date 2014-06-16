@@ -17,7 +17,7 @@ public class NavigationControllerBean {
 		String parameterName =  FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("fromTool");
 		System.out.println("Next Page : " + parameterName);
 		//return "hipConverter";
-			return parameterName;	
+		return parameterName;	
 		
 	}
 

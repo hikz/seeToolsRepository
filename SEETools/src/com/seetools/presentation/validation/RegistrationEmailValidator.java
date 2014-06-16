@@ -8,6 +8,7 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
 import com.seetools.businesslayer.SeeToolsRegisterServiceImpl;
+import com.seetools.util.BeanFactory;
 import com.seetools.util.Utilities;
 
 @FacesValidator("RegistrationEmailValidator")
@@ -31,7 +32,7 @@ public class RegistrationEmailValidator implements Validator {
 			Messages.addMessage("Error: Invalid Email Address !!", FacesMessage.SEVERITY_ERROR);
 		}
 		
-		if(new SeeToolsRegisterServiceImpl().checkDuplicateEmail(object.toString())){
+		if(((SeeToolsRegisterServiceImpl)BeanFactory.getBean("seeToolsRegisterServiceImpl")).checkDuplicateEmail(object.toString())){
 			Messages.addMessage("Error: Duplicate Email Address. Please change email address !!", FacesMessage.SEVERITY_ERROR);
 		}
 		

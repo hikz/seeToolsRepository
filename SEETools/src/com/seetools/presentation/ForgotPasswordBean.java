@@ -3,15 +3,16 @@ package com.seetools.presentation;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.seetools.businesslayer.ForgotPasswordServiceImpl;
-import com.seetools.daolayer.RegisterDAOImpl;
 
 @ManagedBean(name="forgotPasswordBean")
 @RequestScoped
 public class ForgotPasswordBean {
 
+	final Logger logger = LoggerFactory.getLogger(ForgotPasswordBean.class);
 	private String emailAddress;
 	ForgotPasswordServiceImpl forgotPasswordServiceImpl;
 	
@@ -27,16 +28,20 @@ public class ForgotPasswordBean {
 
 	public String recoverPassword(){
 		
+		logger.info("Recovering Password for Email Address : {}", emailAddress);
 		String outcome = "forgotPasswordEmailSentSuccess";
-		
-		/*ForgotPasswordServiceImpl forgotPasswordServiceImpl = new ForgotPasswordServiceImpl();
-		forgotPasswordServiceImpl.recoverPassword(this.emailAddress);*/
-		
-		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("seetools-bean-config.xml");
-		
-		forgotPasswordServiceImpl = (ForgotPasswordServiceImpl)applicationContext.getBean("forgotPasswordService");
 		forgotPasswordServiceImpl.recoverPassword(this.getEmailAddress());
-		
 		return outcome;
+	}
+
+
+	public ForgotPasswordServiceImpl getForgotPasswordServiceImpl() {
+		return forgotPasswordServiceImpl;
+	}
+
+
+	public void setForgotPasswordServiceImpl(
+			ForgotPasswordServiceImpl forgotPasswordServiceImpl) {
+		this.forgotPasswordServiceImpl = forgotPasswordServiceImpl;
 	}
 }

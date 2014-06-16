@@ -9,14 +9,14 @@
 			<param name="ConversionPattern" value="%d{ISO8601} [%t] %-5p [%c{1}] - %m%n" />
 		</layout>
 	</appender>
-	<!-- <root>
+	<root>
 		<priority value="info" />
 		<appender-ref ref="fileAppender" />
-	</root> -->
-	<root>
+	</root>
+	<!-- <root>
 		<priority value="debug" />
 		<appender-ref ref="fileAppender" />
-	</root>
+	</root> -->
 	<!-- <root>
 		<priority value="warn" />
 		<appender-ref ref="fileAppender" />

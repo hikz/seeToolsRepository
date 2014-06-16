@@ -23,19 +23,19 @@
 								<h3>Register</h3>
 							</div>	
 								<label>First Name <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
-								<h:inputText  id="seeFirstNameInId" required="true"
+								<h:inputText  id="seeFirstNameInId" required="true" tabindex="1"
 									value="#{userBean.firstName}" requiredMessage="First Name required">
 									<f:validateLength maximum="20"></f:validateLength>
 								</h:inputText>
 								<h:message for="seeFirstNameInId" styleClass="error"></h:message>
 								<label>Last Name <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
-								<h:inputText id="seeLastNameInId" required="true"
+								<h:inputText id="seeLastNameInId" required="true"  tabindex="2"
 									value="#{userBean.lastName}" requiredMessage="Last Name required">
 									<f:validateLength maximum="20"></f:validateLength>
 								</h:inputText>
 								<h:message for="seeLastNameInId" styleClass="error"></h:message>
 								<label>Mobile Number</label>
-								<h:inputText id="seeMobileNumberInId" 
+								<h:inputText id="seeMobileNumberInId" tabindex="3"
 									value="#{userBean.mobileNumber}"
 									  validatorMessage="The length should be 10 characters"
 									converterMessage="Phone number should only digits">
@@ -44,7 +44,7 @@
 								</h:inputText>
 								<h:message for="seeMobileNumberInId" styleClass="error"></h:message>
 								<label>Email Address <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
-								<h:inputText id="seeEmailAddressInId" 
+								<h:inputText id="seeEmailAddressInId"  tabindex="4"
 									value="#{userBean.email.emailAddress}" required="true"
 									requiredMessage="Email Address required">
 									<f:validator validatorId="RegistrationEmailValidator" />
@@ -55,7 +55,7 @@
 										<rich:componentControl target="popup" operation="show"
 											event="click" />
 										</h:outputLink></label> 
-								<h:inputSecret id="seePasswordInId" required="true"
+								<h:inputSecret id="seePasswordInId" required="true"  tabindex="5"
 									value="#{userBean.password}"
 									requiredMessage="Please enter password">
 									<f:validator validatorId="PasswordValidator" />
@@ -63,8 +63,8 @@
 								<h:message for="seePasswordInId" styleClass="error"></h:message>
 						
 							<div class="bottom">
+								<h:commandButton value="Register" action="confirmRegistration" tabindex="6"></h:commandButton>
 								<h:commandButton value="Clear" type="reset"></h:commandButton>
-								<h:commandButton value="Register" action="confirmRegistration"></h:commandButton>
 							</div>
 
 							<rich:popupPanel id="popup" autosized="true"

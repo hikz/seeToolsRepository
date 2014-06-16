@@ -15,7 +15,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.seetools.businesslayer.SeeToolsRegisterServiceImpl;
 import com.seetools.dto.UserBean;
-import com.seetools.presentation.common.RequestManager;
 import com.seetools.presentation.common.SessionManager;
 
 @ManagedBean(name="registerBean")
@@ -32,6 +31,7 @@ public class RegisterBean implements Serializable {
 	 private AuthenticationManager authMgr;
 	 @Autowired 
 	 private UserDetailsService userDetailsSvc;
+	 SeeToolsRegisterServiceImpl seeToolsRegisterServiceImpl;
 	 
 	 @ManagedProperty(value="#{userBean}")
 	 private UserBean userBean;
@@ -55,22 +55,20 @@ public class RegisterBean implements Serializable {
 		System.out.println("Log Debug level : " + logger.isDebugEnabled());
 		System.out.println("Log Warn level : " + logger.isWarnEnabled());
 		
-		SeeToolsRegisterServiceImpl seeToolsRegisterServiceImpl = new SeeToolsRegisterServiceImpl();
+		//SeeToolsRegisterServiceImpl seeToolsRegisterServiceImpl = (SeeToolsRegisterServiceImpl)BeanFactory.getBean("seeToolsRegisterServiceImpl");
 		this.setUser((UserBean)SessionManager.getSessionAttribute("userBean"));
 		logger.debug("User Details : {}", this.getUser().toString());
 		SessionManager.invalidateSession();
 		
-		
 		try {
-			  
-			  seeToolsRegisterServiceImpl.processRegistration(this.getUser());
+			  this.seeToolsRegisterServiceImpl.processRegistration(this.getUser());
+				logger.info("End registration process");
 		      return "registerSuccess";
-		    
 		    } catch (Exception e) {
 		    	e.printStackTrace();
+		    	return "redirect:/xhtml/login/error";
 		    }
-		logger.info("End registration process");
-		    return "redirect:/xhtml/login/error";
+
 	}
 	public AuthenticationManager getAuthMgr() {
 		return authMgr;
@@ -90,23 +88,15 @@ public class RegisterBean implements Serializable {
 		return userBean;
 	}
 
-
 	public void setUser(UserBean userBean) {
 		this.userBean = userBean;
 	}
+	public SeeToolsRegisterServiceImpl getSeeToolsRegisterServiceImpl() {
+		return seeToolsRegisterServiceImpl;
+	}
+	public void setSeeToolsRegisterServiceImpl(
+			SeeToolsRegisterServiceImpl seeToolsRegisterServiceImpl) {
+		this.seeToolsRegisterServiceImpl = seeToolsRegisterServiceImpl;
+	}
 	
-	
-	/*private void authenticateUserAndSetSession(UserBean user, HttpServletRequest request) {
-		
-	    UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-	            user.getUserId(), user.getPassword());
-
-	    // generate session if one doesn't exist
-	    request.getSession();
-
-	    token.setDetails(new WebAuthenticationDetails(request));
-	    Authentication authenticatedUser = authenticationManager.authenticate(token);
-
-	    SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
-	}*/
 }

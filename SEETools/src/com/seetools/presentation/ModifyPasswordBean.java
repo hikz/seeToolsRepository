@@ -7,17 +7,16 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlInputHidden;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.seetools.businesslayer.ForgotPasswordServiceImpl;
 
-@ManagedBean(name="modifyPassword")
+@ManagedBean(name="modifyPasswordBean")
 @RequestScoped
-public class ModifyPassword implements Serializable {
+public class ModifyPasswordBean implements Serializable {
 
-	/**
-	 * 
-	 */
+	final Logger logger = LoggerFactory.getLogger(ModifyPasswordBean.class);
 	private static final long serialVersionUID = 2L;
 	private String password;
 	private HtmlInputHidden email = new HtmlInputHidden();
@@ -31,14 +30,11 @@ public class ModifyPassword implements Serializable {
 		this.password = password;
 	}
 
-	public String modifyPasswordService(){
+	public String modifyPassword(){
 		
-		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("seetools-bean-config.xml");
-		email.getValue();
-		forgotPasswordServiceImpl = (ForgotPasswordServiceImpl)applicationContext.getBean("forgotPasswordService");
-		
-		forgotPasswordServiceImpl.changePassword((String)email.getValue(), this.getPassword());
-		
+		logger.info("Changing Password for email : {}", email.getValue());
+		forgotPasswordServiceImpl.changePassword((String)email.getValue(), this.getPassword());	
+		logger.info("Password changed successfully for email : {}",  email.getValue());
 		return "changePasswordSuccess";
 	}
 
@@ -49,6 +45,15 @@ public class ModifyPassword implements Serializable {
 
 	public HtmlInputHidden getEmail() {
 		return email;
+	}
+
+	public ForgotPasswordServiceImpl getForgotPasswordServiceImpl() {
+		return forgotPasswordServiceImpl;
+	}
+
+	public void setForgotPasswordServiceImpl(
+			ForgotPasswordServiceImpl forgotPasswordServiceImpl) {
+		this.forgotPasswordServiceImpl = forgotPasswordServiceImpl;
 	}
 
 

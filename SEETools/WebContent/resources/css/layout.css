@@ -79,7 +79,7 @@ br.clear {
 }
 
 /* ----------------------------------------------Wrapper-------------------------------------*/
-div.wrapper {
+.wrapper {
 	display: block;
 	width: 100%;	
 	margin: 0 0 0 0;
@@ -90,6 +90,17 @@ div.wrapper {
 	border-color: yellow;  */
 }
 
+.home_wrapper {
+	display: block;
+	width: 100%;	
+	min-height: 350px;
+	margin: 0 0 0 0;
+	text-align: center;
+	padding-bottom: 10px;
+	
+/* 	border:solid;
+	border-color: yellow;  */
+}
 div.wrapper h1 {
 	margin: 0;
 	padding: 0;
@@ -210,49 +221,6 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	width: 100%;
 }
 
-/* ----------------------------------------------Header-------------------------------------*/
-#header {
-	padding: 0px 0 0 0px;
-	width: 80%;
-	height: 65px;
-
-	/* border-bottom: solid;
-	border-color:black; */
-	
-}
-
-#header #logo {
-	display: inline;
-	float: left;
-	width:26%;
-	height:100%;
-	left: 380px;
-	/* border: solid;
-	border-color: yellow; */
-}
-
-#header #logo img {
-	vertical-align: middle;
-	height: 80px;
-	
-}
-
-#header #logo h1,#header #logo p {
-	margin: 0;
-	padding: 0;
-	line-height: normal;
-	position: relative;
-	left: 10px;
-}
-
-#header #logo h1 {
-	font-size: 18px;
-}
-
-#header h1 a {
-	color: #FFFFFF;
-	background-color: #4e4e4e;
-}
 
 /* ----------------------------------------------BreadCrumb-------------------------------------*/
 #breadcrumb {
@@ -276,7 +244,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 /* ----------------------------------------------Content-------------------------------------*/
 #container {
 	padding: 20px 0;
-	height:320px;
+	min-height:320px;
 }
 
 #container1 {
@@ -296,22 +264,29 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 
 .home_tools_heading {
 	font-size: x-large;
-	margin-left: 140px;
+	width:100%;
+	margin : 0px auto;
 }
 
 .home_tools_hr {
 	width: 80%;
 	background-color: #003333;
 }
+
+.home_tools_details {	
+	width: 80%;
+	margin: 0px auto;	
+	
+}
 /* ----------------------------------------------Homepage Block-------------------------------------*/
 .homepage {
 	display: block;
 	width: 100%;
-	margin: 15px 0 0 0;
+	margin: 15px auto 0 auto;
 	padding: 0;
 	/* border: solid;
 	border-color: black; */
-	background-color: #E7E6E6;
+	
 	background-color: #EEEEEE;
 }
 
@@ -325,19 +300,19 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 }
 
 .homepage ul {
-	margin: 20px 100px 0 130px;
+	margin: 20px auto 0 auto;
 	padding: 0;
 	list-style: none;
 	-moz-box-shadow: 1px 1px 7px #ccc;
 	-webkit-box-shadow: 1px 1px 7px #ccc;
 	box-shadow: 1px 1px 7px #ccc; 
-	
+	width:100%;
 }
 
 .homepage li {
-	display: block;
-	float: left;
-	width: 250px;
+	display: inline;
+	float:left;
+	width: 240px;
 	height:200px;
 	margin: 30px 20px 0 20px;
 	padding: 10px 0 0 0;
@@ -526,7 +501,7 @@ form.loginheader {
 .form_wrapper .bottom {
 	background-color: #444;
 	border-top: 1px solid #ddd;
-	margin-top: 20px;
+	margin-top: 40px;
 	clear: both;
 	color: #fff;
 	font-weight: lighter;

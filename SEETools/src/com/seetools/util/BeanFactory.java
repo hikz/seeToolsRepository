@@ -7,8 +7,12 @@ public class BeanFactory {
 	
 	public static Object getBean(String beanName){
 		
-		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("seetools-bean-config.xml");
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-bean-config.xml");
 		
-		return applicationContext.getBean(beanName);
+		Object obj = applicationContext.getBean(beanName);
+		
+		applicationContext.close();
+		
+		return obj;
 	}
 }

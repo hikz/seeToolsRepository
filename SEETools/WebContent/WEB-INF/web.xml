@@ -19,8 +19,9 @@
 	    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-                /WEB-INF/seetools-bean-config.xml
-                /WEB-INF/seetools-security-config.xml
+                /WEB-INF/classes/spring-bean-config.xml
+                /WEB-INF/classes/spring-security-config.xml
+                /WEB-INF/classes/spring-tx-config.xml
         </param-value>
     </context-param>
     <!-- CONFIGURATION FILES END HERE -->

@@ -19,7 +19,7 @@ public class PasswordValidator  implements Validator {
 	
 		
 		if(Utilities.validatePassword(object.toString())){
-			Messages.addMessage("Error: Password Requirements - One lowercase, One uppercase, Special Characters allowed are @#$%, Minimum Length is 6, Maximum Length is 20", FacesMessage.SEVERITY_ERROR);
+			Messages.addMessage("Error: Please refer to Password Instructions", FacesMessage.SEVERITY_ERROR);
 		}
 	}
 

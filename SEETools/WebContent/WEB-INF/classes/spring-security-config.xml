@@ -27,7 +27,7 @@
         <sec:session-management> <!-- invalid-session-url="/xhtml/errors/sessionTimeOut.xhtml" -->
         	<sec:concurrency-control max-sessions="1"  expired-url="/xhtml/errors/concurrentSessionError.xhtml"/>	
         </sec:session-management>
-         <!-- authentication-success-handler-ref="customAuthenticationSuccessHandler"/> -->
+         
         <sec:logout logout-success-url="/xhtml/login/login.xhtml" logout-url="/tools_logout" delete-cookies="JSESSIONID"></sec:logout>
         <!-- <csrf/> -->
     </sec:http>

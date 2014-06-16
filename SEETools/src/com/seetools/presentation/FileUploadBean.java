@@ -33,52 +33,17 @@ public class FileUploadBean implements Serializable {
 	private HipconverterFinalOutput hipconverterFinalOutput = new HipconverterFinalOutput();
 	private List<HipconverterInput> hipconverterInputList;
 	
-	private boolean displayOutput = false;
-	private boolean showForm = false;
+	private Boolean displayOutput = new Boolean(false);
+	
+	private Boolean displayInput = new Boolean(false);
 	
 	private HtmlInputHidden addCount = new HtmlInputHidden();
 	
 	
 
-	
-	public FileUploadBean() {
-		//Initialize the abb count to zero to avoid Null pointer. This is used when ever user tries to add new row.
-		 addCount.setValue(0);
+	public String initializeTool() {
+		return this.clearAll();
 	}
-
-	public boolean isShowForm() {
-		return showForm;
-	}
-
-	public void setShowForm(boolean showForm) {
-		this.showForm = showForm;
-	}
-
-	public HipconverterFinalOutput getHipconverterFinalOutput() {
-		return hipconverterFinalOutput;
-	}
-
-	public void setHipconverterFinalOutput(
-			HipconverterFinalOutput hipconverterFinalOutput) {
-		this.hipconverterFinalOutput = hipconverterFinalOutput;
-	}
-
-	public Part getInputFile() {
-		return inputFile;
-	}
-
-	public void setInputFile(Part inputFile) {
-		this.inputFile = inputFile;
-	}
-
-	public boolean isDisplayOutput() {
-		return displayOutput;
-	}
-
-	public void setDisplayOutput(boolean displayOutput) {
-		this.displayOutput = displayOutput;
-	}
-		
 
 	/*
 	 * This method will accept the form data which is sent in from table and convert it into output table
@@ -95,12 +60,10 @@ public class FileUploadBean implements Serializable {
 			
 			this.setHipconverterFinalOutput(seeToolsServiceImpl.getHipConverterOutput(hipconverterFinalInput,((Integer)addCount.getValue()).intValue()));
 			
-			if (this.getHipconverterFinalOutput().getHipconverterOutputList()
-					.size() > 0) {
+			if (this.getHipconverterFinalOutput().getHipconverterOutputList().size() > 0) {
 				SessionManager.addSessionAttribute("hipconverterFinalOutput", this.getHipconverterFinalOutput());
 				System.out.println("display is setting true");
-				this.setDisplayOutput(true);
-				this.setShowForm(false);
+				setOuputFlags();
 			}
 			return "hipConverterTool";
 		} catch (Exception e) {
@@ -109,23 +72,16 @@ public class FileUploadBean implements Serializable {
 		return status;
 	}
 	
-	
-	public String fromOutputToInput(){
-		this.setDisplayOutput(false);
-		this.setShowForm(true);
-		return "hipConverterTool";
-	}
-	
+		
 	public void addNewRow(){
 		
 		System.out.println("Inside add new method");
 		// Add new MyData item to the data list.
         hipconverterInputList.add(new HipconverterInput());
         addCount.setValue(((Integer) addCount.getValue()) + 1);
-        this.setShowForm(true);
-        
+        setInputFlags();
 	}
-	public String showFormDetails(){
+	public String displayInputFormDetails(){
 		
 		String status = new String();
 		try {
@@ -135,7 +91,7 @@ public class FileUploadBean implements Serializable {
 			/*if (this.getHipconverterInputList().size() > 0) {
 				SessionManager.addSessionAttribute("hipconverterInputList", this.getHipconverterInputList());*/
 				System.out.println("show form is setting true");
-				this.setShowForm(true);
+				setInputFlags();
 			/*}*/
 			
 			return "hipConverterTool";
@@ -152,8 +108,9 @@ public class FileUploadBean implements Serializable {
 	public void loadDataFromInputFile(){
 		try {
 			SeeToolsServiceImpl seeToolsServiceImpl = new SeeToolsServiceImpl();
-			
-			hipconverterInputList = ((seeToolsServiceImpl.getInputFormFromFile(inputFile).getHipconverterInputList()));
+			if(inputFile != null){
+				hipconverterInputList = ((seeToolsServiceImpl.getInputFormFromFile(inputFile).getHipconverterInputList()));
+			}
 			
 			//SessionManager.addSessionAttribute("inputFile", this.getInputFile());
 			
@@ -165,37 +122,32 @@ public class FileUploadBean implements Serializable {
 			e.printStackTrace();
 		}
 	}
+	
 	public void drawChart(OutputStream out, Object data) throws IOException {
 
 		HipconverterFinalOutput hipconverterFinalOutput = (HipconverterFinalOutput)SessionManager.getSessionAttribute("hipconverterFinalOutput");
 		SeeToolsServiceImpl seeToolsServiceImpl = new SeeToolsServiceImpl();
 		
-			BufferedImage bufferedImage = seeToolsServiceImpl.getChart(hipconverterFinalOutput).createBufferedImage(500, 500);
-			ImageIO.write(bufferedImage, "gif", out);
-			this.cleanUpVariables();
-			out.flush();
-			out.close();
-		}
+		BufferedImage bufferedImage = seeToolsServiceImpl.getChart(hipconverterFinalOutput).createBufferedImage(500, 500);
+		ImageIO.write(bufferedImage, "gif", out);
+		cleanUpOutputVariables();
+		out.flush();
+		out.close();
+	}
 	
 	/*
 	 * This method clears the uploaded form and file details from the session. 
 	 */
 	public String clearAll(){
-		
-		this.cleanUpVariables();
+		this.hipconverterInputList = null;
+		setInitialFlags();		
 		return "hipConverterTool";
 	}
 	
-	private void cleanUpVariables(){
-		//Remove Session attributes as this is the last step in this process.
-		SessionManager.removeSessionAttribute("hipconverterInputList");
-		SessionManager.removeSessionAttribute("hipconverterFinalOutput");
-		hipconverterInputList = null;
-		hipconverterFinalOutput = null;
-		this.setShowForm(false);
-		this.setDisplayOutput(false);
+	private void cleanUpOutputVariables(){
+		//this.hipconverterInputList = null;
+		this.hipconverterFinalOutput = null;		
 		this.getAddCount().setValue(0);
-		
 	}
 
 	public List<HipconverterInput> getHipconverterInputList() {
@@ -222,4 +174,61 @@ public class FileUploadBean implements Serializable {
 			List<HipconverterInput> hipconverterInputList) {
 		this.hipconverterInputList = hipconverterInputList;
 	}
+	
+
+	
+	public FileUploadBean() {
+		//Initialize the abb count to zero to avoid Null pointer. This is used when ever user tries to add new row.
+		 addCount.setValue(0);
+	}
+
+	
+	public HipconverterFinalOutput getHipconverterFinalOutput() {
+		return hipconverterFinalOutput;
+	}
+
+	public void setHipconverterFinalOutput(
+			HipconverterFinalOutput hipconverterFinalOutput) {
+		this.hipconverterFinalOutput = hipconverterFinalOutput;
+	}
+
+	public Part getInputFile() {
+		return inputFile;
+	}
+
+	public void setInputFile(Part inputFile) {
+		this.inputFile = inputFile;
+	}
+
+	public Boolean getDisplayOutput() {
+		return displayOutput;
+	}
+
+	public void setDisplayOutput(Boolean displayOutput) {
+		this.displayOutput = displayOutput;
+	}
+
+	public Boolean getDisplayInput() {
+		return displayInput;
+	}
+
+	public void setDisplayInput(Boolean displayInput) {
+		this.displayInput = displayInput;
+	}
+	
+
+	private void setInitialFlags(){
+		this.setDisplayInput(false);
+		this.setDisplayOutput(false);
+	}
+	
+	private void setInputFlags(){
+		this.setDisplayInput(true);
+		this.setDisplayOutput(false);
+	}
+
+	private void setOuputFlags(){
+		this.setDisplayOutput(true);
+		this.setDisplayInput(false);
+}
 }

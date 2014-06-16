@@ -12,16 +12,22 @@
 <title>Register User</title>
 </head>
 <body>
-<ui:composition template="/xhtml/common/seeLayout.xhtml">
+	<ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="mainContent">
-			<f:view>
-			<table width="900" height="620">
-			<tr><td valign="middle">
-				<div id="registrationSuccessMsgId" style="color: green;">
-				<B>Registration Successful</B>. A registration email had been sent to your email address. Please click on the link to activate your account.
+			<f:view transient="true">
+				<div id="wrapper1">
+					<div id="form_wrapper" class="form_wrapper">
+						<h:form id="seeLoginFormId" prependId="false">
+							<div class="loginheader active">
+								<div id="registrationSuccessMsgId" style="color: green;">
+									<span style="font-weight: bold">Registration Successful.</span> A registration email had been
+									sent to your email address. Please click on the link to
+									activate your account.
+								</div>
+							</div>
+						</h:form>
+					</div>
 				</div>
-				</td></tr>
-			</table>
 			</f:view>
 		</ui:define>
 	</ui:composition>

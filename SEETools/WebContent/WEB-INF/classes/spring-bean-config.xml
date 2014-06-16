@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="loginBean" name="loginBean"
+		class="com.seetools.presentation.LoginBean" scope="request">
+		<property name="authenticationManager" ref="authenticationManager"></property>
+		<property name="userDetailsService" ref="seeToolsUserDetailsService"></property>
+	</bean>
+
+	<bean id="registerBean" name="registerBean" class="com.seetools.presentation.RegisterBean" scope="request">
+		<property name="authMgr" ref="authenticationManager"></property>
+		<property name="userDetailsSvc" ref="seeToolsUserDetailsService"></property>
+		<property name="seeToolsRegisterServiceImpl" ref="seeToolsRegisterServiceImpl"/>
+	</bean>
+	
+	<bean id="navigator" name="navigator"
+		class="com.seetools.presentation.NavigationControllerBean" scope="request"/>
+	
+	<bean id="forgotPasswordBean" name="forgotPasswordBean" class="com.seetools.presentation.ForgotPasswordBean" scope="request">
+		<property name="forgotPasswordServiceImpl" ref="forgotPasswordServiceImpl"></property>
+	</bean>
+	
+	<bean id="modifyPasswordBean" name="modifyPasswordBean" class="com.seetools.presentation.ModifyPasswordBean" scope="request">
+		<property name="forgotPasswordServiceImpl" ref="forgotPasswordServiceImpl"></property>
+	</bean>
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	
+		
+	<!-- Service Layer Beans - Start -->
+	
+	
+	<bean id="seeToolsRegisterServiceImpl" class="com.seetools.businesslayer.SeeToolsRegisterServiceImpl">
+		<property name="registerDAOImpl" ref="seeToolsRegisterDAO"/>
+		<property name="tokenVerificationDAOImpl" ref="tokenVerificationDAO"/>
+		<property name="emailDAOImpl" ref="emailDAO"/>
+	</bean>
+
+	<bean id="forgotPasswordServiceImpl" class="com.seetools.businesslayer.ForgotPasswordServiceImpl">
+		<property name="tokenVerificationDAO" ref="tokenVerificationDAO"></property>
+		<property name="emailDAO" ref="emailDAO"></property>
+		<property name="loginDAOImpl" ref="loginDAO"></property>
+	</bean>
+	
+	<bean id="seeToolsUserDetailsService" class="com.seetools.daolayer.LoginDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- Service Layer Beans - End -->
+	
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	
+	
+	<!-- Data Access Beans - Start -->
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/seetools" />
+		<property name="username" value="root" />
+		<property name="password" value="admin" />
+	</bean>
+	
+	
+	<bean id="loginDAO" class="com.seetools.daolayer.LoginDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="seeToolsRegisterDAO" class="com.seetools.daolayer.RegisterDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+		
+	<bean id="tokenVerificationDAO" class="com.seetools.daolayer.TokenVerificationDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="emailDAO" class="com.seetools.daolayer.EmailDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- Data Access Beans - End -->
+	
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	
+	<!-- Utility Beans - Start -->
+	
+	
+	
+	<!-- Utility Beans - End -->
+	
+	
+	
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+</beans>

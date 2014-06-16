@@ -32,7 +32,7 @@ public class ChangePasswordController {
 		
 		boolean validToken = false;
 		
-		forgotPasswordServiceImpl = (ForgotPasswordServiceImpl)BeanFactory.getBean("forgotPasswordService");
+		forgotPasswordServiceImpl = (ForgotPasswordServiceImpl)BeanFactory.getBean("forgotPasswordServiceImpl");
 		
 		logger.info("Enter change password token validation");
 		logger.debug("Email: {} , Token: {}", this.email, this.key);

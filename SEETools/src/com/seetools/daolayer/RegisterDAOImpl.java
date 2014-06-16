@@ -8,29 +8,31 @@ import java.sql.Types;
 
 import javax.sql.DataSource;
 
-import org.springframework.dao.DataAccessException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.seetools.dto.UserBean;
 import com.seetools.util.PasswordEncoder;
 
 public class RegisterDAOImpl {
 
+	final Logger logger = LoggerFactory.getLogger(RegisterDAOImpl.class);
 	private DataSource  dataSource;
 	private JdbcTemplate jdbcTemplate;
 	
-	public UserBean registerUser(final UserBean userDto){
+	public UserBean registerUser(final UserBean userDto) {
 		
+		logger.info("Registration process started");
 		final String REGISTER_EMAIL_INSERT_STMT = 
 			"INSERT INTO EMAIL(EmailAddress,CreatedByUserID,CreatedDate,ModifiedByUserID,ModifiedDate) VALUES (?,?,?,?,?)";
 		final String REGISTER_USER_INSERT_STMT = 
 			"INSERT INTO USER(EmailID,FirstName,LastName,MobileNumber,Password,MembershipID,Enabled,CreatedByUserID,CreatedDate,ModifiedByUserID,ModifiedDate) "
 			+ "values (?,?,?,?,?,?,?,?,?,?,?)";
-		try{
+	
 			this.jdbcTemplate =  new JdbcTemplate(dataSource);
 			
 			//KeyHolder to hold generated primary keys for email and user data.
@@ -51,7 +53,7 @@ public class RegisterDAOImpl {
 				}, emailKeyHolder);
 			
 			final Long generatedEmailId = new Long(emailKeyHolder.getKey().longValue());
-			
+			logger.debug("Email Details created with Email ID:", generatedEmailId);
 			//Password Hashing
 			
 			userDto.setPassword(PasswordEncoder.getHashedPassword(userDto.getPassword()));
@@ -77,42 +79,33 @@ public class RegisterDAOImpl {
 				}, userKeyHolder);
 			
 			final Long generatedUserId = new Long(userKeyHolder.getKey().longValue());
+			
+			logger.debug("User Details created with User ID:", generatedUserId);
 			userDto.getEmail().setEmailID(generatedEmailId.toString());
 			userDto.setUserId(generatedUserId.toString());
 			
-			System.out.println("yaaaaaaa hooooooooo");
-			
-			
-			}
-			
-			catch(DataAccessException e){
-				e.printStackTrace();
-			}
-			
-			catch(Exception e){
-				e.printStackTrace();
-			}
-		return userDto;
+			logger.info("Registration process ended");
+			return userDto;
 	}
 
 	
 	public boolean updateRegistrationActivation(String email,String token){
 		
+		logger.info("Update Registration Activation Details - Start");
 		boolean active = false;
 		final String UPDATE_REGISTRATION_ACTIVATION = "update user set enabled = 'Y' where " + 
 				"emailid = (select emailid from email where emailaddress = ?)";
 		
 		this.jdbcTemplate =  new JdbcTemplate(dataSource);
-		
 		int rows = this.jdbcTemplate.update(UPDATE_REGISTRATION_ACTIVATION, new Object[]{email},new int[]{Types.VARCHAR});
 		
 		if(rows == 1){
+			logger.info("");
 			active = true;
 		}
+		logger.info("Update Registration Activation Details - Complete");
 		return active;
 	}
-	
-
 	
 	public DataSource getDataSource() {
 		return dataSource;

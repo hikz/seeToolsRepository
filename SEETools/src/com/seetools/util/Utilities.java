@@ -1,9 +1,11 @@
 package com.seetools.util;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.seetools.daolayer.RegisterDAOImpl;
@@ -35,7 +37,7 @@ public class Utilities {
 	public static boolean validatePassword(String password) {
 		
 		//Pattern to check digit, one lower case, one upper case, special symbols @#$% and minimum 6 characters and maximum 20 characters 
-		final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+		final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[~!@#$%^&*()]).{6,20})";
 		 
 		Pattern pattern;
 		Matcher matcher;
@@ -50,12 +52,8 @@ public class Utilities {
 	
 	public static boolean validateTokenWithEmail(String emailAddress, String token) {
 		
-		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("seetools-bean-config.xml");
 		
-		RegisterDAOImpl registerDAOImpl = (RegisterDAOImpl)applicationContext.getBean("seeToolsRegisterDAO");
-		TokenVerificationDAOImpl tokenVerificationDAOImpl = (TokenVerificationDAOImpl)applicationContext.getBean("tokenVerificationDAO");
-		
-		applicationContext.close();
+		TokenVerificationDAOImpl tokenVerificationDAOImpl = (TokenVerificationDAOImpl)BeanFactory.getBean("tokenVerificationDAO");
 		
 		boolean validToken = false;
 		
@@ -65,6 +63,12 @@ public class Utilities {
 		}
 		
 		return validToken; 
+		
+	}
+	
+	public static String getRandomToken() {
+		
+		return UUID.randomUUID().toString();
 		
 	}
 }

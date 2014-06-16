@@ -24,7 +24,7 @@
 								<h3>LogIn</h3>
 							</div>	
 								<label>Email Address</label>
-								<h:inputText id="tools_username" required="true"
+								<h:inputText id="tools_username" required="true" tabindex="1"
 									value="#{loginBean.email}"
 									requiredMessage="Email Address is mandatory">
 									<!-- <f:validateLength minimum="2" maximum="6"></f:validateLength> -->
@@ -37,14 +37,14 @@
 										<rich:componentControl target="popup" operation="show"
 											event="click" />
 										</h:outputLink></label>
-								<h:inputSecret id="tools_password" required="true"
+								<h:inputSecret id="tools_password" required="true" tabindex="2"
 									value="#{loginBean.password}"
 									requiredMessage="Password is mandatory">
 									<f:validator validatorId="PasswordValidator" />
 									</h:inputSecret>
 								<h:message for="tools_password" styleClass="error"></h:message>
 							<div class="bottom">
-								<h:commandButton value="Login" action="#{loginBean.login}"></h:commandButton>
+								<h:commandButton value="Login" action="#{loginBean.login}" tabindex="3"></h:commandButton>
 								<h:commandButton value="Clear" type="reset"></h:commandButton>
 							
 								 <h:commandLink action="#{navigator.navigate}" value="No Account? Click me to register" immediate="true" style="color:blue;">
@@ -73,7 +73,7 @@
 								    <li>Maximum Length is 20</li>
 								    <li>One lower case</li>
 								    <li>One upper case</li>
-								    <li>Special Characters allowed are @#$%</li>
+								    <li>Any Special Character</li>
 								 </ul>
 							</rich:popupPanel>
 							

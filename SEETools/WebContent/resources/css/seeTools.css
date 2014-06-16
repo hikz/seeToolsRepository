@@ -121,7 +121,7 @@
 {
 	 position:absolute;
      width:300px;
-     height:50px;
+     height:65px;
      z-index:15;
      top:15%;
      left:50%;
@@ -149,9 +149,9 @@
      width:800px;
      height:700px;
      z-index:15;
-     /* top:60%;
-     left:23%; */
-     margin:200px 0 0 50px;
+     top:65%;
+     left:50%;
+     margin:-350px 0 0 -400px;
      -moz-box-shadow: 1px 1px 7px #003333;
 	-webkit-box-shadow: 1px 1px 7px #003333;
 	box-shadow: 1px 1px 7px #003333;
@@ -250,6 +250,10 @@ form.loginheader {
 	color: #222;
 }
 
+.form_wrapper_tool img {
+	margin: 0px auto;
+}
+
 .wrapper1 {
 	width: 100%;
 	margin: 0 auto;
@@ -283,6 +287,10 @@ form.loginheader {
 }
 
 .tool_ouput_border tr{
+	border: 1px solid #EEEEEE;
+}
+
+.tool_ouput_img_border {
 	border: 1px solid #EEEEEE;
 }
 
