@@ -309,6 +309,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 	width:100%;
 }
 
+
 .homepage li {
 	display: inline;
 	float:left;
@@ -336,9 +337,8 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 .homepage li h3 {
 	display: block;
 	width: 100%;
-	height: 45px;
-	margin: 0;
-	padding: 0 0 0 0;
+	height: 25px;	
+	padding: 10px 0 0 0;
 	vertical-align: middle;
 	font-weight: bold; 
 	line-height: normal;
@@ -356,7 +356,7 @@ div.wrapper h2,div.wrapper h3,div.wrapper h4,div.wrapper h5,div.wrapper h6
 }
 
 .homepage p {
-	margin: 0 0 25px 0;
+	margin: 0 0 10px 0;
 	padding: 0;
 	line-height: 1.6em;
 }
@@ -418,6 +418,11 @@ form.loginheader {
 	top: 50px;
 }
 
+.form_wrapper_display p{
+	text-align: left;
+	margin-left: 25px;
+	margin-right: 15px;	
+}
 
 .form_wrapper h3 {
 	padding: 20px 20px 20px 20px;
@@ -763,3 +768,9 @@ background-color: #999999;
 	border: 1px solid #EEEEEE;
 	margin: 0 0 0 10px;
 } */
+
+@font-face{ 
+font-family: 'OpenSans';
+src: url('#{resource['fonts/OpenSans.woff']}');
+src: url('#{resource['fonts/OpenSans.woff']}') format('woff'); 
+}
