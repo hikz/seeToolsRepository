@@ -32,8 +32,9 @@
 							</h:outputLink>
 						</div>
 						<div id="downloadSampleFile" class="col3">
-							<h:commandLink action="#{fileDownloadBean.download}"
-								value="Download Sample File" />
+							<h:commandLink action="#{fileDownloadBean.downLoad}" value="Download Sample File">
+								<f:param  name="fromTool" value="hipConverter"/>
+							</h:commandLink>
 						</div>
 					</h:form>
 				</div>

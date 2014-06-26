@@ -22,5 +22,13 @@ public static void addRequestAttribute(String key, Object value) {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		return externalContext.getRequestMap();
 	}
+
+	public static Map<String, String> getRequestParameterMap(){
+		
+		return FacesManager.getExternalContext().getRequestParameterMap();
+	}
 	
+	public static String getRequestParameter(String paramName){
+		return getRequestParameterMap().get(paramName);
+	}
 }

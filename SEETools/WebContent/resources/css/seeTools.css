@@ -250,6 +250,9 @@ form.loginheader {
 	color: #222;
 }
 
+.form_wrapper_tool td {
+	
+}
 .form_wrapper_tool img {
 	margin: 0px auto;
 }
@@ -284,10 +287,13 @@ form.loginheader {
 
 .tool_ouput_border td{
 	border: 1px solid #EEEEEE;
+	padding: 0px;
+	height: 10px;
 }
 
 .tool_ouput_border tr{
 	border: 1px solid #EEEEEE;
+	height: 10px;
 }
 
 .tool_ouput_img_border {

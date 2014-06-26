@@ -1,53 +1,80 @@
 package com.seetools.presentation;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Properties;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.seetools.presentation.common.FacesManager;
+import com.seetools.presentation.common.RequestManager;
+import com.seetools.util.Constants;
 
 @ManagedBean
 @ViewScoped
 public class FileDownloadBean {
-
-	private static final int DEFAULT_BUFFER_SIZE = 10240;
-	private String filePath = "C:\\IN\\hipconverter_reader_input.xls";
-
+	
+	final Logger logger = LoggerFactory.getLogger(FileDownloadBean.class);
+	
+	
 	public void downLoad() throws IOException {
 		
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletResponse response = (HttpServletResponse) context
-				.getExternalContext().getResponse();
-		File file = new File(filePath);
-		if (!file.exists()) {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+		FacesContext facesContext = FacesManager.getFacesContext();
+		ExternalContext ec = facesContext.getExternalContext();
+		OutputStream outputStream = (OutputStream)ec.getResponseOutputStream();
+		
+		String resourceName = getResourceNameForTool();
+		logger.debug("Sample Input File Resource");
+		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceName);
+		
+		if (is == null) {
+			ec.responseSendError(HttpServletResponse.SC_NOT_FOUND, "File currently not found. Please try later");
 			return;
 		}
-		response.reset();
-		response.setBufferSize(DEFAULT_BUFFER_SIZE);
-		response.setContentType("application/vnd.ms-excel");
-		response.setHeader("Content-Length", String.valueOf(file.length()));
-		response.setHeader("Content-Disposition", "attachment;filename=\"" + file.getName() + "\"");
+		ec.responseReset();
+		ec.setResponseBufferSize(Constants.File.DEFAULT_BUFFER_SIZE);
+		ec.setResponseContentType(Constants.File.FILE_DOWNLOAD_CONTENT_TYPE);
 		
-		BufferedInputStream input = null;
-		BufferedOutputStream output = null;
+		//ec.setResponseHeader("Content-Length", String.valueOf(file.length()));
+		ec.setResponseHeader(Constants.File.FILE_DOWNLOAD_HEADER_NAME, "attachment;filename=\"" + resourceName + "\"");
+		
+		BufferedInputStream buffInputStream = null;
+		
 		try {
-			input = new BufferedInputStream(new FileInputStream(file), DEFAULT_BUFFER_SIZE);
-			output = new BufferedOutputStream(response.getOutputStream(), DEFAULT_BUFFER_SIZE);
-			byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
+			buffInputStream = new BufferedInputStream(is, Constants.File.DEFAULT_BUFFER_SIZE);
+			byte[] buffer = new byte[Constants.File.DEFAULT_BUFFER_SIZE];
 			int length;
-			while ((length = input.read(buffer)) > 0) {
-				output.write(buffer, 0, length);
+			while ((length = buffInputStream.read(buffer)) > 0) {
+				outputStream.write(buffer, 0, length);
 			}
 		} finally {
-			input.close();
-			output.close();
+			buffInputStream.close();
+			outputStream.close();
 		}
-		context.responseComplete();
+		facesContext.responseComplete();
+	}
+
+	
+	private String getResourceNameForTool() throws IOException {
+		
+		String parameterValue = RequestManager.getRequestParameter("fromTool");
+		
+		if(parameterValue != null) {
+			Properties toolInputFileNamesProp = new Properties();
+			InputStream toolInputFileNamesStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(Constants.File.TOOL_INPUT_FILE_NAMES);
+			
+			toolInputFileNamesProp.load(toolInputFileNamesStream);
+			return (String)toolInputFileNamesProp.get(parameterValue);
+		}
+		return null;
 	}
 }
