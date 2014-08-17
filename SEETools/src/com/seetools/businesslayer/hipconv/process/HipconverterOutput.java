@@ -2,6 +2,7 @@ package com.seetools.businesslayer.hipconv.process;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class HipconverterOutput implements Serializable {
 
@@ -18,7 +19,12 @@ public class HipconverterOutput implements Serializable {
 		return protonCrossSection;
 	}
 	public void setProtonCrossSection(double protonCrossSection) {
-		this.protonCrossSection = protonCrossSection;
+		
+		BigDecimal bigDecimal = new BigDecimal(protonCrossSection);
+	    DecimalFormat format = new DecimalFormat("0.##E0");
+	    //System.out.println(format.format(bigDecimal));
+		this.protonCrossSection = Double.parseDouble(format.format(bigDecimal));
+		
 	}
 	
 	

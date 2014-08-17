@@ -18,27 +18,24 @@
 		template="/xhtml/tools/seeContentLayout.xhtml">
 
 		<ui:define name="toolcontent">
-			<div id="toolHeading">
-				<p id="toolContentHeader">HIP Converter</p>
+			<div id="toolHeading" class="text-center">
+				<p id="toolContentHeader" class="toolContentHeader">HIP Converter</p>
 			</div>
-			<div id="toolDetails">
+			<div id="toolDetails" class="toolDetails">
 
-				<div id="toolInfo" class="col3">
+				<div id="toolInfo" class="toolInfo">
 					<h:form>
-						<div id="popUpInfo" class="col3">
-							<h:outputLink>What is HIP Converter?
-						<rich:componentControl target="popup" operation="show"
-									event="click" />
-							</h:outputLink>
+						<div id="popUpInfo" class="popUpInfo">
+							<a href="#myModal" class="btn btn-link" data-toggle="modal">What is HIP Converter?</a>							
 						</div>
-						<div id="downloadSampleFile" class="col3">
+						<div id="downloadSampleFile" class=" downloadSampleFile">
 							<h:commandLink action="#{fileDownloadBean.downLoad}" value="Download Sample File">
 								<f:param  name="fromTool" value="hipConverter"/>
 							</h:commandLink>
 						</div>
 					</h:form>
 				</div>
-				<div id="fileUploadInput" class="form_wrapper_tool col3">
+				<div id="fileUploadInput" class=" fileUploadInput form_wrapper_tool">
 					<h:form enctype="multipart/form-data" id="hipConverterForm">
 						<h:inputFile id="hipConverterFileId"
 							value="#{fileUploadBean.inputFile}" required="true"
@@ -50,19 +47,18 @@
 
 						<h:inputHidden binding="#{fileUploadBean.addCount}"
 							converter="javax.faces.Integer" />
-						<h:commandButton value="Upload Input"
-							action="#{fileUploadBean.displayInputFormDetails}" />
-						<h:commandButton value="Clear All" immediate="true"
+						<h:commandButton value="Upload Input"   styleClass="btn btn-primary"
+							action="#{fileUploadBean.displayInputFormDetails}" /> &nbsp; &nbsp; &nbsp; &nbsp;
+						<h:commandButton value="Clear Uploaded Data" immediate="true"  styleClass="btn btn-default"
 							action="#{fileUploadBean.clearAll}" />
 					</h:form>
 				</div>
 
-				<div id="tooOutputData" class="form_wrapper_tool col3">
+				<div id="tooOutputData" class="tooOutputData">
 
-						<h:panelGroup id="hipPanelForm" columns="1"
-							rendered="#{fileUploadBean.displayInput}">
+						<h:panelGroup id="hipPanelForm" columns="1" rendered="#{fileUploadBean.displayInput}">
 							<h:form id="inputFormData">
-								<h3>Uploaded Input Data</h3>
+								<h3 class="text-center">Uploaded Input Data</h3>
 								<h:dataTable id="hipOutputForm" var="hipconverterInput"
 									value="#{fileUploadBean.hipconverterInputList}"
 									headerClass="col_tool_output_header"
@@ -70,24 +66,26 @@
 
 									<h:column>
 										<f:facet name="header">LET</f:facet>
-										<h:inputText value="#{hipconverterInput.let}" />
+										<h:inputText value="#{hipconverterInput.let}" class="form-control" />
 									</h:column>
 
 
 									<h:column>
 										<f:facet name="header">XSec</f:facet>
-										<h:inputText value="#{hipconverterInput.xsec}" />
+										<h:inputText value="#{hipconverterInput.xsec}" class="form-control" />
 									</h:column>
 
 								</h:dataTable>
-								<div class="bottom">
+								<br></br>
+								<div class="col-lg-8 text-center col-lg-offset-2">
 									<h:inputHidden binding="#{fileUploadBean.addCount}"
 										converter="javax.faces.Integer" />
 									<h:commandButton value="Show Output"
-										action="#{fileUploadBean.fetchOutput}"></h:commandButton>
+										action="#{fileUploadBean.fetchOutput}"  styleClass="btn btn-primary"></h:commandButton> &nbsp;
 									<h:commandButton value="Add New Row"
-										action="#{fileUploadBean.addNewRow}"></h:commandButton>
+										action="#{fileUploadBean.addNewRow}"  styleClass="btn btn-default"></h:commandButton>
 								</div>
+								<br></br>
 							</h:form>
 						</h:panelGroup>
 
@@ -95,79 +93,83 @@
 							rendered="#{fileUploadBean.displayOutput}">
 
 							<h:form id="outputData">
-							<h3>Output Data</h3>
-								<div style="float:left;width:35%">
+							<h3 class="text-center">Output</h3>
+								<div class="col-lg-4">
+								<h4 class="text-center">Data</h4>
 								<h:dataTable id="hipOutput" var="hipOutput"
 									value="#{fileUploadBean.hipconverterFinalOutput.hipconverterOutputList}"
 									redered="#{fileUploadBean.displayOutput}"
-									headerClass="col_tool_output_header"
-									styleClass="tool_ouput_border">
+									headerClass="outputDataTableHeader"
+									styleClass="outputDataTable"
+									columnClasses="outputDataColumn1,outputDataColumn2"
+									rowClasses="outputDataTableOddRow,outputDataTableEvenRow">
 
 									<h:column>
 										<f:facet name="header">Energy</f:facet>
-										<h:outputText value="#{hipOutput.energy}" />
+										<h:outputText value="#{hipOutput.energy}"/>
 									</h:column>
 
 									<h:column>
 										<f:facet name="header">Proton Cross Section</f:facet>
-										<h:outputText value="#{hipOutput.protonCrossSection}" />
+										<h:outputText value="#{hipOutput.protonCrossSection}"/>
 									</h:column>
 								</h:dataTable>
+								<br></br>
+								<div class="col-lg-8 text-center col-lg-offset-2">
+									<h:inputHidden binding="#{fileUploadBean.addCount}"
+										converter="javax.faces.Integer" />
+
+									<h:commandButton value="Edit Input"
+										styleClass="btn btn-primary"
+										action="#{fileUploadBean.displayInputFormDetails}" />
 								</div>
-								<div style="float:right;width:65%;">
-								<rich:panel styleClass="tool_ouput_img_border">
-									<a4j:mediaOutput type="image/jpeg" classid="toolsChart"
-										style="width:450px;height:450px;" element="img"
+							</div>
+								<div class="col-lg-8">
+								<h4 class="text-center">Graph</h4>
+									<a4j:mediaOutput type="image/jpeg" classid="toolsChart"  styleClass="tool_ouput_img"
+										element="img"
 										cacheable="false" session="true"
 										createContent="#{fileUploadBean.drawChart}"
 										mimeType="image/jpeg">
 
 									</a4j:mediaOutput>
-								</rich:panel>
 								</div>
-								<br></br>
-								<div class="bottom">
-									<h:inputHidden binding="#{fileUploadBean.addCount}"
-										converter="javax.faces.Integer" />
-
-									<h:commandButton value="Edit Input"
-							action="#{fileUploadBean.displayInputFormDetails}" />
-								</div>
+								
 							</h:form>
 						</h:panelGrid>
 					
 				</div>
 			</div>
-			<rich:popupPanel id="popup" modal="true" autosized="true"
-				shadowDepth="0px" shadowOpacity="0px" resizeable="false"
-				controlsClass="colPopUpControls" width="400"
-				styleClass="colPopUpBody">
-
-				<f:facet name="header">
-					<b><h:outputText value="Hip Converter Tool Description" /></b>
-				</f:facet>
-				<f:facet name="controls">
-					<h:outputLink value="#"
-						onclick="#{rich:component('popup')}.hide(); return false;">Close X</h:outputLink>
-				</f:facet>
-				<p>This tool enables one to get the equivalent proton upset
-					cross section versus energy when the heavy ion upset cross sections
-					versus Linear Energy Transfer (LET) are given.</p>
-				<h3>How to use this tool</h3>
-				<ul>
-					<li>Download the MS Excel template file from the link
-						"Download Sample File".</li>
-					<li>Either modify/add the excel sheet values or upload the
-						same document.</li>
-					<li>Once uploaded, you can once again modify/add the values on
-						the screen which are uploaded from the file</li>
-					<li>After finalizing the input, you can view the output using
-						"Show Output" button.</li>
-				</ul>
-				<p>Reference: J.Gregory Rollins, "Estimation of Proton Upset
-					Rates from Heavy Ion Test Data", IEEE TRANSACTIONS ON NUCLEAR
-					SCIENCE, VOL.37,NO.6,DECEMBER 1990</p>
-			</rich:popupPanel>
+			<div id="myModal" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Hip Converter Tool Description</h4>
+						</div>
+						<div class="modal-body">
+							<p>This tool enables one to get the equivalent proton upset
+								cross section versus energy when the heavy ion upset cross
+								sections versus Linear Energy Transfer (LET) are given.</p>
+							<h3>How to use this tool</h3>
+							<ul>
+								<li>Download the MS Excel template file from the link
+									"Download Sample File".</li>
+								<li>Either modify/add the excel sheet values or upload the
+									same document.</li>
+								<li>Once uploaded, you can once again modify/add the values
+									on the screen which are uploaded from the file</li>
+								<li>After finalizing the input, you can view the output
+									using "Show Output" button.</li>
+							</ul>
+							<p>Reference: J.Gregory Rollins, "Estimation of Proton Upset
+								Rates from Heavy Ion Test Data", IEEE TRANSACTIONS ON NUCLEAR
+								SCIENCE, VOL.37,NO.6,DECEMBER 1990</p>
+						</div>
+					</div>
+				</div>
+			</div>			
 		</ui:define>
 	</ui:composition>
 </h:body>

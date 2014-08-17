@@ -5,82 +5,100 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
+
 </head>
 <body>
 
-	
 	<ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="mainContent">
-			<f:view transient="true">
-				<div class="wrapper1 col2">
-					<div id="form_wrapper" class="form_wrapper">
-						<h:form id="seeLoginFormId" prependId="false">
-							<div class="loginheader active">
-								<h3>LogIn</h3>
-							</div>	
-								<label>Email Address</label>
-								<h:inputText id="tools_username" required="true" tabindex="1"
-									value="#{loginBean.email}"
-									requiredMessage="Email Address is mandatory">
-									<!-- <f:validateLength minimum="2" maximum="6"></f:validateLength> -->
-									<f:validator validatorId="EmailValidator"/>
-								</h:inputText>
-								<h:message for="tools_username" styleClass="error"></h:message>
-								
-								<label>Password &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
-								<h:outputLink style="display:inline;float:right;color:blue;">Password Instructions
-										<rich:componentControl target="popup" operation="show"
-											event="click" />
-										</h:outputLink></label>
-								<h:inputSecret id="tools_password" required="true" tabindex="2"
-									value="#{loginBean.password}"
-									requiredMessage="Password is mandatory">
-									<f:validator validatorId="PasswordValidator" />
-									</h:inputSecret>
-								<h:message for="tools_password" styleClass="error"></h:message>
-							<div class="bottom">
-								<h:commandButton value="Login" action="#{loginBean.login}" tabindex="3"></h:commandButton>
-								<h:commandButton value="Clear" type="reset"></h:commandButton>
-							
-								 <h:commandLink action="#{navigator.navigate}" value="No Account? Click me to register" immediate="true" style="color:blue;">
-								<f:param name="fromTool" value="register" />
-								</h:commandLink>
-								<h:commandLink action="#{navigator.navigate}" value="Forgot Password?" immediate="true" style="color:blue;">
-								<f:param name="fromTool" value="forgotPassword" />
-								</h:commandLink>
-							</div>
-							
-							<rich:popupPanel id="popup" autosized="true" 
-								shadowDepth="0px" shadowOpacity="0px" resizeable="false"
-								controlsClass="colPopUpControls" width="400"
-								styleClass="colPopUpBody">
+			<div class="container container-height">
+				<div id="login-form" class="col-lg-12 content-layout">
+					<h:form id="seeLoginFormId" prependId="false"
+						styleClass="form-horizontal">
+						<div class="panel panel-primary">
 
-								<f:facet name="header">
-									<b><h:outputText value="Password Instructions" /></b>
-								</f:facet>
-								<f:facet name="controls">
-									<h:outputLink value="#"
-										onclick="#{rich:component('popup')}.hide(); return false;">Close X</h:outputLink>
-								</f:facet>
-								<p>Password should contain the following instructions</p>
-								<ul>
-									<li>Minimum Length is 6</li>
-								    <li>Maximum Length is 20</li>
-								    <li>One lower case</li>
-								    <li>One upper case</li>
-								    <li>Any Special Character</li>
-								 </ul>
-							</rich:popupPanel>
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">Login</h3>
+							</div>
+							<div class="panel-body">
+
+								<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+									<p class="text-danger text-center">
+										Your login attempt was not successful due to
+										<h:outputText
+											value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+										. Please try again
+									</p>
+								</c:if>
+
+								<div class="form-group">
+									<label class="control-label">Email
+										Address</label>
+									<!-- <div class="col-xs-7"> -->
+									<h:inputText id="tools_username" required="true" tabindex="1"
+										styleClass="form-control"
+										value="#{loginBean.email}"
+										requiredMessage="Email Address is mandatory">
+									</h:inputText>
+									<h:message for="tools_username" styleClass="help-block"></h:message>
+									<!-- </div> -->
 							
-						</h:form>
-					</div>
+									<label class="control-label">Password</label>
+
+									<h:inputSecret id="tools_password" required="true" tabindex="2"
+										class="form-control"
+										value="#{loginBean.password}"
+										requiredMessage="Password is mandatory">
+									</h:inputSecret>
+									<!-- </div> -->
+									<br></br>
+									<h:commandButton value="Login" action="#{loginBean.login}" id="loginButton"
+										tabindex="3" styleClass="btn btn-primary btn-block form-control"></h:commandButton>
+								</div>
+								<div class="col-xs-offset-3">
+									<h:commandLink action="#{navigator.navigate}" value="Register"
+										immediate="true" styleClass="btn btn-link pull-left">
+										<f:param name="fromTool" value="register" />
+									</h:commandLink>
+									<h:commandLink action="#{navigator.navigate}"
+										value="Forgot Password?" immediate="true"
+										styleClass="btn btn-link ">
+										<f:param name="fromTool" value="forgotPassword" />
+									</h:commandLink>
+								</div>
+								<!-- Modal HTML -->
+								<div id="myModal" class="modal fade">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">&times;</button>
+												<h4 class="modal-title">Password Instructions</h4>
+											</div>
+											<div class="modal-body">
+												<p>Password should contain the following instructions</p>
+												<ul>
+													<li>Minimum Length is 6</li>
+													<li>Maximum Length is 20</li>
+													<li>One lower case</li>
+													<li>One upper case</li>
+													<li>Any Special Character</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</h:form>
 				</div>
-			</f:view>
+			</div>
 		</ui:define>
 	</ui:composition>
 

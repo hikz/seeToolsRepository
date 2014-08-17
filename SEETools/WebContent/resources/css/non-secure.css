@@ -1,0 +1,78 @@
+@CHARSET "ISO-8859-1";
+
+.form-control {
+	width: 80%;
+}
+
+.row-form {
+/* 	-moz-box-shadow: 1px 1px 7px #003333;
+	-webkit-box-shadow: 1px 1px 7px #003333;
+	box-shadow: 1px 1px 7px #003333;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;  */
+	padding-bottom: 5%; 
+	margin-top: 5%;
+}
+
+.color-text {
+	color : black;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.panel {
+	margin-top: 5%;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+.container > .panel-group > .panel-default > .panel-heading .panel-title {
+	background: black;
+	background-color: black;
+	color: white;
+}
+
+.panel-heading a:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";    
+    float: right; 
+    color: grey; 
+}
+.panel-heading a.collapsed:after {
+    content: "\e080";
+}
+
+.info-text {
+	width:100%;
+	margin-top: 10px;
+	margin-bottom: 30px;	
+	text-align: center;
+	color:blue;
+}
+
+.info-text-success {
+	color:green;
+}
+
+#seeLoginFormId .form-control {
+	width: 80%;
+	margin-top: 5px;
+}
+
+
+#seeLoginFormId .form-group {
+	padding-left: 20%;
+	
+}
+
+#seeLoginFormId  .panel {
+	margin-top: 5%;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+#seeLoginFormId #loginButton {
+	font-size: 16px;
+	font-weight: 700;
+	}

@@ -12,68 +12,103 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
 	<ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="mainContent">
 
-			<h:outputStylesheet>
-        .rf-ac {
-        width: 500px;
-        }
- 
-        .rf-ac-itm-c {
-        height: 220px;
-        }
-    </h:outputStylesheet>
-			<f:view transient="true">
-				<div class="wrapper1 col2">
-					<div id="form_wrapper" class="form_wrapper_display">
-						<h3>Frequently Asked Question</h3>
+			<div class="container container-height">
+				<div id="faqId" class="col-lg-12 content-layout">
 
-						<h:form>
-							<rich:accordion switchType="client" itemHeaderClass="col1" itemActiveRightIcon="/resources/images/up.jpg" itemInactiveRightIcon="/resources/images/down1.jpg">
-								<rich:accordionItem header="What is Radiation Tool Set?">
-									<p>
-									Radiation Tool Set is a WWW based set of engineering tools providing design engineers and 
-									scientists necessary analytical tools to evaluate electronic components for radiation effects on space, avionics, networks, and medical devices. 
-									With the Radiation Tool Set, you can analyze SEU data, Fit proton test data to a Weibull, fit heavy ion data to the 7-parameter HICUP  model, 
-									look up radiation data on a large collection of parts database
-									</p>
-								</rich:accordionItem>
-								<rich:accordionItem header="What are the features of Radiation Tool Set?">
-									<p>
-									An important feature of Radiation Tool Set is the possibility to add more tools that is necessary for radiation analysis and assessment. 
-									Another feature is the Radiation Tool Set working environment. Each user has a permanent personal account. 
-									This approach ensures that the inputs to the models and the results of the computations are not lost when leaving 
-									Radiation Tool Set. Comparison of different runs is easy; thanks to the possibility to define several projects, each 
-									characterized by its own set of inputs. 
-									</p>
-								</rich:accordionItem>
-								<rich:accordionItem header="How do I subscribe?">
-									<p>
-									Simply fill in this form. Please take the time to fill all the queries (it takes less than 3 minutes!), it allows us to better serve you. 
-									An annual fee of $300 will be required. This is necessary in order to add more tools and keep the web-site in order.
-									</p>
-								</rich:accordionItem>
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">1. What is Radiation Tool Set?</a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<p>Radiation Tool Set is a WWW based set of engineering
+										tools providing design engineers and scientists necessary
+										analytical tools to evaluate electronic components for
+										radiation effects on space, avionics, networks, and medical
+										devices. With the Radiation Tool Set, you can analyze SEU
+										data, Fit proton test data to a Weibull, fit heavy ion data to
+										the 7-parameter HICUP model, look up radiation data on a large
+										collection of parts database</p>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">2. What are the features of Radiation Tool Set?</a>
+								</h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse">
+								<div class="panel-body">
+									<p>An important feature of Radiation Tool Set is the
+										possibility to add more tools that is necessary for radiation
+										analysis and assessment. Another feature is the Radiation Tool
+										Set working environment. Each user has a permanent personal
+										account. This approach ensures that the inputs to the models
+										and the results of the computations are not lost when leaving
+										Radiation Tool Set. Comparison of different runs is easy;
+										thanks to the possibility to define several projects, each
+										characterized by its own set of inputs.</p>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion"
+										href="#collapseThree">3. How do I subscribe?</a>
+								</h4>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse">
+								<div class="panel-body">
+									<p>Simply fill in this form. Please take the time to fill
+										all the queries (it takes less than 3 minutes!), it allows us
+										to better serve you. An annual fee of $300 will be required.
+										This is necessary in order to add more tools and keep the
+										web-site in order.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- div class="row col-centered row-form">
+						<div class="form-group text-primary text-center">
+							<h3>Frequently Asked Questions</h3>
+						</div>
+						<div id="questions">
+							
+								
+							
+								
 								<rich:accordionItem header="What is the access policy?">
 									<p>
-									Please consult the Terms and Conditions, <a href="#">here</a>. 
+										Please consult the Terms and Conditions, <a href="#">here</a>.
 									</p>
 								</rich:accordionItem>
-								<rich:accordionItem header="How can I send feedback to the Radiation Tool Set team (suggestions, comments, bug reports)?">
-									<p>
-									You can use the bottom tool bar included on all the Radiation Tool Set pages to either report a bug, access the Radiation Tool Set forum or contact the Radiation Tool Set team.
-									</p>
+								<rich:accordionItem
+									header="How can I send feedback to the Radiation Tool Set team (suggestions, comments, bug reports)?">
+									<p>You can use the bottom tool bar included on all the
+										Radiation Tool Set pages to either report a bug, access the
+										Radiation Tool Set forum or contact the Radiation Tool Set
+										team.</p>
 								</rich:accordionItem>
-								<rich:accordionItem header="What kind of software do I need to run Radiation Tool Set?">
-									<p>In order to use the Radiation tools on this server, you do not need any additional software, just a client application such as FireFox, Internet Explorer or Safari. Radiation Tool Set is known to work fine on a wide variety of browsers.</p> 
+								<rich:accordionItem
+									header="What kind of software do I need to run Radiation Tool Set?">
+									<p>In order to use the Radiation tools on this server, you
+										do not need any additional software, just a client application
+										such as FireFox, Internet Explorer or Safari. Radiation Tool
+										Set is known to work fine on a wide variety of browsers.</p>
 								</rich:accordionItem>
-							</rich:accordion>
-						</h:form>
-					</div>
+						
+						</div>
+					</div> -->
 				</div>
-			</f:view>
+			</div>
 		</ui:define>
 	</ui:composition>
 

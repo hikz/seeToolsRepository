@@ -15,83 +15,106 @@
 
 	<ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="mainContent">
-			<f:view   transient="true">
-				<div class="wrapper1 col2">
-					<div id="form_wrapper" class="form_wrapper">
-						<h:form id="seeRegisterFormId">
-							<div class="loginheader active">
-								<h3>Register</h3>
-							</div>	
-								<label>First Name <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
-								<h:inputText  id="seeFirstNameInId" required="true" tabindex="1"
+					<div class="container container-height">
+					<div id="register-form" class="col-lg-12 content-layout">
+						<h:form styleClass="form-horizontal">
+						<div class="panel panel-primary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title text-center">Registration</h3>
+						</div>
+						<div class="panel-body">	
+							<div class="form-group">
+								<label class="control-label col-xs-4">First Name <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
+								<div class="col-xs-7">
+								<h:inputText  id="seeFirstNameInId" required="true" tabindex="1" styleClass="form-control"
 									value="#{userBean.firstName}" requiredMessage="First Name required">
 									<f:validateLength maximum="20"></f:validateLength>
 								</h:inputText>
-								<h:message for="seeFirstNameInId" styleClass="error"></h:message>
-								<label>Last Name <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
-								<h:inputText id="seeLastNameInId" required="true"  tabindex="2"
+								<h:message for="seeFirstNameInId" styleClass="help-block"></h:message>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-xs-4">Last Name <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
+								<div class="col-xs-7">
+								<h:inputText id="seeLastNameInId" required="true"  tabindex="2" styleClass="form-control"
 									value="#{userBean.lastName}" requiredMessage="Last Name required">
 									<f:validateLength maximum="20"></f:validateLength>
 								</h:inputText>
-								<h:message for="seeLastNameInId" styleClass="error"></h:message>
-								<label>Mobile Number</label>
-								<h:inputText id="seeMobileNumberInId" tabindex="3"
+								<h:message for="seeLastNameInId"  styleClass="help-block"></h:message>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-xs-4">Mobile Number</label>
+								<div class="col-xs-7">
+								<h:inputText id="seeMobileNumberInId" tabindex="3" styleClass="form-control"
 									value="#{userBean.mobileNumber}"
 									  validatorMessage="The length should be 10 characters"
 									converterMessage="Phone number should only digits">
 									<f:convertNumber integerOnly="true" type="number"></f:convertNumber>
 									<f:validateLength maximum="10" minimum="10"></f:validateLength>
 								</h:inputText>
-								<h:message for="seeMobileNumberInId" styleClass="error"></h:message>
-								<label>Email Address <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
-								<h:inputText id="seeEmailAddressInId"  tabindex="4"
+								<h:message for="seeMobileNumberInId"  styleClass="help-block"></h:message>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-xs-4">Email Address <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
+								<div class="col-xs-7">
+								<h:inputText id="seeEmailAddressInId"  tabindex="4" styleClass="form-control"
 									value="#{userBean.email.emailAddress}" required="true"
 									requiredMessage="Email Address required">
 									<f:validator validatorId="RegistrationEmailValidator" />
 								</h:inputText>
-								<h:message for="seeEmailAddressInId" styleClass="error"></h:message>
-								<label>Password <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline;"/>  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
-								<h:outputLink style="display:inline;float:right;color:blue;">Password Instructions
-										<rich:componentControl target="popup" operation="show"
-											event="click" />
-										</h:outputLink></label> 
-								<h:inputSecret id="seePasswordInId" required="true"  tabindex="5"
+								<h:message for="seeEmailAddressInId"  styleClass="help-block"></h:message>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-xs-4">Password <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline;"/> 
+								</label> 
+								<div class="col-xs-7">
+								<h:inputSecret id="seePasswordInId" required="true"  tabindex="5" styleClass="form-control"
 									value="#{userBean.password}"
 									requiredMessage="Please enter password">
 									<f:validator validatorId="PasswordValidator" />
 									</h:inputSecret>
-								<h:message for="seePasswordInId" styleClass="error"></h:message>
-						
-							<div class="bottom">
-								<h:commandButton value="Register" action="confirmRegistration" tabindex="6"></h:commandButton>
-								<h:commandButton value="Clear" type="reset"></h:commandButton>
+									<a href="#myModal" class="btn btn-link" data-toggle="modal">Password Instructions</a>
+								<h:message for="seePasswordInId"  styleClass="help-block"></h:message>
+								</div>
+							</div>							
+							<div id="myModal" class="modal fade">
+							        <div class="modal-dialog">
+							            <div class="modal-content">
+							                <div class="modal-header">
+							                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							                    <h4 class="modal-title">Password Instructions</h4>
+							                </div>
+											<div class="modal-body">
+												<p>Password should contain the following instructions</p>
+												<ul>
+													<li>Minimum Length is 6</li>
+													<li>Maximum Length is 20</li>
+													<li>One lower case</li>
+													<li>One upper case</li>
+													<li>Any Special Character</li>
+												</ul>
+											</div>
+										</div>
+							        </div>
+							    </div>
 							</div>
-
-							<rich:popupPanel id="popup" autosized="true"
-								shadowDepth="0px" shadowOpacity="0px" resizeable="false"
-								controlsClass="colPopUpControls" width="400"
-								styleClass="colPopUpBody">
-
-								<f:facet name="header">
-									<b><h:outputText value="Password Instructions" /></b>
-								</f:facet>
-								<f:facet name="controls">
-									<h:outputLink value="#"
-										onclick="#{rich:component('popup')}.hide(); return false;">Close X</h:outputLink>
-								</f:facet>
-								<p>Password should contain the following instructions</p>
-								<ul>
-									<li>Minimum Length is 6</li>
-								    <li>Maximum Length is 20</li>
-								    <li>One lower case</li>
-								    <li>One upper case</li>
-								    <li>Special Characters allowed are @#$%</li>
-								 </ul>
-							</rich:popupPanel>
+							
+							<!-- <div class="col-xs-12 text-center"> -->
+							<div class="panel-footer clear-fix">
+								<div class="text-center">
+								<h:commandButton value="Register" action="confirmRegistration" tabindex="6" styleClass="btn btn-primary"></h:commandButton>&nbsp;
+								<h:commandButton value="Clear" type="reset" styleClass="btn btn-default"></h:commandButton>
+								</div>
+							</div>
+							
+							</div>
 						</h:form>
+						</div>
 					</div>
-				</div>
-			</f:view>
 		</ui:define>
 	</ui:composition>
 

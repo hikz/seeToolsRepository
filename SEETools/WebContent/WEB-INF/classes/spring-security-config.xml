@@ -18,9 +18,9 @@
         <sec:intercept-url pattern="/xhtml/common/**" access="permitAll"/>
         <!-- form-login will override default settings which means the default login page provided
              by spring -->                
-        <sec:form-login login-page="/xhtml/login/login.xhtml" 
+        <sec:form-login login-page="/xhtml/login/login.xhtml?login_error=1" 
          login-processing-url="/xhtml/login/tools_login" username-parameter="tools_username"
-        			password-parameter="tools_password"  authentication-failure-url="/xhtml/login/error.xhtml"/>
+        			password-parameter="tools_password"  authentication-failure-url="/xhtml/login/login.xhtml"/>
 
         
         <!-- To manage session time out and does not allow more than one concurrent session. -->

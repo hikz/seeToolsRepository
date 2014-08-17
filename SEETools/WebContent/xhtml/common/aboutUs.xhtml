@@ -16,24 +16,54 @@
 	
 	<ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="mainContent">
-			<f:view transient="true">
-				<div class="wrapper1 col2">
-					<div id="form_wrapper" class="form_wrapper_display">
-						<h3>Who  Are WE?</h3>
-					<p>The Radiation Group Inc. was established in 2003 and is based in Orange County, California. Our principal, <strong>Munir Shoga</strong> has worked in the radiation effects industry for over <strong>30 years</strong> supporting major aerospace companies and their contractors. He has a Ph. D. degree in electrical engineering, holds four US patents, and has extensive experience in radiation effects on space and ground systems.</p>
-					<p>A group of scientists and engineers with wide range of expertise are available, if needed.</p>
-					<p>Radiation Group Inc. provides radiation effects analysis and test services for space, avionics, and ground systems. :</p>
-					
-					<h3>Our Experience</h3>
-					<ol style="text-align: left">
-					<li>Radiation assessment of ~75 space craft program.</li>
-					<li>Over 2000 hours of beam time test experience in single event effects, prompt dose, total ionizing dose, and displacement damage testing.</li>
-					<li>Tested complex parts include FPGAs, Processors, memory devices (DDR1, DDR2, DDR3, Flash NAND, SRAM, Quad Data Rate(QDR), Synchronous SDRAM, etc.), Digital signal Processor(DSP), PLLs, etc., </li>
-					<li>Performed TID, displacement damage, prompt dose testing and analysis on many part types.</li>
-					</ol>
+			<div class="container container-height">
+				<div id="aboutUsId" class="col-lg-12 content-layout">
+					<div id="whoAreWe" class="panel panel-primary">
+						<!-- <div class="row col-centered row-form"> -->
+
+						<!-- <div class="form-group text-primary text-center"> -->
+						<div class="panel-heading">
+							<h3 class="panel-title text-center">Who are WE?</h3>
+						</div>
+						<div class="panel-body">
+							<p class="color-text">
+								The Radiation Group Inc. was established in 2003 and is based in
+								Orange County, California. Our principal, <strong>Munir
+									Shoga</strong> has worked in the radiation effects industry for over <strong>30
+									years</strong> supporting major aerospace companies and their
+								contractors. He has a Ph. D. degree in electrical engineering,
+								holds four US patents, and has extensive experience in radiation
+								effects on space and ground systems.
+							</p>
+							<p class="color-text">A group of scientists and engineers
+								with wide range of expertise are available, if needed.</p>
+							<p class="color-text">Radiation Group Inc. provides radiation
+								effects analysis and test services for space, avionics, and
+								ground systems.</p>
+						</div>
+					</div>
+					<div id="experience" class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title text-center">Our Experience</h3>
+						</div>
+						<div class="panel-body">
+							<ol class="color-text">
+								<li>Radiation assessment of ~75 space craft program.</li>
+								<li>Over 2000 hours of beam time test experience in single
+									event effects, prompt dose, total ionizing dose, and
+									displacement damage testing.</li>
+								<li>Tested complex parts include FPGAs, Processors, memory
+									devices (DDR1, DDR2, DDR3, Flash NAND, SRAM, Quad Data
+									Rate(QDR), Synchronous SDRAM, etc.), Digital signal
+									Processor(DSP), PLLs, etc.,</li>
+								<li>Performed TID, displacement damage, prompt dose testing
+									and analysis on many part types.</li>
+							</ol>
+						</div>
 					</div>
 				</div>
-			</f:view>
+			</div>
+
 		</ui:define>
 	</ui:composition>
 

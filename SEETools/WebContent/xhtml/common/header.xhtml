@@ -12,58 +12,68 @@
 </head>
 <h:body>
 	<ui:composition>
-		<div class="wrapper col1">
-			<div id="header">
-				<div id="logo">
-				<h:graphicImage library="images" name="Final_Logo.jpg" style="float:left;"></h:graphicImage>
-				</div>
-
-				<div id="topnav">
-					<ul>
-						<li> <h:link value="Home" outcome="seeHome" /></li>
+	 
+		 
+		<div id="myNavbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="container-fluid ">
+				<!-- <div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">The Radiation Group, Inc.</a>					
+				</div> -->
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse " id="navbarCollapse">
+					<ul class="nav navbar-nav">
+						<li class="pull-left"><h:graphicImage library="images" name="Final_Logo.jpg"></h:graphicImage></li>
+						<li><h:link value="Home" outcome="seeHome" /></li>
 						<li><h:link value="About Us" outcome="aboutUs" /></li>
 						<li><h:link value="FAQ" outcome="faq" /></li>
+					
+						<li class="social pull-right"><h:form id="navForm">
+								<ul class="nav navbar-nav">
+									<c:choose>
+										<c:when
+											test="#{loginBean.username != null and loginBean.username !='anonymousUser'}">
+											<li><p class="text-primary">
+													<h:outputText value="Welcome, " /><br></br>
+													<h:outputText value="#{loginBean.username}"/>
+												</p></li>
+											<li><h:link value="Account Info" outcome="accountInfo" /></li>
+											<li><h:outputLink
+													value="#{request.contextPath}/tools_logout">Logout</h:outputLink></li>
+										</c:when>
+										<c:otherwise>
+											<li><p class="text-primary vertical-middle">
+													<strong><h:outputText value="Welcome," /></strong><br></br>
+													<strong><h:outputText value="Guest" /></strong>
+												</p></li>
+											<li><h:commandLink action="#{navigator.navigate}" 
+													value="Login">
+													<f:param name="fromTool" value="/xhtml/login/login.xhtml" />
+												</h:commandLink></li>
+											<li>&nbsp;</li>
+											<li><h:commandLink action="#{navigator.navigate}" 
+													value="Register">
+													<f:param name="fromTool"
+														value="/xhtml/login/register.xhtml" />
+												</h:commandLink></li>
+										</c:otherwise>
+									</c:choose>
+								</ul>
+							</h:form>
+						</li>
 					</ul>
 				</div>
-				<div id="signup">
-					<h:form id="signUpForm">
-						<ul>
-							<c:choose>
-							<c:when test="#{loginBean.username != null and loginBean.username !='anonymousUser'}">
-							<li>
-								<h:outputText value="Welcome :  #{loginBean.username}" />
-							</li>
-							<li>
-								<h:link value="Account Info" outcome="accountInfo" />
-							</li>
-							<li>
-								<h:outputLink value="#{request.contextPath}/tools_logout">Logout</h:outputLink>
-							</li>
-								
-							</c:when>
-
-							<c:otherwise>
-							<li>	
-								<h:outputText value="Welcome : Guest" />
-							</li>
-							<li><h:commandLink action="#{navigator.navigate}"
-									value="LogIn">
-									<f:param name="fromTool" value="/xhtml/login/login.xhtml" />
-								</h:commandLink></li>
-							<li><h:commandLink action="#{navigator.navigate}"
-									value="Register">
-									<f:param name="fromTool" value="/xhtml/login/register.xhtml" />
-								</h:commandLink></li>
-						</c:otherwise>
-							</c:choose>
-						
-						</ul>
-					</h:form>
-				</div>
-
 			</div>
-			<br class="clear" />
 		</div>
+		
+		 
 	</ui:composition>
 </h:body>
 </html>

@@ -19,4 +19,14 @@ public final class Constants {
 		public static final String TOOL_INPUT_FILE_NAMES = "tool_input_file_names.properties";
 
 	}
+	
+	public final class Chart {
+		
+		private Chart() {
+			throw new AssertionError();
+		}
+		
+		public static final String TOOLS_CHART = "tools_chart.properties";
+		
+	}
 }

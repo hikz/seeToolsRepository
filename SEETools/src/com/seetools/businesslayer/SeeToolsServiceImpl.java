@@ -1,7 +1,9 @@
 package com.seetools.businesslayer;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.io.BufferedInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.http.Part;
 
@@ -42,6 +45,7 @@ import com.seetools.businesslayer.hipconv.process.HipconverterInput;
 import com.seetools.businesslayer.hipconv.process.HipconverterOutput;
 import com.seetools.framework.HIXTemplateResource;
 import com.seetools.framework.HIXTemplateResourceManager;
+import com.seetools.util.Constants;
 
 public class SeeToolsServiceImpl {
 
@@ -208,7 +212,7 @@ public class SeeToolsServiceImpl {
 
 	}
 
-	public JFreeChart getChart(HipconverterFinalOutput hipconverterFinalOutput) {
+	public JFreeChart getChart(HipconverterFinalOutput hipconverterFinalOutput) throws IOException {
 
 		XYSeries series1 = new XYSeries("Hip converter");
 		JFreeChart chart = null;
@@ -232,17 +236,23 @@ public class SeeToolsServiceImpl {
 			dataset.addSeries(series1);
 
 			// DataSet initialization end
-			chart = ChartFactory.createXYLineChart("HIP CONVERTER GRAPH",
+			chart = ChartFactory.createXYLineChart("",
 					" ", " ", dataset, PlotOrientation.VERTICAL, true, true,
 					false);
-
+			//Chart is overall and plot is inside chart.
+			//chart.setBackgroundPaint(getColor());
+			chart.setBackgroundPaint(Color.WHITE);
 			// Customization of the plot.
 			final XYPlot plot = chart.getXYPlot();
 			plot.setDataset(dataset);
-			plot.setDomainGridlinePaint(Color.LIGHT_GRAY);
+			//This will set the background grid as solid lines. Absence gives dotted lines.
+			plot.setDomainGridlineStroke(new BasicStroke(0.5f));
+			plot.setDomainGridlinePaint(Color.CYAN);
+			plot.setRangeGridlineStroke(new BasicStroke(0.5f));
 			plot.setRangeGridlinePaint(Color.LIGHT_GRAY);
-			plot.setBackgroundPaint(Color.WHITE);
-
+			plot.setBackgroundPaint(new Color(170,165,50));
+			
+			
 			final XYLineAndShapeRenderer renderer1 = new XYLineAndShapeRenderer();
 			renderer1.setSeriesShapesVisible(0, false);
 			renderer1.setSeriesShapesVisible(1, false);
@@ -309,5 +319,19 @@ public class SeeToolsServiceImpl {
         for(URL url: urls){
         	System.out.println(url.getFile());
         }
+	}
+	
+	private Color getColor() throws IOException {
+
+			Properties toolInputFileNamesProp = new Properties();
+			InputStream toolInputFileNamesStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(Constants.Chart.TOOLS_CHART);
+			toolInputFileNamesProp.load(toolInputFileNamesStream);
+			int red = Integer.parseInt((String)toolInputFileNamesProp.get("red"));
+			int blue = Integer.parseInt((String)toolInputFileNamesProp.get("blue"));
+			int green = Integer.parseInt((String)toolInputFileNamesProp.get("green"));
+			
+			System.out.println("Red:" + red + ",Blue:" + blue + ",Green:" + green);
+			
+			return new Color(red,green,blue);
 	}
 }
