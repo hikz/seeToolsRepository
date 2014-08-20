@@ -12,82 +12,94 @@
 <title>Register User</title>
 </head>
 <body>
-
 	<ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="mainContent">
-					<div class="container container-height">
-					<div id="register-form" class="col-lg-12 content-layout">
-						<h:form styleClass="form-horizontal">
+			<div class="container container-height">
+				<div id="register-form" class="col-lg-12 content-layout">
+					<h:form styleClass="form-horizontal">
 						<div class="panel panel-primary">
-						
-						<div class="panel-heading">
-							<h3 class="panel-title text-center">Registration</h3>
-						</div>
-						<div class="panel-body">	
-							<div class="form-group">
-								<label class="control-label col-xs-4">First Name <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
-								<div class="col-xs-7">
-								<h:inputText  id="seeFirstNameInId" required="true" tabindex="1" styleClass="form-control"
-									value="#{userBean.firstName}" requiredMessage="First Name required">
-									<f:validateLength maximum="20"></f:validateLength>
-								</h:inputText>
-								<h:message for="seeFirstNameInId" styleClass="help-block"></h:message>
-								</div>
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">Registration</h3>
 							</div>
-							<div class="form-group">
-								<label class="control-label col-xs-4">Last Name <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
-								<div class="col-xs-7">
-								<h:inputText id="seeLastNameInId" required="true"  tabindex="2" styleClass="form-control"
-									value="#{userBean.lastName}" requiredMessage="Last Name required">
-									<f:validateLength maximum="20"></f:validateLength>
-								</h:inputText>
-								<h:message for="seeLastNameInId"  styleClass="help-block"></h:message>
+							<div class="panel-body">
+								<div class="form-group">
+									
+									<label class="control-label col-xs-5">First Name <h:graphicImage 
+										library="images" name="bulletRequired.gif" style="display:inline" /></label>
+									<div class="col-xs-7">
+										<h:inputText id="seeFirstNameInId" required="true"
+											tabindex="1" styleClass="form-control"
+											value="#{userBean.firstName}"
+											requiredMessage="First Name required">
+											<f:validateLength maximum="20"></f:validateLength>
+										</h:inputText>
+										<h:message for="seeFirstNameInId" styleClass="help-block"></h:message>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-xs-4">Mobile Number</label>
-								<div class="col-xs-7">
-								<h:inputText id="seeMobileNumberInId" tabindex="3" styleClass="form-control"
-									value="#{userBean.mobileNumber}"
-									  validatorMessage="The length should be 10 characters"
-									converterMessage="Phone number should only digits">
-									<f:convertNumber integerOnly="true" type="number"></f:convertNumber>
-									<f:validateLength maximum="10" minimum="10"></f:validateLength>
-								</h:inputText>
-								<h:message for="seeMobileNumberInId"  styleClass="help-block"></h:message>
+								<div class="form-group">
+									<label class="control-label col-xs-5">Last Name <h:graphicImage
+											library="images" name="bulletRequired.gif" style="display:inline" /></label>
+									<div class="col-xs-7">
+										<h:inputText id="seeLastNameInId" required="true" tabindex="2"
+											styleClass="form-control" value="#{userBean.lastName}"
+											requiredMessage="Last Name required">
+											<f:validateLength maximum="20"></f:validateLength>
+										</h:inputText>
+										<h:message for="seeLastNameInId" styleClass="help-block"></h:message>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-xs-4">Email Address <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline"/></label>
-								<div class="col-xs-7">
-								<h:inputText id="seeEmailAddressInId"  tabindex="4" styleClass="form-control"
-									value="#{userBean.email.emailAddress}" required="true"
-									requiredMessage="Email Address required">
-									<f:validator validatorId="RegistrationEmailValidator" />
-								</h:inputText>
-								<h:message for="seeEmailAddressInId"  styleClass="help-block"></h:message>
+								<div class="form-group">
+									<label class="control-label col-xs-5">Mobile Number</label>
+									<div class="col-xs-7">
+										<h:inputText id="seeMobileNumberInId" tabindex="3"
+											styleClass="form-control" value="#{userBean.mobileNumber}"
+											validatorMessage="The length should be 10 characters"
+											converterMessage="Phone number should only digits">
+											<f:convertNumber integerOnly="true" type="number"></f:convertNumber>
+											<f:validateLength maximum="10" minimum="10"></f:validateLength>
+										</h:inputText>
+										<h:message for="seeMobileNumberInId" styleClass="help-block"></h:message>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-xs-4">Password <h:graphicImage library="images" name="bulletRequired.gif" style="display:inline;"/> 
-								</label> 
-								<div class="col-xs-7">
-								<h:inputSecret id="seePasswordInId" required="true"  tabindex="5" styleClass="form-control"
-									value="#{userBean.password}"
-									requiredMessage="Please enter password">
-									<f:validator validatorId="PasswordValidator" />
-									</h:inputSecret>
-									<a href="#myModal" class="btn btn-link" data-toggle="modal">Password Instructions</a>
-								<h:message for="seePasswordInId"  styleClass="help-block"></h:message>
+								<div class="form-group">
+									<label class="control-label col-xs-5">Email Address <h:graphicImage
+											library="images" name="bulletRequired.gif"
+											style="display:inline" /></label>
+									<div class="col-xs-7">
+										<h:inputText id="seeEmailAddressInId" tabindex="4"
+											styleClass="form-control"
+											value="#{userBean.email.emailAddress}" required="true"
+											requiredMessage="Email Address required">
+											<f:validator validatorId="RegistrationEmailValidator" />
+										</h:inputText>
+										<h:message for="seeEmailAddressInId" styleClass="help-block"></h:message>
+									</div>
 								</div>
-							</div>							
-							<div id="myModal" class="modal fade">
-							        <div class="modal-dialog">
-							            <div class="modal-content">
-							                <div class="modal-header">
-							                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							                    <h4 class="modal-title">Password Instructions</h4>
-							                </div>
+								<div class="form-group">
+									<label class="control-label col-xs-5">Password <h:graphicImage
+											library="images" name="bulletRequired.gif"
+											style="display:inline;" />
+									</label>
+									<div class="col-xs-7">
+										<h:inputSecret id="seePasswordInId" required="true"
+											tabindex="5" styleClass="form-control"
+											value="#{userBean.password}"
+											requiredMessage="Please enter password">
+											<f:validator validatorId="PasswordValidator" />
+										</h:inputSecret>
+										<a href="#pwdInstModal" class="btn btn-link" data-toggle="modal">Password
+											Instructions</a>
+										<h:message for="seePasswordInId" styleClass="help-block"></h:message>
+									</div>
+								</div>
+								<div id="pwdInstModal" class="modal fade">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">&times;</button>
+												<h4 class="modal-title">Password Instructions</h4>
+											</div>
 											<div class="modal-body">
 												<p>Password should contain the following instructions</p>
 												<ul>
@@ -99,25 +111,24 @@
 												</ul>
 											</div>
 										</div>
-							        </div>
-							    </div>
-							</div>
-							
-							<!-- <div class="col-xs-12 text-center"> -->
+									</div>
+								</div> <!-- #pwdInstModal end -->
+							</div> <!-- panelBody end -->							
 							<div class="panel-footer clear-fix">
 								<div class="text-center">
-								<h:commandButton value="Register" action="confirmRegistration" tabindex="6" styleClass="btn btn-primary"></h:commandButton>&nbsp;
-								<h:commandButton value="Clear" type="reset" styleClass="btn btn-default"></h:commandButton>
+									<h:commandButton value="Register" action="confirmRegistration"
+										tabindex="6" styleClass="btn btn-primary"></h:commandButton>
+									&nbsp;
+									<h:commandButton value="Clear" type="reset"
+										styleClass="btn btn-default"></h:commandButton>
 								</div>
 							</div>
-							
-							</div>
-						</h:form>
+
 						</div>
-					</div>
+					</h:form>
+				</div>
+			</div>
 		</ui:define>
 	</ui:composition>
-
-
 </body>
 </html>

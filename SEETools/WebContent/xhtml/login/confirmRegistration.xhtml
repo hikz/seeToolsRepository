@@ -12,38 +12,62 @@
 <title>Register User</title>
 </head>
 <body>
-
-	<ui:composition template="/xhtml/common/seeLayout.xhtml">
+<ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="mainContent">
-			<f:view>
-				<div class="wrapper1 col2">
-					<div id="form_wrapper" class="form_wrapper">
-						<h:form id="seeRegisterFormId">
-							<div class="loginheader active">
-								<h3>Confirm Details</h3>
-							</div>	
-								<label>First Name</label><br></br>
-										#{userBean.firstName}<br></br><br></br>
-								<label>Last Name</label>
-								<h:outputText id="seeLastNameId" value="#{userBean.lastName}" ></h:outputText><br></br><br></br>
-								<label>Mobile Number</label><br></br>
-								<h:outputText id="seeMobileNumberId" value="#{userBean.mobileNumber}" ></h:outputText><br></br><br></br>
-								<label>Email Address</label><br></br>
-								<h:outputText id="seeEmailAddressId" value="#{userBean.email.emailAddress}"></h:outputText><br></br><br></br>
-								<label>Password</label><br></br>
-								<h:outputText id="seePasswordId" value="*******" ></h:outputText>
-							<br></br><br></br>
-							<div class="bottom">
-								<h:commandButton value="Edit" action="register"></h:commandButton>
-								<h:commandButton value="Confirm" action="#{registerBean.register}"></h:commandButton>
+		  <f:view>
+			<div class="container container-height">
+				<div id="register-confirm-form" class="col-lg-12 content-layout">
+					<h:form styleClass="form-horizontal">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">Confirm Registration Details</h3>
 							</div>
-						</h:form>
-					</div>
+							<div class="panel-body">
+								<div class="form-group">
+								<div class="col-lg-6 control-label">
+									<label>First Name </label>
+								</div>
+									<div class="col-lg-6">
+										<h:outputText id="seeFirstNameId" value="#{userBean.firstName}" ></h:outputText>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-lg-6">Last Name </label>
+									<div class="col-lg-6">
+										<h:outputText id="seeLastNameId" value="#{userBean.lastName}" ></h:outputText>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-lg-6">Mobile Number </label>
+									<div class="col-lg-6">
+										<h:outputText id="seeMobileNumberId" value="#{userBean.mobileNumber}" ></h:outputText>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-lg-6">Email Address </label>
+									<div class="col-lg-6">
+										<h:outputText id="seeEmailAddressId" value="#{userBean.email.emailAddress}"></h:outputText>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-lg-6">Password </label>
+									<div class="col-lg-6">
+										<h:outputText id="seePasswordId" value="*******" ></h:outputText>
+									</div>
+								</div>								
+							</div> <!-- panelBody end -->							
+							<div class="panel-footer clear-fix">
+								<div class="text-center">
+									<h:commandButton value="Edit" action="register" styleClass="btn btn-primary"></h:commandButton> &nbsp;
+									<h:commandButton value="Confirm" action="#{registerBean.register}" styleClass="btn btn-default"></h:commandButton>
+								</div>
+							</div>
+						</div>
+					</h:form>
 				</div>
-			</f:view>
+			</div>
+		  </f:view>
 		</ui:define>
 	</ui:composition>
-
-
 </body>
 </html>
