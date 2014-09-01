@@ -33,34 +33,34 @@ public class SendEmail {
 		}
 	}
 
-	public void sendEmail(String emailAddress, String token, String mode) {
+	public void sendEmail(String toEmailAddress, String token, String mode) {
 
 		final Logger logger = LoggerFactory.getLogger(SendEmail.class);
-		Session session = Session.getInstance(getMailServerDetails(),
-				new AuthorizeEmail());
+		Session session = Session.getInstance(getMailServerDetails(), new AuthorizeEmail());
 
 		try {
 			logger.info("Sending email message");
 			MimeMessage message = new MimeMessage(session);// if only text
 
-			initializeSourceAndDestinationForMessage(message, emailAddress);
+			initializeSourceAndDestinationForMessage(message, toEmailAddress);
 			addSubjectDetails(message, mode);
-			addMessageDetails(message, emailAddress, token, mode);
+			addMessageDetails(message, toEmailAddress, token, mode);
 
 			Transport.send(message);
-			logger.info("Successfully sent mail to : {} ", emailAddress);
+			logger.info("Successfully sent mail to : {} ", toEmailAddress);
 
 		} catch (MessagingException mex) {
 			System.out.println("MessagingException: " + mex.getMessage());
 			mex.printStackTrace();
+		} finally{
+			
 		}
 	}
 
 	private void initializeSourceAndDestinationForMessage(MimeMessage message,
-			String emailAddress) throws MessagingException {
+			String toEmailAddress) throws MessagingException {
 		message.setFrom(new InternetAddress(FROM_ADDRESS));
-		message.addRecipient(Message.RecipientType.TO, new InternetAddress(
-				emailAddress));
+		message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmailAddress));
 	}
 
 	private void addSubjectDetails(MimeMessage message, String mode)
@@ -75,41 +75,11 @@ public class SendEmail {
 
 	private void addMessageDetails(MimeMessage message, String emailAddress,
 			String token, String mode) throws MessagingException {
-		// Now set the actual message
-		// String htmlMessageContent =
-		// "<h3 align='center'> In order to proceed with CodeHunk registration click the link.</h3> <h4 align='center'"
-		// +
-		// "background-color:cyan=""> Verification link: <a href="http://www.blogger.com/" verificationid="">Click to verify your email</a></h4>";
 
-		// for the moment we comment out below line
-		// message.setText(htmlMessageContent, "text/html");
-		// set "text/plain" if you don't need html in your message
-
-		// Create the message part for SENDING IMAGE
-		// This HTML mail have to 2 part, the BODY and the embedded image
 		MimeMultipart multipart = new MimeMultipart("related");
-
-		// first part (the html)
 		BodyPart messageBodyPart = new MimeBodyPart();
-
-		messageBodyPart.setContent(
-				this.createHtmlText(emailAddress, token, mode), "text/html");
-
-		// add it
+		messageBodyPart.setContent(this.createHtmlText(emailAddress, token, mode), "text/html");
 		multipart.addBodyPart(messageBodyPart);
-
-		/*
-		 * // second part (the image) messageBodyPart = new MimeBodyPart();
-		 * messageBodyPart.setDisposition(MimeBodyPart.INLINE);// show image
-		 * with msg content DataSource dataSource = new
-		 * FileDataSource("D:\\hello.jpg"); messageBodyPart.setDataHandler(new
-		 * DataHandler(dataSource));
-		 * messageBodyPart.setHeader("Content-ID","<img>");
-		 * 
-		 * // add it multipart.addBodyPart(messageBodyPart);
-		 */
-
-		// put everything together
 		message.setContent(multipart);
 	}
 
@@ -151,4 +121,5 @@ public class SendEmail {
 		return htmlText;
 	}
 
+	
 }
