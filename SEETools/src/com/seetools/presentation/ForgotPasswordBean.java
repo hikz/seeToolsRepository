@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.seetools.businesslayer.ForgotPasswordServiceImpl;
+import com.seetools.framework.exceptions.EmailException;
 
 @ManagedBean(name="forgotPasswordBean")
 @RequestScoped
@@ -29,9 +30,13 @@ public class ForgotPasswordBean {
 	public String recoverPassword(){
 		
 		logger.info("Recovering Password for Email Address : {}", emailAddress);
-		String outcome = "forgotPasswordEmailSentSuccess";
-		forgotPasswordServiceImpl.recoverPassword(this.getEmailAddress());
-		return outcome;
+		try {
+			forgotPasswordServiceImpl.recoverPassword(this.getEmailAddress());
+			return "forgotPasswordEmailSentSuccess";
+		} catch (EmailException e) {
+			logger.error(e.getMessage());
+	    	return "forgotPasswordEmailSentFailure.xhtml";
+		}
 	}
 
 

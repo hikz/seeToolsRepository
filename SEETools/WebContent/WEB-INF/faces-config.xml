@@ -61,6 +61,12 @@
     		<to-view-id>/xhtml/login/registrationSuccess.xhtml</to-view-id>
     		<redirect></redirect>
     	</navigation-case>
+    	<navigation-case>
+    		<from-action>#{registerBean.register}</from-action>
+    		<from-outcome>registerFailure</from-outcome>
+    		<to-view-id>/xhtml/login/registrationFailure.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
     </navigation-rule>
     
     <navigation-rule>

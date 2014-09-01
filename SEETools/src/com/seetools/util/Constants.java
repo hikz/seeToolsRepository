@@ -29,4 +29,14 @@ public final class Constants {
 		public static final String TOOLS_CHART = "tools_chart.properties";
 		
 	}
+	
+	public final class Message {
+		
+		private Message() {
+			throw new AssertionError();
+		}
+		
+		public static final String MESSAGE = "messaging.properties";
+		
+	}
 }

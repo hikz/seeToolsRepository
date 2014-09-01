@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.seetools.businesslayer.SeeToolsRegisterServiceImpl;
 import com.seetools.dto.UserBean;
+import com.seetools.framework.exceptions.EmailException;
 import com.seetools.presentation.common.SessionManager;
 
 @ManagedBean(name="registerBean")
@@ -64,9 +65,9 @@ public class RegisterBean implements Serializable {
 			  this.seeToolsRegisterServiceImpl.processRegistration(this.getUser());
 				logger.info("End registration process");
 		      return "registerSuccess";
-		    } catch (Exception e) {
-		    	e.printStackTrace();
-		    	return "redirect:/xhtml/login/error";
+		    } catch (EmailException e) {
+		    	logger.error(e.getMessage());
+		    	return "registerFailure";
 		    }
 
 	}

@@ -23,6 +23,13 @@
 	color: #FFFFFF;
 }
 
+.navbar-default .container {
+	background-color: #000000;
+	background-image : none;
+	color:white;
+	font-weight: 700;
+}
+
 .navbar-default {
 	background-color: #000000;
 	background-image : none;
@@ -80,8 +87,10 @@
 }
 
 .container-nav {	
-	background-color: black;
-	color: white;
+	background-color: #000000;
+	background-image : none;
+	color:white;
+	font-weight: 700;
 }
 
 .carousel {

@@ -10,6 +10,7 @@ import com.seetools.daolayer.EmailDAOImpl;
 import com.seetools.daolayer.LoginDAOImpl;
 import com.seetools.daolayer.TokenVerificationDAOImpl;
 import com.seetools.dto.EmailBean;
+import com.seetools.framework.exceptions.EmailException;
 import com.seetools.util.SendEmail;
 import com.seetools.util.Utilities;
 
@@ -25,7 +26,7 @@ public class ForgotPasswordServiceImpl {
 	 * This method would save the password recovery activation link and send confirmation mail to user.
 	 * @param emailAddress
 	 */
-	public void recoverPassword(String emailAddress){
+	public void recoverPassword(String emailAddress) throws EmailException {
 		
 		String token = UUID.randomUUID().toString();
 		
@@ -59,7 +60,7 @@ public class ForgotPasswordServiceImpl {
 	}
 	
 	
-	private void sendRecoverPasswordConfirmationEmail(String emailAddress, String token) {
+	private void sendRecoverPasswordConfirmationEmail(String emailAddress, String token) throws EmailException {
 		logger.info("Sending Password Recovery Confirmation Mail to Email Address : {}", emailAddress);
 		SendEmail sendEmail = new SendEmail();
 		sendEmail.sendEmail(emailAddress,token,"FORGOT_PASSWORD");

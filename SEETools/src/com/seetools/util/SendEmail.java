@@ -17,6 +17,8 @@ import javax.mail.internet.MimeMultipart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.seetools.framework.exceptions.EmailException;
+
 public class SendEmail {
 
 	private String SMTP_HOST = "smtp.gmail.com";
@@ -33,7 +35,7 @@ public class SendEmail {
 		}
 	}
 
-	public void sendEmail(String toEmailAddress, String token, String mode) {
+	public void sendEmail(String toEmailAddress, String token, String mode) throws EmailException {
 
 		final Logger logger = LoggerFactory.getLogger(SendEmail.class);
 		Session session = Session.getInstance(getMailServerDetails(), new AuthorizeEmail());
@@ -50,8 +52,8 @@ public class SendEmail {
 			logger.info("Successfully sent mail to : {} ", toEmailAddress);
 
 		} catch (MessagingException mex) {
-			System.out.println("MessagingException: " + mex.getMessage());
-			mex.printStackTrace();
+			throw new EmailException("Error while sending email", mex);
+			
 		} finally{
 			
 		}

@@ -5,10 +5,6 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.seetools.daolayer.RegisterDAOImpl;
 import com.seetools.daolayer.TokenVerificationDAOImpl;
 import com.seetools.dto.AccountActivationTokenBean;
 

@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.seetools.businesslayer.SeeToolsRegisterServiceImpl;
-import com.seetools.daolayer.RegisterDAOImpl;
 import com.seetools.util.BeanFactory;
 
 @ManagedBean(name="registrationActivation")

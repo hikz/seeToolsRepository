@@ -1,124 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	id="WebApp_ID" version="3.0">
-	<display-name>SEETools</display-name>
-	<welcome-file-list>
-		<welcome-file>seeHome.xhtml</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
-
-	
-	<!-- spring security related - start -->
-	
-	
-	    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>SEETools</display-name>
+  <welcome-file-list>
+    <welcome-file>seeHome.xhtml</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
                 /WEB-INF/classes/spring-bean-config.xml
                 /WEB-INF/classes/spring-security-config.xml
                 /WEB-INF/classes/spring-tx-config.xml
         </param-value>
-    </context-param>
-    <!-- CONFIGURATION FILES END HERE -->
-    <!-- PROJECT STAGE START FOR DEVELOPEMENT MARK IT AS DEVELOPMENT - Other values are PRODUCTION,SYSTEMTEST,UNITTEST-->
-    <context-param>
+  </context-param>
+  <context-param>
     <param-name>org.richfaces.skin</param-name>
     <param-value>plain</param-value>
-</context-param>
-<context-param>
+  </context-param>
+  <context-param>
     <param-name>org.richfaces.enableControlSkinning</param-name>
     <param-value>false</param-value>
-</context-param>
-    <!-- CONFIGURATION FILES END HERE -->
-    <!-- PROJECT STAGE START FOR DEVELOPEMENT MARK IT AS DEVELOPMENT - Other values are PRODUCTION,SYSTEMTEST,UNITTEST-->
-    <context-param>
-        <param-name>javax.faces.PROJECT_STAGE</param-name>
-        <param-value>Development</param-value>
-    </context-param>
-    <!-- PROJECT STAGE END -->
-    <!-- Enable JSF Servlet -->
-    <servlet>
-        <servlet-name>Faces Servlet</servlet-name>
-        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-     
-    <servlet-mapping>
-        <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>*.xhtml</url-pattern>
-    </servlet-mapping>
-    <!-- Enable JSF Server End-->
-    <!-- Integrate JSF and Spring -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <!-- Integrate JSF and Spring End-->
-    <!-- Enable Spring Filter, Spring Security works on the concept of Filters -->
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>
+  </context-param>
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Development</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>
             org.springframework.web.filter.DelegatingFilterProxy
         </filter-class>
-    </filter>
-     
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>FORWARD</dispatcher>
-    	<dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-    
-    <filter-mapping>
+  </filter>
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
     <filter-name>springSecurityFilterChain</filter-name>
     <url-pattern>/tools_logout</url-pattern>
-</filter-mapping>
-
-
-    
-	<!-- spring security related - end -->
-	
-	<context-param>
-		<description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
-		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-		<param-value>server</param-value>
-	</context-param>
-	<context-param>
-		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-		<param-value>resources.application</param-value>
-	</context-param>
-	<context-param>
-		<param-name>org.richfaces.SKIN</param-name>
-		<param-value>blueSky</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>org.richfaces.CONTROL_SKINNING</param-name>
-		<param-value>enable</param-value>
-	</context-param>
-
-	<!-- To overcome ViewExpiredException -->
-	<error-page>
-	    <exception-type>javax.faces.application.ViewExpiredException</exception-type>
-	    <location>/xhtml/login/login.xhtml</location>
-	</error-page>
-	
-	<!-- <listener>
-		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
-	</listener>
- -->
- 
-	 <session-config>
-	    <session-timeout>15</session-timeout>
-	    <tracking-mode>COOKIE</tracking-mode>
-	</session-config>
- 
- <!-- To manage session concurrency and allow spring security to take over. -->
- 	<listener>
-     <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
-	</listener>
+  </filter-mapping>
+  <context-param>
+    <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>server</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+    <param-value>resources.application</param-value>
+  </context-param>
+  <context-param>
+    <param-name>org.richfaces.SKIN</param-name>
+    <param-value>blueSky</param-value>
+  </context-param>
+  <context-param>
+    <param-name>org.richfaces.CONTROL_SKINNING</param-name>
+    <param-value>enable</param-value>
+  </context-param>
+  <error-page>
+    <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+    <location>/xhtml/login/login.xhtml</location>
+  </error-page>
+  <session-config>
+    <session-timeout>15</session-timeout>
+    <tracking-mode>COOKIE</tracking-mode>
+  </session-config>
+  <listener>
+    <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+  </listener>
 </web-app>
