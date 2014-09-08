@@ -59,11 +59,15 @@
 	color:blue;
 }
 
-.info-text-success {
+.info-text-info {
 	color:green;
 }
 
-.info-text-failure {
+.info-text-warn {
+	color:yellow;
+}
+
+.info-text-error {
 	color:red;
 }
 

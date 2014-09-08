@@ -52,14 +52,13 @@
     	
     </navigation-rule>
     
-     <navigation-rule>
+    <!--  <navigation-rule>
     	<display-name>pages/home/</display-name>
     	<from-view-id>/xhtml/login/confirmRegistration.xhtml</from-view-id>
     	<navigation-case>
     		<from-action>#{registerBean.register}</from-action>
     		<from-outcome>registerSuccess</from-outcome>
     		<to-view-id>/xhtml/login/registrationSuccess.xhtml</to-view-id>
-    		<redirect></redirect>
     	</navigation-case>
     	<navigation-case>
     		<from-action>#{registerBean.register}</from-action>
@@ -67,7 +66,7 @@
     		<to-view-id>/xhtml/login/registrationFailure.xhtml</to-view-id>
     		<redirect></redirect>
     	</navigation-case>
-    </navigation-rule>
+    </navigation-rule> -->
     
     <navigation-rule>
     	<display-name>pages/home/</display-name>

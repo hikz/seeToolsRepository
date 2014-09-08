@@ -9,26 +9,28 @@
 	xmlns:a4j="http://richfaces.org/a4j">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<title>Concurrent Session Error</title>
 </head>
 <body>
-<ui:composition template="/xhtml/common/seeLayout.xhtml">
-		<ui:define name="content">
- 			<f:view>
-				<div id="wrapper1 col2">
-					<div id="form_wrapper" class="form_wrapper_display">
-						<h:form id="seeConcurrentSessionId">
-							<div class="loginheader active">
-								<h3>Concurrent session Issue</h3>
-							</div>
-							<div id="registrationSuccessMsgId" style="color: green;">
-							Another session had been opened. A maximum of one session is only allowed.
-							</div>
-						</h:form>
-					</div>
+ <ui:composition template="/xhtml/common/seeLayout.xhtml">
+		<ui:define name="mainContent">
+			<div class="container container-height">
+					<div id="forgot-password-form" class="col-lg-12 content-layout">
+					<h:form id="forgotPasswordFormId" prependId="false" styleClass="form-horizontal">
+						<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title text-center">Concurrent Session Error</h3>
+						</div>
+						<div class="panel-body">	
+						<label class="info-text-error"><h:messages infoClass="info-text-info" warnClass="info-text-warn" errorClass="info-text-error" layout="table"/>
+						Another session had been opened. A maximum of one session is only allowed.</label>
+						</div>													
+						</div>
+					</h:form>
 				</div>
-			</f:view> 			
- 		</ui:define>
- </ui:composition>
+			</div>
+		</ui:define>
+	</ui:composition>
 </body>
 </html>
+

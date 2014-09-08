@@ -9,28 +9,28 @@
 	xmlns:a4j="http://richfaces.org/a4j">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<title>Session Timeout Error</title>
 </head>
 <body>
-<ui:composition template="/xhtml/common/seeLayout.xhtml">
-		<ui:define name="content">
-		<f:view>
-				<div class="wrapper1 col2">
-					<div id="form_wrapper" class="form_wrapper_display">
-						<h:form id="seeRegisterFormId">
-							
-							<br></br>
-							<br></br>
-							<br></br>
-							<h:panelGroup layout="block">
-								Session timed out. <h:link outcome="/xhtml/login/login.xhtml">Click here</h:link> to login again 
-							</h:panelGroup>
-							
-						</h:form>
-					</div>
+ <ui:composition template="/xhtml/common/seeLayout.xhtml">
+		<ui:define name="mainContent">
+			<div class="container container-height">
+					<div id="forgot-password-form" class="col-lg-12 content-layout">
+					<h:form id="forgotPasswordFormId" prependId="false" styleClass="form-horizontal">
+						<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title text-center">Concurrent Session Error</h3>
+						</div>
+						<div class="panel-body">	
+						<label class="info-text"><h:messages infoClass="info-text-info" warnClass="info-text-warn" errorClass="info-text-error" layout="table"/>
+						Session timed out. <h:link outcome="/xhtml/login/login.xhtml">Click here</h:link> to login again </label>
+						</div>													
+						</div>
+					</h:form>
 				</div>
-			</f:view>
- 		</ui:define>
- </ui:composition>
+			</div>
+		</ui:define>
+	</ui:composition>
 </body>
 </html>
+

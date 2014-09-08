@@ -1,5 +1,6 @@
 package com.seetools.util;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -55,13 +56,36 @@ public class Utilities {
 		
 		List<AccountActivationTokenBean> activationTokenBeans = tokenVerificationDAOImpl.getAccountActivationTokenDetail(emailAddress, token); 
 		if(activationTokenBeans != null && activationTokenBeans.size() == 1){
+			if(getTimeDiffInMin(activationTokenBeans.get(0).getCreatedDate()) < 15)
 			validToken = true;
 		}
 		
-		return validToken; 
+		return validToken;  
 		
 	}
 	
+	public static long getTimeDiffInMin(Timestamp tokenCreatedTime) {
+		
+		long timeDiff = 0;
+		
+		long tokenTime = tokenCreatedTime.getTime();
+		
+		long currentTime = getCurrentTimestamp().getTime();
+		
+		long difference = currentTime - tokenTime;
+		
+		timeDiff = difference / (60*1000) % 60;
+		
+		return timeDiff;
+		
+	}
+	
+	public static Timestamp getCurrentTimestamp(){
+		
+		java.util.Date date= new java.util.Date();
+		Timestamp currentTimestamp = new Timestamp(date.getTime());
+		return currentTimestamp;
+	}
 	public static String getRandomToken() {
 		
 		return UUID.randomUUID().toString();

@@ -19,7 +19,7 @@ public class FileUploadValidatort implements Validator {
 		 
 		 //Validating file type
 		 if (!"application/vnd.ms-excel".equals(part.getContentType())) {
-	            Messages.addMessage("Error: File type is invalid !!", FacesMessage.SEVERITY_ERROR);
+	            Messages.addValidationMessage("Error: File type is invalid !!", FacesMessage.SEVERITY_ERROR);
 	     }
 		 
 		/* if (part.getSize() > 512) {

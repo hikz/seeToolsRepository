@@ -19,7 +19,7 @@ public class PasswordValidator  implements Validator {
 	
 		
 		if(Utilities.validatePassword(object.toString())){
-			Messages.addMessage("Error: Please refer to Password Instructions", FacesMessage.SEVERITY_ERROR);
+			Messages.addValidationMessage("Error: Please refer to Password Instructions", FacesMessage.SEVERITY_ERROR);
 		}
 	}
 

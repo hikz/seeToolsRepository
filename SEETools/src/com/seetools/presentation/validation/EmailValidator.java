@@ -23,7 +23,7 @@ public class EmailValidator implements Validator {
 			throws ValidatorException {
 		
 		if(Utilities.validateEmail(object.toString())){
-			Messages.addMessage("Error: Invalid Email Address !!", FacesMessage.SEVERITY_ERROR);
+			Messages.addValidationMessage("Error: Invalid Email Address !!", FacesMessage.SEVERITY_ERROR);
 		}
 	}
 

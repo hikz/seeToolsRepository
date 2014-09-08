@@ -1,14 +1,17 @@
 package com.seetools.presentation;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.seetools.businesslayer.SeeToolsRegisterServiceImpl;
+import com.seetools.presentation.validation.Messages;
 import com.seetools.util.BeanFactory;
 
 @ManagedBean(name="registrationActivation")
@@ -25,7 +28,18 @@ public class RegistrationActivation {
     
     @PostConstruct
     public void init() {
-       valid = (check(getEmail(),getKey())); // And auto-login if valid?
+       FacesMessage doneMessage = null;
+       if(check(getEmail(),getKey())) {
+    	   valid = true;
+    	   String text ="Your account is successfully activated";
+		   doneMessage = new FacesMessage(text);
+		   doneMessage.setSeverity(FacesMessage.SEVERITY_INFO);
+       } else {
+    	   String text ="Activation failed! Please enter your email address to try once again.";
+		   doneMessage = new FacesMessage(text);
+		   doneMessage.setSeverity(FacesMessage.SEVERITY_ERROR);
+       }
+       FacesContext.getCurrentInstance().addMessage(null, doneMessage);
     }
 
 	public boolean check(String emailAddress,String token){

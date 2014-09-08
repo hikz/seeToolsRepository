@@ -6,9 +6,11 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlInputHidden;
+import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
 import javax.servlet.http.Part;
 
@@ -81,6 +83,7 @@ public class FileUploadBean implements Serializable {
         addCount.setValue(((Integer) addCount.getValue()) + 1);
         setInputFlags();
 	}
+	
 	public String displayInputFormDetails(){
 		
 		String status = new String();
@@ -90,6 +93,10 @@ public class FileUploadBean implements Serializable {
 			
 			/*if (this.getHipconverterInputList().size() > 0) {
 				SessionManager.addSessionAttribute("hipconverterInputList", this.getHipconverterInputList());*/
+			String text = "Congratulations !!!Registration Successful. A registration email had been sent to your email address. Please click on the link to activate your account.";
+			  FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,text, text);
+				// The component id is null, so this message is considered as a view message
+				FacesContext.getCurrentInstance().addMessage(null, facesMessage);
 				System.out.println("show form is setting true");
 				setInputFlags();
 			/*}*/

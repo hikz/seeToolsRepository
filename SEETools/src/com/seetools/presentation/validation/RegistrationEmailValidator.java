@@ -29,11 +29,11 @@ public class RegistrationEmailValidator implements Validator {
 			throws ValidatorException {
 		
 		if(Utilities.validateEmail(object.toString())){
-			Messages.addMessage("Error: Invalid Email Address !!", FacesMessage.SEVERITY_ERROR);
+			Messages.addValidationMessage("Error: Invalid Email Address !!", FacesMessage.SEVERITY_ERROR);
 		}
 		
 		if(((SeeToolsRegisterServiceImpl)BeanFactory.getBean("seeToolsRegisterServiceImpl")).checkDuplicateEmail(object.toString())){
-			Messages.addMessage("Error: Duplicate Email Address. Please change email address !!", FacesMessage.SEVERITY_ERROR);
+			Messages.addValidationMessage("Error: Duplicate Email Address. Please change email address !!", FacesMessage.SEVERITY_ERROR);
 		}
 		
 	}

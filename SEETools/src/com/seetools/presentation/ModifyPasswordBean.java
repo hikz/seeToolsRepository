@@ -3,14 +3,17 @@ package com.seetools.presentation;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.html.HtmlInputHidden;
+import javax.faces.context.FacesContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.seetools.businesslayer.ForgotPasswordServiceImpl;
+import com.seetools.presentation.validation.Messages;
 
 @ManagedBean(name="modifyPasswordBean")
 @RequestScoped
@@ -35,6 +38,12 @@ public class ModifyPasswordBean implements Serializable {
 		logger.info("Changing Password for email : {}", email.getValue());
 		forgotPasswordServiceImpl.changePassword((String)email.getValue(), this.getPassword());	
 		logger.info("Password changed successfully for email : {}",  email.getValue());
+		FacesMessage doneMessage = null;
+		String text = "Password changed successfully. Please Login";
+		doneMessage = new FacesMessage(text);
+		doneMessage.setSeverity(FacesMessage.SEVERITY_INFO);
+		
+		FacesContext.getCurrentInstance().addMessage(null, doneMessage);
 		return "changePasswordSuccess";
 	}
 
