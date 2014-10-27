@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<h:head>
+</h:head>
+<h:body>
+
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		template="/xhtml/tools/seeContentLayout.xhtml">
+
+		<ui:define name="menuContent">
+			<h:outputStylesheet>
+			        .rf-ac {
+			        width: 100%;
+			        }
+			 
+			        .rf-ac-itm {
+			        height: 100%;
+			        }
+   			 </h:outputStylesheet>
+			<div id="toolsMenuHeading" class="accordion_toolsMenuHeading">Tools
+				Menu</div>
+			<h:form>
+				<rich:accordion switchType="client"
+					itemHeaderClass="accordion_toolsMenuHeader col1"
+					itemContentClass="accordion_toolsMenuContent col3"
+					itemActiveRightIcon="/resources/images/up.jpg" title="Tools Menu"
+					itemInactiveRightIcon="/resources/images/down1.jpg">
+					<rich:accordionItem header="Proton">
+						<p
+							style="text-align: left; margin-left: 25px; margin-right: 15px;">
+							<h:commandLink action="#{fileUploadBean.initializeTool}"
+								value="Heavy Ion to Proton Converter" />
+						</p>
+						<p
+							style="text-align: left; margin-left: 25px; margin-right: 15px;">
+							<h:commandLink action="#{navigator.navigate}"
+								value="Weibull for Protons (4-Param)">
+								<f:param name="fromTool" value="hipConverter" />
+							</h:commandLink>
+						</p>
+					</rich:accordionItem>
+					<rich:accordionItem header="Neutron">
+						<p
+							style="text-align: left; margin-left: 25px; margin-right: 15px;">
+							<h:commandLink action="#{navigator.navigate}"
+								value="Neutron soft error rate prediction">
+								<f:param name="fromTool" value="neutronConverter" />
+							</h:commandLink>
+						</p>
+					</rich:accordionItem>
+					<rich:accordionItem header="Heavy Ion">
+						<p
+							style="text-align: left; margin-left: 25px; margin-right: 15px;">
+							<h:commandLink action="#{navigator.navigate}" value="HICUP">
+								<f:param name="fromTool" value="neutronConverter" />
+							</h:commandLink>
+						</p>
+						<p
+							style="text-align: left; margin-left: 25px; margin-right: 15px;">
+							<h:commandLink action="#{navigator.navigate}"
+								value="Double Bit Upset (DBU)">
+								<f:param name="fromTool" value="neutronConverter" />
+							</h:commandLink>
+						</p>
+					</rich:accordionItem>
+					<rich:accordionItem header="ION Tracks">
+						<p
+							style="text-align: left; margin-left: 25px; margin-right: 15px;">
+							<h:commandLink action="#{navigator.navigate}"
+								value="Ion Density Profile">
+								<f:param name="fromTool" value="neutronConverter" />
+							</h:commandLink>
+						</p>
+					</rich:accordionItem>
+				</rich:accordion>
+			</h:form>
+
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

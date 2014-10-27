@@ -1,0 +1,3 @@
+function verifyBrowser(){
+	alert("hey");
+}

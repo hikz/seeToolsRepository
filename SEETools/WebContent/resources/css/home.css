@@ -1,0 +1,260 @@
+@CHARSET "ISO-8859-1";
+
+/* .navbar-inverse .navbar-nav > li > a {
+	color: #FFFFFF;
+}
+ */
+/* .navbar-nav.nav-justified {
+    width:50%;
+}
+
+
+.navbar-nav.nav-justified > li{
+	
+    float:none;
+}
+ */
+ .navbar-nav {
+    width: 100%;
+    text-align: center;
+ }
+ 
+ .navbar-default .navbar-nav > li > a {
+	color: #FFFFFF;
+}
+
+.navbar-default .container {
+	background-color: #000000;
+	background-image : none;
+	color:white;
+	font-weight: 700;
+}
+
+.navbar-default {
+	background-color: #000000;
+	background-image : none;
+	color:white;
+	font-weight: 700;
+} 
+.navbar-nav > li {
+      float: none;
+      display: inline-block;
+    }
+  
+
+.row-background {
+  
+  min-height: 200px;
+  padding-left: 5%; 
+  padding-right: 5%;
+/*   	-moz-box-shadow: 1px 1px 7px #003333;
+	-webkit-box-shadow: 1px 1px 7px #003333;
+	box-shadow: 1px 1px 7px #003333;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px; */
+
+}
+
+.col-background {
+	
+  background: white;
+  min-height: 200px;
+  
+  	-moz-box-shadow: 1px 1px 10px #003333;
+	-webkit-box-shadow: 1px 1px 10px #003333;
+	box-shadow: 1px 1px 10px #003333;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	
+	min-width: 20%;
+	margin-right : 2%;
+	margin-left : 2%; 
+	padding-right: 1px;
+	padding-left: 1px;
+}
+
+.vertical-middle {
+	display: block;
+	position:relative;
+	min-height: 30px;
+}
+
+.container {
+	background-color: #EEEEEE;
+	
+}
+
+.container-nav {	
+	background-color: #000000;
+	background-image : none;
+	color:white;
+	font-weight: 700;
+}
+
+.carousel {
+	top:70px;
+}
+
+.container-height {
+	min-height: 1000px;	
+}
+
+.content-layout {	
+	top:50px;
+	haight:100%;
+}
+
+.carousel-caption {
+	color:white;
+	/*Below would give better readability. but not supported in IE9*/
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.carousel {
+	width: 76%;
+	margin-left: 12%;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.tools-header-layout {
+	margin-top: 30px;
+	color: #003333;
+	padding-left: 5%;
+}
+
+
+.home_tools_hr {
+	width: 80%;
+	background-color: #003333;
+	height: 1px;
+}
+
+.tools-header-background {
+	color:white;
+	background-color:#728C00;
+	margin-top: 1px;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	-moz-border-top-left-radius:10px;
+	-moz-border-top-right-radius:10px;
+	-webkit-border-top-left-radius:10px;
+	-webkit-border-top-right-radius:10px;
+	padding-left: 5%;
+	padding-bottom : 3%;
+	margin-bottom: 20px;
+}
+
+.proton-header {
+	background-color:#666362;
+}
+
+.neutron-header {
+	background-color:#151B54;
+}
+.heavy-ion-header {
+	background-color:#728C00;
+}
+.ion-track-header {
+	background-color:#0041C2;
+}
+.home-tools-text {
+	padding-left: 5%;
+	padding-right: 1%;
+}
+
+.footer-color {
+	/* background-color:#666362; */
+	color:black;
+	padding-top: 10px;
+	
+}
+
+/*For other non secure page panels like login, register, about us, faq*/
+.panel-primary {
+	border-color: #003333;
+	-moz-box-shadow: 1px 1px 7px #003333;
+	-webkit-box-shadow: 1px 1px 7px #003333;
+	box-shadow: 1px 1px 7px #003333;
+}
+.panel-primary > .panel-heading {
+	filter:none;
+	background-image : none;
+	background-color: #003333;
+}
+
+.panel-default > .panel-heading {
+	filter:none;
+	background-image : none;
+	background-color: #003333; 
+	/* background-color: #008080; */
+	color:white;
+}
+
+/*Home Page Tools Section Panel details*/
+#homeToolsId .panel {
+	margin-left:2%;
+	margin-right:2%;
+	min-height: 200px;
+}
+
+#homeToolsId .panel-primary {
+	border-color: #728C00;
+	-moz-box-shadow: 1px 1px 7px #728C00;
+	-webkit-box-shadow: 1px 1px 7px #728C00;
+	box-shadow: 1px 1px 7px #728C00;
+}
+	
+#homeToolsId .panel-primary .panel-heading {
+	filter:none;
+	background-image : none;
+	background-color: #728C00;
+	border-color: #728C00;
+}
+
+#homeToolsId .panel-primary .panel-body a {
+	color : #003333;
+}
+
+.input-group-addon {
+	color: #485900;
+	font-family: serif;
+	font-weight: 600;
+	font-style: bold;
+	font-size: 20px;
+	background-color: #728C00;
+	border-top-color: #728C00;
+	border-bottom-color: #728C00;
+	border-right-color: #728C00;
+	
+}
+
+:last-child.input-group-addon {
+	border-left-color : #485900;
+	border-left-style: solid;
+	border-left-width: 1px;
+}
+/* 
+#navForm {
+ 	height : 80%;
+ }
+ .nav #navForm  li a {
+	background-color: #009900;
+	color:white;
+	width: 95%;
+	margin-top: 10px;
+	margin: 0 auto;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	text-align: center;
+}
+
+.nav #navForm  li a:HOVER {
+	background-color: black;
+}  */

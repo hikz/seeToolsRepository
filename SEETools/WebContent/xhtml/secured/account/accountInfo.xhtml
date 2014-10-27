@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Register User</title>
+</head>
+<body>
+
+	<ui:composition template="/xhtml/common/seeLayout.xhtml">
+		<ui:define name="mainContent">
+			<f:view>
+				<div id="wrapper1">
+					<div id="form_wrapper" class="form_wrapper">
+						<h:form id="seeRegisterFormId">
+							<div class="loginheader active">
+								<h3>Account Information</h3>
+							</div>	
+							
+							<h4>Personal Details</h4>
+								<label>First Name :</label>
+										#{userBean.firstName}<br></br>
+								<label>Last Name :</label>
+								<h:outputText id="seeLastNameId" value="#{userBean.lastName}" ></h:outputText><br></br>
+								<label>Mobile Number :</label>
+								<h:outputText id="seeMobileNumberId" value="#{userBean.mobileNumber}" ></h:outputText><br></br>
+								<label>Email Address :</label>
+								<h:outputText id="seeEmailAddressId" value="#{userBean.email.emailAddress}"></h:outputText><br></br>
+								
+							<h4>Membership Information</h4>
+							
+							<label>Membership Type :</label><br></br>
+							
+							<label>Validity :</label><br></br>
+							
+							<label>Last Transaction :</label><br></br>
+							
+							<label>Payment Type :</label><br></br>
+							<div class="bottom">
+						<h:commandButton value="Edit" action="register"></h:commandButton>
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+ 	
+    <!-- Enable Spring -->
+    <application>
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+    </application>
+    
+    <managed-bean>
+        <managed-bean-name>loginBean</managed-bean-name>
+        <managed-bean-class>com.seetools.presentation.LoginBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <!-- Simple Navigation Rule -->
+    
+    <navigation-rule>
+        <display-name>pages/login/</display-name>
+        <from-view-id>/xhtml/login/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.login}</from-action>
+            <from-outcome>loginSuccess</from-outcome>
+            <to-view-id>/xhtml/tools/hipConverterTool.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+        	<from-action>#{loginBean.login}</from-action>
+        	<from-outcome>failure</from-outcome>
+        	<to-view-id>/xhtml/login/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+     <navigation-rule>
+    	<display-name>pages/home/</display-name>
+    	<from-view-id>/seeHome.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-action>#{navigator.navigate}</from-action>
+    		<from-outcome>hipConverter</from-outcome>
+    		<to-view-id>/xhtml/tools/hipConverterTool.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-action>#{navigator.navigate}</from-action>
+    		<from-outcome>neutronConverter</from-outcome>
+    		<to-view-id>/xhtml/tools/neutronConverter.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	
+    </navigation-rule>
+    
+    <!--  <navigation-rule>
+    	<display-name>pages/home/</display-name>
+    	<from-view-id>/xhtml/login/confirmRegistration.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-action>#{registerBean.register}</from-action>
+    		<from-outcome>registerSuccess</from-outcome>
+    		<to-view-id>/xhtml/login/registrationSuccess.xhtml</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-action>#{registerBean.register}</from-action>
+    		<from-outcome>registerFailure</from-outcome>
+    		<to-view-id>/xhtml/login/registrationFailure.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    </navigation-rule> -->
+    
+    <navigation-rule>
+    	<display-name>pages/home/</display-name>
+    	<from-view-id>/xhtml/login/register.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-action>#{registerBean.confirmRegistration}</from-action>
+    		<from-outcome>confirmRegistration</from-outcome>
+    		<to-view-id>/xhtml/login/confirmRegistration.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    </navigation-rule>
+    
+    
+    <!-- Global Navigation Rule  -->
+    <navigation-rule>
+    	<display-name>pages/home/</display-name>
+    	<from-view-id>*</from-view-id>
+    	<navigation-case>
+    		<from-outcome>seeHome</from-outcome>
+    		<to-view-id>/seeHome.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>aboutUs</from-outcome>
+    		<to-view-id>/xhtml/common/aboutUs.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>faq</from-outcome>
+    		<to-view-id>/xhtml/common/faq.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>accountInfo</from-outcome>
+    		<to-view-id>/xhtml/secured/account/accountInfo.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>login</from-outcome>
+    		<to-view-id>/xhtml/login/login.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>register</from-outcome>
+    		<to-view-id>/xhtml/login/register.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-action>#{navigator.navigate}</from-action>
+    		<from-outcome>hipConverter</from-outcome>
+    		<to-view-id>/xhtml/tools/hipConverterTool.xhtml</to-view-id>    		
+    		<redirect></redirect>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-action>#{navigator.navigate}</from-action>
+    		<from-outcome>neutronConverter</from-outcome>
+    		<to-view-id>/xhtml/tools/neutronConverter.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	
+    	<navigation-case>
+    		<from-outcome>registrationActivation</from-outcome>
+    		<to-view-id>/xhtml/login/registrationActivation.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	
+    	<navigation-case>
+    		<from-outcome>changePassword</from-outcome>
+    		<to-view-id>/xhtml/login/changePassword.xhtml</to-view-id>
+    		<redirect></redirect>
+    	</navigation-case>
+    	
+    	</navigation-rule>
+    
+</faces-config>

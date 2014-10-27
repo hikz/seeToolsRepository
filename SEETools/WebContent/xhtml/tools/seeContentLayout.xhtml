@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<h:head>
+</h:head>
+<body>
+
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		template="/xhtml/common/seeLayout.xhtml">
+
+		<ui:define name="mainContent">			
+			<div class="container container-height">
+				<div id="seeMainContentId" class="col-lg-12  content-layout">
+					<div id="whoAreWe" class="toolsContainer col-centered">
+
+						<div class="row tool-row">
+							<div id="toolsMenuCol"
+								class="col-lg-3 toolsMenuCol tools-col-margins">
+								<ui:insert name="menuContent">
+									<div id="toolsMenuHeading" class="accordion_toolsMenuHeading">Tools
+										Menu</div>
+									<h:form>
+										<div class="panel-group" id="accordion">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseOne">Proton</a>
+													</h4>
+												</div>
+												<div id="collapseOne" class="panel-collapse collapse in">
+													<div class="panel-body">
+														<p>
+															<h:commandLink action="#{fileUploadBean.initializeTool}"
+																value="Heavy Ion to Proton Converter" />
+														</p>
+														<p>
+															<h:commandLink action="#{navigator.navigate}"
+																value="Weibull for Protons (4-Param)">
+																<f:param name="fromTool" value="hipConverter" />
+															</h:commandLink>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseTwo">Neutron</a>
+													</h4>
+												</div>
+												<div id="collapseTwo" class="panel-collapse collapse">
+													<div class="panel-body">
+														<p>
+															<h:commandLink action="#{navigator.navigate}"
+																value="Neutron soft error rate prediction">
+																<f:param name="fromTool" value="neutronConverter" />
+															</h:commandLink>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseThree">Heavy Ion</a>
+													</h4>
+												</div>
+												<div id="collapseThree" class="panel-collapse collapse">
+													<div class="panel-body">
+														<p>
+															<h:commandLink action="#{navigator.navigate}"
+																value="HICUP">
+																<f:param name="fromTool" value="neutronConverter" />
+															</h:commandLink>
+														</p>
+														<p>
+															<h:commandLink action="#{navigator.navigate}"
+																value="Double Bit Upset (DBU)">
+																<f:param name="fromTool" value="neutronConverter" />
+															</h:commandLink>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-parent="#accordion"
+															href="#collapseFour">Ion Tracks</a>
+													</h4>
+												</div>
+												<div id="collapseFour" class="panel-collapse collapse">
+													<div class="panel-body">
+														<p>
+															<h:commandLink action="#{navigator.navigate}"
+																value="Ion Density Profile">
+																<f:param name="fromTool" value="neutronConverter" />
+															</h:commandLink>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</h:form>
+								</ui:insert>
+							</div>
+							<div id="toolContentCol"
+								class="toolContentCol col-lg-8 tools-col-margins">
+								<ui:insert name="toolcontent">
+									<!-- <ui:include src="/xhtml/tools/hipConverterTool.xhtml" /> -->
+								</ui:insert>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+
+	</ui:composition>
+</body>
+</html>

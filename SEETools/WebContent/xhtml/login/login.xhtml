@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+
+</head>
+<body>
+
+	<ui:composition template="/xhtml/common/seeLayout.xhtml">
+		<ui:define name="mainContent">
+			<div class="container container-height">
+				<div id="login-form" class="col-lg-12 content-layout">
+					<h:form id="seeLoginFormId" prependId="false"
+						styleClass="form-horizontal">
+						<div class="panel panel-primary">
+
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">Login</h3>
+							</div>
+							<div class="panel-body">
+
+								<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+									<p class="text-danger text-center">
+										Your login attempt was not successful due to
+										<h:outputText
+											value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+										. Please try again
+									</p>
+								</c:if>
+
+								<div class="form-group">
+									<label class="control-label">Email
+										Address</label>
+									<!-- <div class="col-xs-7"> -->
+									<h:inputText id="tools_username" required="true" tabindex="1"
+										styleClass="form-control"
+										value="#{loginBean.email}"
+										requiredMessage="Email Address is mandatory">
+									</h:inputText>
+									<h:message for="tools_username" styleClass="help-block"></h:message>
+									<!-- </div> -->
+							
+									<label class="control-label">Password</label>
+
+									<h:inputSecret id="tools_password" required="true" tabindex="2"
+										class="form-control"
+										value="#{loginBean.password}"
+										requiredMessage="Password is mandatory">
+									</h:inputSecret>
+									<!-- </div> -->
+									<br></br>
+									<h:commandButton value="Login" action="#{loginBean.login}" id="loginButton"
+										tabindex="3" styleClass="btn btn-primary btn-block form-control"></h:commandButton>
+								</div>
+								<div class="col-xs-offset-3">
+									<h:commandLink action="#{navigator.navigate}" value="Register"
+										immediate="true" styleClass="btn btn-link pull-left">
+										<f:param name="fromTool" value="register" />
+									</h:commandLink>
+									<h:commandLink action="#{navigator.navigate}"
+										value="Forgot Password?" immediate="true"
+										styleClass="btn btn-link ">
+										<f:param name="fromTool" value="forgotPassword" />
+									</h:commandLink>
+								</div>
+								<!-- Modal HTML -->
+								<div id="myModal" class="modal fade">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">&times;</button>
+												<h4 class="modal-title">Password Instructions</h4>
+											</div>
+											<div class="modal-body">
+												<p>Password should contain the following instructions</p>
+												<ul>
+													<li>Minimum Length is 6</li>
+													<li>Maximum Length is 20</li>
+													<li>One lower case</li>
+													<li>One upper case</li>
+													<li>Any Special Character</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+
+
+</body>
+</html>
