@@ -9,7 +9,8 @@ public class SEEUtilities {
 	public static Timestamp getCurrentTimeStamp(){
 		
 		Date date = new Date();
-		return new Timestamp(date.getTime());
+		Timestamp t = new Timestamp(date.getTime()); 
+		return t;
 		
 	}
 }

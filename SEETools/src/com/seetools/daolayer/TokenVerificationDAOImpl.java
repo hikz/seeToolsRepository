@@ -15,7 +15,7 @@ import org.springframework.jdbc.support.KeyHolder;
 
 import com.seetools.daolayer.mapper.AccountActivationTokenMapper;
 import com.seetools.dto.AccountActivationTokenBean;
-import com.seetools.presentation.common.SEEUtilities;
+import com.seetools.util.Utilities;
 
 public class TokenVerificationDAOImpl {
 
@@ -57,9 +57,9 @@ public class TokenVerificationDAOImpl {
 				    ps.setString(2, token);
 				    ps.setString(3, "A");
 				    ps.setString(4,"test");
-				    ps.setTimestamp(5,SEEUtilities.getCurrentTimeStamp());
+				    ps.setTimestamp(5,Utilities.getCurrentTimestamp());
 				    ps.setString(6,"test");
-				    ps.setTimestamp(7,SEEUtilities.getCurrentTimeStamp());
+				    ps.setTimestamp(7,Utilities.getCurrentTimestamp());
 				    return ps;
 				  }
 				}, tokenKeyHolder);
@@ -74,7 +74,7 @@ public class TokenVerificationDAOImpl {
 	
 	public List<AccountActivationTokenBean> getAccountActivationTokenDetail(String emailAddress, String token){
 		
-		final String GET_ACCOUNT_ACTIVATION_TOKEN_DETAIL = "select * from email e,account_activation_token t where t.emailID = e.emailID and e.emailaddress = ? and t.activation_token = ?";
+		final String GET_ACCOUNT_ACTIVATION_TOKEN_DETAIL = "select t.* from email e,account_activation_token t where t.emailID = e.emailID and e.emailaddress = ? and t.activation_token = ?";
 		
 		this.jdbcTemplate =  new JdbcTemplate(dataSource);
 		

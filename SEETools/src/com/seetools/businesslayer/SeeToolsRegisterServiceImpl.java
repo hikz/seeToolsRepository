@@ -8,7 +8,6 @@ import com.seetools.daolayer.TokenVerificationDAOImpl;
 import com.seetools.dto.EmailBean;
 import com.seetools.dto.UserBean;
 import com.seetools.framework.exceptions.EmailException;
-import com.seetools.presentation.common.SEEUtilities;
 import com.seetools.util.SendEmail;
 import com.seetools.util.Utilities;
 
@@ -47,13 +46,13 @@ public class SeeToolsRegisterServiceImpl {
 	
 	private void setTimeStampAndUserDetails(UserBean userDto){
 		
-		userDto.setCreatedDate(SEEUtilities.getCurrentTimeStamp());
-		userDto.setModifiedDate(SEEUtilities.getCurrentTimeStamp());
+		userDto.setCreatedDate(Utilities.getCurrentTimestamp());
+		userDto.setModifiedDate(Utilities.getCurrentTimestamp());
 		userDto.setCreatedByUserId("test");
 		userDto.setModifiedByUserId("test");
 		
-		userDto.getEmail().setCreatedDate(SEEUtilities.getCurrentTimeStamp());
-		userDto.getEmail().setModifiedDate(SEEUtilities.getCurrentTimeStamp());
+		userDto.getEmail().setCreatedDate(Utilities.getCurrentTimestamp());
+		userDto.getEmail().setModifiedDate(Utilities.getCurrentTimestamp());
 		userDto.getEmail().setCreatedByUserId("test");
 		userDto.getEmail().setModifiedByUserId("test");
 		

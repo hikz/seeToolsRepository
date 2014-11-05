@@ -96,7 +96,7 @@
 							<h:form id="outputData">
 							<h3 class="text-center">Output</h3>
 								<div class="col-lg-4">
-								<h4 class="text-center">Data</h4>
+								<h4 class="text-center">Equivalent Proton Data</h4>
 								<h:dataTable id="hipOutput" var="hipOutput"
 									value="#{fileUploadBean.hipconverterFinalOutput.hipconverterOutputList}"
 									redered="#{fileUploadBean.displayOutput}"
@@ -106,12 +106,12 @@
 									rowClasses="outputDataTableOddRow,outputDataTableEvenRow">
 
 									<h:column>
-										<f:facet name="header">Energy</f:facet>
+										<f:facet name="header">Energy (MeV)</f:facet>
 										<h:outputText value="#{hipOutput.energy}"/>
 									</h:column>
 
 									<h:column>
-										<f:facet name="header">Proton Cross Section</f:facet>
+										<f:facet name="header">Cross Section (cm2)</f:facet>
 										<h:outputText value="#{hipOutput.protonCrossSection}"/>
 									</h:column>
 								</h:dataTable>
@@ -147,7 +147,7 @@
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal"
 								aria-hidden="true">&times;</button>
-							<h4 class="modal-title">Hip Converter Tool Description</h4>
+							<h4 class="modal-title">HIP Converter Tool Description</h4>
 						</div>
 						<div class="modal-body">
 							<p>This tool enables one to get the equivalent proton upset

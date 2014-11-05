@@ -15,13 +15,13 @@
 
 	<ui:composition template="/xhtml/common/seeLayout.xhtml">
 		<ui:define name="mainContent">
-		
-		 <h:outputScript target="body">
-           <!--  verifyBrowser(); -->
-        </h:outputScript>
+
+			<h:outputScript target="body">
+				<!--  verifyBrowser(); -->
+			</h:outputScript>
 			<div class="container">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			
+
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
 						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -174,13 +174,16 @@
 								</div>
 							</div>
 						</div>
-					</div> <!-- end carousel inner-->
+					</div>
+					<!-- end carousel inner-->
 					<a class="left carousel-control" href="#myCarousel" role="button"
-						data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-				    <a class="right carousel-control" href="#myCarousel" role="button"
-						data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+						data-slide="prev"><span
+						class="glyphicon glyphicon-chevron-left"></span></a> <a
+						class="right carousel-control" href="#myCarousel" role="button"
+						data-slide="next"><span
+						class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
-				
+
 			</div>
 			<div class="container" id="homeToolsId">
 				<div class="row tools-header-layout">
@@ -190,104 +193,97 @@
 				</div>
 				<div class="row row-background">
 					<div class="col-xs-3">
-					<div class="panel panel-primary">
-						
-						<div class="panel-heading input-group">
-							<h3 class="panel-title text-center">Proton</h3>
-							<span class="panel-title text-center input-group-addon">P</span>
+						<div class="panel panel-primary">
+
+							<div class="panel-heading input-group">
+								<h3 class="panel-title text-center">Proton</h3>
+								<span class="panel-title text-center input-group-addon">P</span>
+							</div>
+							<div class="panel-body">
+								<p>
+									<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Heavy Ion to Proton Converter</h:link>
+								</p>
+								<p>
+									<h:link outcome="/xhtml/tools/neutronConverter.xhtml">Weibull for Protons(4-Parameter)</h:link>
+								</p>
+							</div>
 						</div>
-						<div class="panel-body">
-						<p>
-							<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Heavy Ion to Proton Converter</h:link>
-						</p>
-						<p>
-							<h:link outcome="/xhtml/tools/neutronConverter.xhtml">Weibull for Protons(4-Parameter)</h:link>
-						</p>
-						</div>
-					</div>
-					</div>
-					<div class="col-xs-3">
-					<div class="panel panel-primary">
-						
-						<div class="panel-heading">
-							<h3 class="panel-title text-center">Neutron</h3>
-						</div>
-						<div class="panel-body">
-						<p>
-							<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Neutron soft error rate prediction</h:link>
-						</p>
-						</div>
-					</div>
 					</div>
 					<div class="col-xs-3">
 						<div class="panel panel-primary">
-						
-						<div class="panel-heading">
-							<h3 class="panel-title text-center">Heavy Ion</h3>
-						</div>
-						<div class="panel-body">
-						<p>
-							<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Hicup Data Fitting</h:link>
-						</p>
-						<p>
-							<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Dual Node/Word Upset Prediction</h:link>
-						</p>
+
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">Neutron</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Neutron soft error rate prediction</h:link>
+								</p>
+							</div>
 						</div>
 					</div>
-					</div>
-					
 					<div class="col-xs-3">
-					<div class="panel panel-primary">
-						
-						<div class="panel-heading">
-							<h3 class="panel-title text-center">Ion Tracks</h3>
-						</div>
-						<div class="panel-body">
-						<p>
-							<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Ion Density Profile</h:link>
-						</p>
+						<div class="panel panel-primary">
+
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">Heavy Ion</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">HICUP Data Fitting</h:link>
+								</p>
+								<p>
+									<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Dual Node/Word Upset Prediction</h:link>
+								</p>
+							</div>
 						</div>
 					</div>
+
+					<div class="col-xs-3">
+						<div class="panel panel-primary">
+
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">Ion Tracks</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Ion Density Profile</h:link>
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
-					<hr class="home_tools_hr" ></hr>
+				<hr class="home_tools_hr"></hr>
 				<div class="row  tools-header-layout">
 					<div class="col-xs-3">
 						<h2>Services</h2>
 					</div>
-					
+
 				</div>
 				<div class="row  row-background">
 					<div class="col-xs-3">
-					
-					<div class="panel panel-primary">
-						
-						<div class="panel-heading">
-							<h3 class="panel-title text-center">Radiation Database</h3>
-						</div>
-						<div class="panel-body">
-						<p>
-							<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Single Event Effects (SEE)</h:link>
-						</p>
-						<p>
-							<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Total Dose</h:link>
-						</p>
-						<p>
-							<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Displacement Damage</h:link>
-						</p>
-						<p>
-							<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Prompt Dose</h:link>
-						</p>
-						</div>
+
+						<div class="panel panel-primary">
+
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">Radiation Database</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									<h:link outcome="/xhtml/tools/hipConverterTool.xhtml">Single Event Effects (SEE), 
+						Total Dose, Displacement Damage, and
+						Prompt Dose</h:link>
+								</p>
+							</div>
 						</div>
 						<!-- <h1 class="tools-header-background"><small style="color:white">Radiation Database</small></h1>
 						 -->
 					</div>
 				</div>
-				
+
 			</div>
-			
-			
+
+
 
 		</ui:define>
 	</ui:composition>

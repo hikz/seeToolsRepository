@@ -8,7 +8,7 @@
 	xmlns:rich="http://richfaces.org/rich">
 
 <h:head>
-	<title>Hip Converter</title>
+	<title>Neutron Converter</title>
 </h:head>
 <h:body>
 	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
@@ -16,57 +16,272 @@
 		xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:h="http://java.sun.com/jsf/html"
 		template="/xhtml/tools/seeContentLayout.xhtml">
-   
+
 		<ui:define name="toolcontent">
-			<table width="900" height="620">
-				
-				<tr>
-					<td align="center" height="50">Neutron Converter Page</td>
-				</tr>
-				
-				<tr>
-					<td  valign="top" align="center">
-						<div>
-							<h:form enctype="multipart/form-data">
-								<h:inputFile value="#{fileUploadBean.inputFile}" requiredMessage="File not selected !!"/>
-								<br/>
-								<h:commandButton value="Upload"
-									action="#{fileUploadBean.upload()}" />															
-							</h:form>
-						
-							<br></br>
-							<h:panelGrid id="hipPanel" columns="2" border="1"
-								rendered="#{fileUploadBean.display}">
-								<h:dataTable id="hipOutput" var="hipOutput"
-									value="#{fileUploadBean.hipconverterFinalOutput.hipconverterOutputList}"
-									redered="#{fileUploadBean.display}" border="1">
+			<div class="row">
+				<div class="col-lg-12" >
+					<h3>Neutron Induced Soft Error Rate Prediction</h3>
+				</div>
+			</div>
+			<h:form class="form-horizontal" role="form"
+				enctype="multipart/form-data" id="neutronConverterForm">
 
-									<h:column>
-										<f:facet name="header">Energy</f:facet>
-										<h:outputText value="#{hipOutput.energy}" />
-									</h:column>
+				<div class="form-group">
+					<div class="col-lg-12">
+						<h4>Device Information</h4>
+					</div>
+				</div>
 
-									<h:column>
-										<f:facet name="header">Proton Cross Section</f:facet>
-										<h:outputText value="#{hipOutput.protonCrossSection}" />
-									</h:column>
-								</h:dataTable>
-								
-								<rich:panel>
-									<a4j:mediaOutput style="width:450px;height:450px;" 
-										element="img" cacheable="false" session="true"
-										createContent="#{fileUploadBean.drawChart}"
-										mimeType="image/jpeg" >
-										<!-- <f:param name="outputList" value="#{fileUploadBean.hipconverterFinalOutput.hipconverterOutputList}"></f:param> -->
-										</a4j:mediaOutput>
-								</rich:panel>
-							</h:panelGrid>
+				<div class="form-group">
+					<label class="col-lg-4 control-label">Part Number: </label>
+					<div class="col-lg-8">
+						<h:inputText name="partNumber" class="form-control"
+							title="Enter part number"
+							value="#{neutronConverterBean.partNumber}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">Device technology: </label>
+					<div class="col-lg-8">
+						<h:selectOneMenu class="form-control"
+							value="#{neutronConverterBean.inputVariables.technology}">
+							<f:selectItem itemLabel="- Select -" />
+							<f:selectItem itemValue="CHANNEL_GT_90NM"
+								itemLabel="CMOS (&gt;90nm)" />
+							<f:selectItem itemValue="CHANNEL_90NM" itemLabel="CMOS (90nm)" />
+							<f:selectItem itemValue="CHANNEL_65NM" itemLabel="CMOS (65nm)" />
+							<f:selectItem itemValue="CHANNEL_50NM" itemLabel="CMOS (50nm)" />
+							<f:selectItem itemValue="CHANNEL_45NM" itemLabel="CMOS (45nm)" />
+							<f:selectItem itemValue="CHANNEL_32NM" itemLabel="CMOS (32nm)" />
+							<f:selectItem itemValue="CHANNEL_LT_32NM"
+								itemLabel="CMOS (&lt;32nm)" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-12">
+						<h4>Environment Specifications</h4>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">Select a location by:
+					</label>
+					<div class="col-lg-8">
+						<h:selectOneMenu id="select-location-options" class="form-control"
+							style="background-color:#198EB5; color:white" value="#{neutronConverterBean.inputVariables.locationType}">
+							<f:selectItem id="select-location-by-city-country"
+								itemLabel="City/Country" itemValue="CITY_COUNTRY" />
+							<f:selectItem id="enter-location-by-latidude-longitude-altitude"
+								itemLabel="Latitude/Longitude/Altitude"
+								itemValue="LOCATION_3D_COORDINATES" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+				<div id="city-country-dropdown-container">
+					<div class="form-group">
+						<label class="col-lg-4 control-label" />
+						<div class="col-lg-8">
+							<h:selectOneMenu class="form-control"
+								value="#{neutronConverterBean.inputVariables.city}">
+								<f:selectItem itemLabel="- Select a city/country -" />
+								<f:selectItem itemValue="Ankara, Turkey"
+									itemLabel="Ankara, Turkey" />
+								<f:selectItem itemValue="Bahia Blanca, Argentina"
+									itemLabel="Bahia Blanca, Argentina" />
+								<f:selectItem itemValue="Beijing, China"
+									itemLabel="Beijing, China" />
+								<f:selectItem itemValue="Madrid, Spain"
+									itemLabel="Madrid, Spain" />
+								<f:selectItem itemValue="Philadelphia, USA"
+									itemLabel="Philadelphia, USA" />
+								<f:selectItem itemValue="Bahia Blanca, Argentina"
+									itemLabel="Bahia Blanca, Argentina" />
+								<f:selectItem itemValue="Salt Lake City, USA"
+									itemLabel="Salt Lake City, USA" />
+								<f:selectItem itemValue="Tahkent, Uzbekistan"
+									itemLabel="Tahkent, Uzbekistan" />
+								<f:selectItem itemValue="Wellington, New Zeland"
+									itemLabel="Wellington, New Zeland" />
+
+							</h:selectOneMenu>
 						</div>
-					</td>
-				</tr>
-				<!-- <tr><td><h:messages></h:messages></td></tr> -->
-				<!-- <tr><td width="225" align="center"><a href="#">Download Output File</a></td></tr> -->
-			</table>
+					</div>
+				</div>
+
+				<div id="latitude-longitude-altitude-text-container">
+					<div class="form-group">
+						<label class="col-lg-4 control-label">Longitude: </label>
+						<div class="col-lg-8">
+							<h:inputText class="form-control" title="Enter longitude"
+								value="#{neutronConverterBean.inputVariables.longitude}" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-4 control-label">Latitude: </label>
+						<div class="col-lg-8">
+							<h:inputText class="form-control" title="Enter latitude"
+								value="#{neutronConverterBean.inputVariables.latitude}" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-4 control-label">Altitude: </label>
+						<div class="col-lg-8">
+							<h:inputText name="altitude" class="form-control"
+								title="Enter altitude" placeholder="Enter altitude value"
+								value="#{neutronConverterBean.inputVariables.altitudeFT}" />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">Enter solar
+						modulation (0-100): </label>
+					<div class="col-lg-8">
+						<h:inputText name="solarModulation" class="form-control"
+							title="Enter solar modulation (0-100):"
+							value="#{neutronConverterBean.inputVariables.solarModulation}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-12">
+						<h4>Data Specifications</h4>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">Data type: </label>
+					<div class="col-lg-8">
+						<h:selectOneMenu class="form-control" id="select-data-options"
+							value="#{neutronConverterBean.inputVariables.dataType}">
+							<f:selectItem itemLabel="- Select data type -" />
+							<f:selectItem itemValue="NEUTRON_UPSET_CROSS_SECTION"
+								itemLabel="Neutron upset cross section" />
+							<f:selectItem itemValue="PROTON_SATURATED_UPSET_CROSS_SECTION"
+								itemLabel="Proton saturated upset cross section" />
+							<f:selectItem itemValue="HEAVY_ION_WEIBULL_PARAMETERS"
+								itemLabel="Heavy ion Weibull parameters" />
+							<f:selectItem itemValue="HEAVY_ION_CROSS_SECTION_VS_LET"
+								itemLabel="Heavy ion cross section-let list" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+				<div id="upset-cross-section-container">
+					<div class="form-group">
+						<label class="col-lg-4 control-label">Enter cross section:
+						</label>
+						<div class="col-lg-8">
+							<h:inputText name="xSection" class="form-control"
+								title="Enter calculation cross section:"
+								value="#{neutronConverterBean.inputVariables.crossSection}" />
+						</div>
+					</div>
+				</div>
+
+				<div id="heavy-ion-weibull-parameters-container">
+					<div class="form-group">
+						<label class="col-lg-4 control-label">Onset: </label>
+						<div class="col-lg-8">
+							<h:inputText name="onset" class="form-control"
+								title="Enter onset:"
+								value="#{neutronConverterBean.inputVariables.heavyIonWeibullParameters.onset}" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-4 control-label">Width: </label>
+						<div class="col-lg-8">
+							<h:inputText name="width" class="form-control"
+								title="Enter width:"
+								value="#{neutronConverterBean.inputVariables.heavyIonWeibullParameters.width}" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-4 control-label">Power: </label>
+						<div class="col-lg-8">
+							<h:inputText name="power" class="form-control"
+								title="Enter power:"
+								value="#{neutronConverterBean.inputVariables.heavyIonWeibullParameters.power}" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-4 control-label">Asymptote: </label>
+						<div class="col-lg-8">
+							<h:inputText name="asymptote" class="form-control"
+								title="Enter asymptote:"
+								value="#{neutronConverterBean.inputVariables.heavyIonWeibullParameters.asymptote}" />
+						</div>
+					</div>
+				</div>
+
+				<div id="heavy-ion-cross-section-let-container">
+					<div class="form-group">
+						<label class="col-lg-4 control-label"/>
+						<div class="col-lg-8">
+							<h:dataTable id="hipOutputForm" var="hipconverterInput"
+								value="#{fileUploadBean.hipconverterInputList}"
+								headerClass="col_tool_output_header"
+								styleClass="tool_ouput_border">
+		
+								<h:column>
+									<f:facet name="header">LET</f:facet>
+									<h:inputText value="#{hipconverterInput.let}"
+										class="form-control" />
+								</h:column>
+		
+		
+								<h:column>
+									<f:facet name="header">XSec</f:facet>
+									<h:inputText value="#{hipconverterInput.xsec}"
+										class="form-control" />
+								</h:column>
+		
+							</h:dataTable>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-lg-8 col-lg-offset-4">
+							<h:commandButton value="Add New Row"
+								action="#{fileUploadBean.addNewRow}"  styleClass="btn btn-default"></h:commandButton>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-lg-4">
+						<h:commandButton value="Submit"
+							action="#{neutronConverterBean.calculate}" id="submitButton"
+							styleClass="btn btn-default">
+						</h:commandButton>
+					</div>
+				</div>
+
+			</h:form>
+
+
+			<div id="calculationResult">
+				<div class="row" style="margin: 20px 0px 5px 0px">
+					<div class="col-md-4">
+						<label>Soft Error Rate is: </label>
+					</div>
+					<div class="col-md-8">
+						<h:outputText value="#{neutronConverterBean.errorRate}" />
+					</div>
+				</div>
+
+			</div>
+
+			<h:outputScript library="js" name="tools/neutronConverter.js" />
 		</ui:define>
 	</ui:composition>
 </h:body>
